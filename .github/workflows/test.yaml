@@ -8,4 +8,3 @@ on:
       steps:
         - name: Print the input tag to STDOUT
           run: echo Hello Srinivas Antarvedi
-  
