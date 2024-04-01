@@ -11,4 +11,6 @@ jobs:
       - name: Print the input tag to STDOUT
         run: echo Hello Srinivas Antarvedi
       - name: Print Event that triggerd workflow run
-        run: echo ${{ github.event_name }}
+        run: |
+        echo Event: ${{ github.event_name }}
+        echo Owner: ${{ github.repository_owner }}
