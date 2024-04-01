@@ -12,5 +12,5 @@ jobs:
         run: echo Hello Srinivas Antarvedi
       - name: Print Event that triggerd workflow run
         run: |
-        echo Event: ${{ github.event_name }}
-        echo Owner: ${{ github.repository_owner }}
+        echo "Event: ${{ github.event_name }}"
+        echo "Owner: ${{ github.repository_owner }}"
