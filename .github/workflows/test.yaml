@@ -10,5 +10,5 @@ jobs:
     steps:
       - name: Print the input tag to STDOUT
         run: echo Hello Srinivas Antarvedi
-      - name: Print Whole github context
-        run: echo ${{ github.action }}
+      - name: Print Event that triggerd workflow run
+        run: echo ${{ github.event_name }}
