@@ -2,9 +2,9 @@ name: learn-github-actions
 run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
 on:
   push:
-    jobs:
-      welcome-to-ga:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Print the input tag to STDOUT
-          run: echo Hello Srinivas Antarvedi
+jobs:
+  welcome-to-ga:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print the input tag to STDOUT
+        run: echo Hello Srinivas Antarvedi
