@@ -11,4 +11,4 @@ jobs:
       - name: Print the input tag to STDOUT
         run: echo Hello Srinivas Antarvedi
       - name: Print Whole github context
-        run: echo ${{ github }}
+        run: echo ${{ github.action }}
