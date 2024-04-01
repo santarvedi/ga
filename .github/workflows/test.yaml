@@ -1,15 +1,11 @@
+name: learn-github-actions
+run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
 on:
   push:
-    inputs:
-      username:
-        description: 'Print Name in GA'
-        type: string
-        default: "Srinivas"
-        required: true
-jobs:
-  welcome-to-ga:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print the input tag to STDOUT
-        run: echo Hello ${{ inputs.username }} Antarvedi
+    jobs:
+      welcome-to-ga:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Print the input tag to STDOUT
+          run: echo Hello Srinivas Antarvedi
   
