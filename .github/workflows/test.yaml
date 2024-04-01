@@ -11,5 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print the input tag to STDOUT
-        run: echo  Hello ${{ inputs.name}} Antarvedi
+        run: |
+        echo Hello ${{ inputs.name }} Antarvedi
   
