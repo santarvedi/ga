@@ -19,7 +19,6 @@ jobs:
   welcome-to-ga:
     runs-on: ubuntu-latest
     steps:
-      - name: Print perform_deploy variable value
-        run: | 
-        echo "Log Level: ${{ github.events.inputs.loglevel}}"
+      - run: | 
+         echo "Log Level: ${{ github.event.inputs.loglevel }}"
  
