@@ -1,22 +1,25 @@
 name: learn-github-actions
 run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
-
-{
-  "build_id": 123456768,
-  "deploy_target": "deployment_sys_1a",
-  "perform_deploy": true
-}
+#on:
+#  push:
+#    branches:
+#      - 'main'
 
 on:
-  push:
-    branches:
-      - 'main'
+   workflow_dispatch:
+     inputs:
+       loglevel:
+         description: 'Log Level'
+         type: string
+         required: true
+         default: 'warning'
+         
 
 jobs:
   welcome-to-ga:
     runs-on: ubuntu-latest
     steps:
       - name: Print perform_deploy variable value
-        run: echo ${{ inputs.perform_deploy }}
-      - name: Print workspace location on the runner
-        run: echo ${{ github.workspace }}
+        run: | 
+        echo "Log Level: ${{ github.events.inputs.loglevel}}"
+ 
