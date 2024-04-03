@@ -20,5 +20,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: | 
-         echo "Log Level: ${{ github.events.inputs.loglevel }}"
+         echo "Log Level: ${{ github.event.inputs.loglevel }}"
  
