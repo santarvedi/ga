@@ -1,14 +1,16 @@
 name: learn-github-actions
 run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
-on:
-  push:
-    branches:
-      - 'main'
+
 {
   "build_id": 123456768,
   "deploy_target": "deployment_sys_1a",
   "perform_deploy": true
 }
+
+on:
+  push:
+    branches:
+      - 'main'
 
 jobs:
   welcome-to-ga:
