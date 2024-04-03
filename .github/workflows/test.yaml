@@ -4,11 +4,17 @@ on:
   push:
     branches:
       - 'main'
+{
+  "build_id": 123456768,
+  "deploy_target": "deployment_sys_1a",
+  "perform_deploy": true
+}
+
 jobs:
   welcome-to-ga:
     runs-on: ubuntu-latest
     steps:
-      - name: Print the input tag to STDOUT
-        run: echo Hello Srinivas Antarvedi
+      - name: Print perform_deploy variable value
+        run: echo ${{ inputs.perform_deploy }}
       - name: Print workspace location on the runner
         run: echo ${{ github.workspace }}
