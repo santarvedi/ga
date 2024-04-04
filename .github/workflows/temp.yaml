@@ -9,6 +9,7 @@ jobs:
   printValues:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello ${{ github.actor }}"
-      - id: github-action
+      - id : print-github-actor
+        run: echo "Hello ${{ github.actor }}"
+      - id: print-github-action
         run: echo "Action ${{ github.action }}"
