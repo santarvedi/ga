@@ -19,3 +19,9 @@ jobs:
         run: echo "eventname ${{ github.event_name }}"
       - id: print-event-path
         run: echo "eventpath ${{ github.event_path }}"
+      - id: print-job
+        run: echo "job ${{ github.job }}"
+      - id: print-path
+        run: echo "path ${{ github.path }}"
+      - id: print-ref
+        run: echo "ref ${{ github.ref }}"
