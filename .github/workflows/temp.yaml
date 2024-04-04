@@ -10,3 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello ${{ github.actor }}"
+      - run: echo "Action ${{ github.action }}"
