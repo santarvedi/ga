@@ -15,3 +15,5 @@ jobs:
         run: echo "Action ${{ github.action }}"
       - id: print-github-base_ref
         run: echo "base-ref ${{ github.base_ref }}"
+      - id: print-event-name
+        run: echo "eventname ${{ github.event_name }}"
