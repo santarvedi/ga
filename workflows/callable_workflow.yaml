@@ -1,0 +1,15 @@
+name: callable workflow
+run-name: Callable - By @${{ github.caller }}
+
+on:
+  workflow_call:
+    inputs:
+      name: 
+        description: 'Name for Greeting'
+        type: string
+        required: true
+jobs:
+  Greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "Hello ${{ inputs.name }}"
