@@ -1,24 +1,13 @@
-name: learn-github-actions
-run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
-#on:
-#  push:
-#    branches:
-#      - 'main'
-
+name: learn-GA
+run-name: Deploy by @${{ github.actor }}
 on:
-   workflow_dispatch:
-     inputs:
-       loglevel:
-         description: 'Log Level'
-         type: string
-         required: true
-         default: 'warning'
-         
-
+  push:
+    branches:
+      - 'main'
 jobs:
-  welcome-to-ga:
+  welcome-GA:
     runs-on: ubuntu-latest
     steps:
       - run: | 
-         echo "Log Level: ${{ github.event.inputs.loglevel }}"
+         echo "Welcome to GitHub Actions"
  
