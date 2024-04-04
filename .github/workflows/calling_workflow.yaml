@@ -1,0 +1,12 @@
+name: calling workflow
+run-name: Triggered by @${{ github.user }}
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  caller:
+    uses: ./.github/workflows/callable_workflow.yaml
+    with:
+      name: 'Srinivas'
