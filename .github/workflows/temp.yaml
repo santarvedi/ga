@@ -13,3 +13,5 @@ jobs:
         run: echo "Action ${{ github.action }}"
       - id: print-github-action
         run: echo "Action ${{ github.action }}"
+      - id: print-github-action-path
+        run: echo "Action-path ${{ github.action_path }}"
