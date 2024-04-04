@@ -1,0 +1,13 @@
+name: learn-GA
+run-name: Deploy by @${{ github.actor }}
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  welcome-GA:
+    runs-on: ubuntu-latest
+    steps:
+      - run: | 
+         echo "Welcome to GitHub Actions"
+ 
