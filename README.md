@@ -1,1 +1,1 @@
-# ga
+# GitHub actions - about protected branches
