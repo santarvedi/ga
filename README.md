@@ -1,2 +1,3 @@
-# GitHub actions - about protected branches
-# GitHub actions - about reveiwing pull requests
+# GitHub actions
+-> protected branches
+-> reveiwing pull requests
