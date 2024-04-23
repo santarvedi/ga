@@ -4,14 +4,9 @@ on:
   push:
     branches:
       - 'main'
-#env:
-#   NAME: 'Srinivas Antarvedi'
-#   AGE: '44'
-#   SEX: 'Male'
-
 jobs:
   Learn:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello $NAME, you are $SEX and $AGE years old"
-#      - run: env
+      
