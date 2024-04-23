@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-           mysql_user: ${{ vars.MYSQL_USER }}
-           mysql_host: ${{ vars.MYSQL_HOST }}
-           mysql_port: ${{ vars.MYSQL_PORT }}
+           echo "mysql_user: ${{ vars.MYSQL_USER }}"
+           echo "mysql_host: ${{ vars.MYSQL_HOST }}"
+           echo "mysql_port: ${{ vars.MYSQL_PORT }}"
