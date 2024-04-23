@@ -8,4 +8,4 @@ jobs:
   Learn:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello $NAME, you are $SEX and $AGE years old"
+      - run: echo "Hello ${{ vars.NAME }}, you are ${{ vars.SEX }} and ${{ vars.AGE }} years old"
