@@ -4,24 +4,13 @@ on:
   push:
     branches:
       - 'main'
+env:
+   NAME: 'Srinivas Antarvedi'
+   AGE: '44'
+   SEX: 'Male'
 
 jobs:
-  printValues:
+  Learn:
     runs-on: ubuntu-latest
     steps:
-      - id : print-github-actor
-        run: echo "Action ${{ github.action }}"
-      - id: print-github-action
-        run: echo "Action ${{ github.action }}"
-      - id: print-github-base_ref
-        run: echo "base-ref ${{ github.base_ref }}"
-      - id: print-event-name
-        run: echo "eventname ${{ github.event_name }}"
-      - id: print-event-path
-        run: echo "eventpath ${{ github.event_path }}"
-      - id: print-job
-        run: echo "job ${{ github.job }}"
-      - id: print-path
-        run: echo "path ${{ github.path }}"
-      - id: print-ref
-        run: echo "ref ${{ github.ref }}"
+      - run: echo "Hello $NAME, you are $SEX and $AGE years old"
