@@ -14,3 +14,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello $NAME, you are $SEX and $AGE years old"
+#      - run: env
