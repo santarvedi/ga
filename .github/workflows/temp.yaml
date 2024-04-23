@@ -8,4 +8,7 @@ jobs:
   Learn:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello ${{ vars.NAME }}, you are ${{ vars.SEX }} and ${{ vars.AGE }} years old"
+      - run: |
+           mysql_user: ${{ vars.MYSQL_USER }}
+           mysql_host: ${{ vars.MYSQL_HOST }}
+           mysql_port: ${{ vars.MYSQL_PORT }}
