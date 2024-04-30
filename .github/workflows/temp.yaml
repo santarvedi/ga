@@ -5,14 +5,27 @@ on:
     branches:
       - 'main'
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  job1:
+    run-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.test }}
+      output2: ${{ steps.step2.outputs.test }}
     steps:
-      - name: Build code and set the result.
+      - name: step1
+        id: step1
         run: |
-          #Build your project
-          echo "BUILD_STATUS=success" >> $GITHUB_ENV
-  
-      - name: test the code based on the BUILD_STATUS
+          echo "test=hello" >> $GITHUB_OUTPUT
+      - name: step2
+        id: step2
         run: |
-          echo "$BUILD_STATUS"
+          echo "test=world" >> $GITHUB_OUTPUT
+    
+  job2:
+    runs-on: ubuntu-test
+    needs: job1
+    steps:
+      - env:
+          out1: ${{ needs.job1.outputs.output1 }}
+          out2: ${{ needs.job1.outputs.output2 }}
+         run: |
+           echo "$out1 $out2"
