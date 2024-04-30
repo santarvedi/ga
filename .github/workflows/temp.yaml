@@ -6,7 +6,7 @@ on:
       - 'main'
 jobs:
   job1:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     outputs:
       output1: ${{ steps.step1.outputs.test }}
       output2: ${{ steps.step2.outputs.test }}
