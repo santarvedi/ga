@@ -19,4 +19,4 @@ jobs:
     steps:
       - name: test the code based on the BUILD_STATUS
         run: |
-          echo "$BUILD_STATUS"
+          echo "env.$BUILD_STATUS"
