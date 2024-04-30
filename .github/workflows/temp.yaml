@@ -21,6 +21,6 @@ jobs:
         run: |
           if [ $BUILD_STATUS == "success" ]; then
             echo "Tests passed"
-          else:
+          else
             echo "Tests failed"
           fi
