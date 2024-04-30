@@ -8,7 +8,13 @@ jobs:
   Learn:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-           echo "mysql_user: ${{ vars.MYSQL_USER }}"
-           echo "mysql_host: ${{ vars.MYSQL_HOST }}"
-           echo "mysql_port: ${{ vars.MYSQL_PORT }}"
+#     - run: |
+#       echo "mysql_user: ${{ vars.MYSQL_USER }}"
+#       echo "mysql_host: ${{ vars.MYSQL_HOST }}"
+#       echo "mysql_port: ${{ vars.MYSQL_PORT }}"
+
+      - name: Set Version
+        run: echo "VERSION=1.0.0" >> $GITHUB_ENV
+      - name: Get Version
+        run: |
+        echo "Version: $VERSION"
