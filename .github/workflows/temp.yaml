@@ -13,10 +13,6 @@ jobs:
           #Build your project
           echo "BUILD_STATUS=success" >> $GITHUB_ENV
   
-  unittest:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: test the code based on the BUILD_STATUS
         run: |
-          echo "env.$BUILD_STATUS"
+          echo "$BUILD_STATUS"
