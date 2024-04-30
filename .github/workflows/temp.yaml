@@ -21,7 +21,7 @@ jobs:
           echo "test=world" >> $GITHUB_OUTPUT
     
   job2:
-    runs-on: ubuntu-test
+    runs-on: ubuntu-latest
     needs: job1
     steps:
       - env:
