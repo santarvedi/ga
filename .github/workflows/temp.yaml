@@ -11,14 +11,14 @@ jobs:
       - name: Build code and set the result.
         run: |
           #Build your project
-          echo "BUILD_STATUS=1" >> $GITHUB_ENV
+          echo "BUILD_STATUS=success" >> $GITHUB_ENV
   
   unittest:
     runs-on: ubuntu-latest
     steps:
       - name: test the code based on the BUILD_STATUS
         run: |
-          if [ $BUILD_STATUS == "1" ]; then
+          if [ $BUILD_STATUS == "success" ]; then
             echo "Tests passed"
           else:
             echo "Tests failed"
