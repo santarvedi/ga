@@ -5,16 +5,41 @@ on:
     branches:
       - 'main'
 jobs:
-  Learn:
-    runs-on: ubuntu-latest
-    steps:
+#  Learn:
+#    runs-on: ubuntu-latest
+#    steps:
+#    #
+#    # configuration variable reference
+#    #
 #     - run: |
 #         echo "mysql_user: ${{ vars.MYSQL_USER }}"
 #         echo "mysql_host: ${{ vars.MYSQL_HOST }}"
 #         echo "mysql_port: ${{ vars.MYSQL_PORT }}"
+#    #
+#    # using GITHUB_ENV variable for setting env variables dynamically.
+#    # 
+#      - name: Set Version
+#        run: echo "VERSION=1.0.0" >> $GITHUB_ENV
+#      - name: Get Version
+#        run: |
+#          echo "Version: $VERSION"
 
-      - name: Set Version
-        run: echo "VERSION=1.0.0" >> $GITHUB_ENV
-      - name: Get Version
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build code and set the result.
         run: |
-          echo "Version: $VERSION"
+          #Build your project
+          echo "BUILD_STATUS=1" >> $GITHUB_ENV
+  
+  unittest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test the code based on the BUILD_STATUS
+        run: |
+          if [[ $BUILD_RESULT == 1 ]]; then
+            echo "Tests passed"
+          else:
+            echo "Tests failed"
+  
+        
