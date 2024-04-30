@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: test the code based on the BUILD_STATUS
         run: |
-          if [ $BUILD_STATUS == "success" ]; then
+          if [ "$BUILD_STATUS" == "success" ]; then
             echo "Tests passed"
           else
             echo "Tests failed"
