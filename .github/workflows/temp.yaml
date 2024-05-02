@@ -25,7 +25,13 @@ jobs:
     needs: job1
     steps:
       - env:
+          mysql_host: ${{ vars.MYSQL_HOST}}
+          mysql_port: ${{ vars.MYSQL_PORT}}
+          mysql_user: ${{ vars.MYSQL_USER}}
           out1: ${{ needs.job1.outputs.output1 }}
           out2: ${{ needs.job1.outputs.output2 }}
         run: |
           echo "$out1 $out2"
+          echo "mysql-host: $mysql_host"
+          echo "mysql-port: $mysql_port"
+          echo "mysql-user: $mysql_user"
