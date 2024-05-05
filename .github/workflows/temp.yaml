@@ -50,6 +50,7 @@ jobs:
           #For example, main.
           echo "gh-base-ref: ${{ github.base_ref }}"
           echo "gh-env: ${{ github.env }}"
+          echo "gh-event-name: ${{ github.event_name }}"
           
       - name: print github default variables-2.
         run: |
