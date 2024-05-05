@@ -67,6 +67,8 @@ jobs:
           echo "gh-path: ${{ github.path }} "
           echo "gh-ref: ${{ github.ref }}"
           echo "gh-ref-name: ${{ github.ref_name }}"
+          echo "gh-ref-protected: ${{ github.ref_protected}}"
+          echo "gh-ref-type: ${{ github.ref_type }}"
           
       - name: print github default variables-2.
         run: |
