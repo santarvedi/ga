@@ -40,6 +40,7 @@ jobs:
         run: |
           echo "gh-action: ${{ github.action}}"
           echo "gh-actor: ${{ github.actor }}"
+          echo "gh-actor-id: ${{ github.actor-id }} "
           
       - name: print github default variables-2.
         run: |
