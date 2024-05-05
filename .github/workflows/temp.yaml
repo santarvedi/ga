@@ -69,6 +69,10 @@ jobs:
           echo "gh-ref-name: ${{ github.ref_name }}"
           echo "gh-ref-protected: ${{ github.ref_protected}}"
           echo "gh-ref-type: ${{ github.ref_type }}"
+          echo "gh-repository: ${{ github.repository }}"
+          echo "gh-repository-id: ${{ github.repository_id }}"
+          echo "gh-repository-owner: ${{ github.repository_owner }}"
+          echo "gh-repository-owner-id: ${{ github.repository_owner_id }}"
           
       - name: print github default variables-2.
         run: |
