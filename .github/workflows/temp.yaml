@@ -82,6 +82,8 @@ jobs:
           echo "gh-sha:  ${{ github.sha }}" 
           echo "gh-workflow:  ${{ github.workflow }}"
           echo "gh-workspace: ${{ github.workspace }}"
+          echo " ${{ runner.name }}"
+          echo " ${{ runner.os }}"
           
       - name: print github default variables-2.
         run: |
