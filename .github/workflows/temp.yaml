@@ -77,6 +77,11 @@ jobs:
           echo "gh-run-attempt: ${{ github.run_attempt }}"
           echo "gh-run-id: ${{ github.run_id }}"
           echo "gh-run-number: ${{ github.run_number }}"
+
+          echo "gh-server-url: ${{ github.server_url }}"
+          echo "gh-sha:  ${{ github.sha }}" 
+          echo "gh-workflow:  ${{ github.workflow }}"
+          echo "gh-workspace: ${{ github.workspace }}"
           
       - name: print github default variables-2.
         run: |
