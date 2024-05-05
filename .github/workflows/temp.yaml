@@ -65,6 +65,7 @@ jobs:
           echo "gh-job: ${{ github.job }}"
           echo "gh-output: ${{ github.output }}"
           echo "gh-path: ${{ github.path }} "
+          echo "gh-ref: ${{ github.ref }}"
           
       - name: print github default variables-2.
         run: |
