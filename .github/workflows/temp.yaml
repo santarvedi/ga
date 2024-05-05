@@ -63,6 +63,7 @@ jobs:
           echo "gh-event-path: ${{ github.event_path }}"
 
           echo "gh-job: ${{ github.job }}"
+          echo "gh-output: ${{ github.output }}"
           
       - name: print github default variables-2.
         run: |
