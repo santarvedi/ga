@@ -39,7 +39,7 @@ jobs:
         id: github_default_vars_test
         run: |
           echo "gh-action: ${{ github.action}}"
-          echo "gh-action-repo: ${{ github.action_repository}}"
+          echo "gh-action-repo: ${{ GITHUB_ACTION_REPOSITORY}}"
           
       - name: print github default variables-2.
         run: |
