@@ -73,6 +73,10 @@ jobs:
           echo "gh-repository-id: ${{ github.repository_id }}"
           echo "gh-repository-owner: ${{ github.repository_owner }}"
           echo "gh-repository-owner-id: ${{ github.repository_owner_id }}"
+          echo "gh-retention-days: ${{ github.retention_days }}"
+          echo "gh-run-attempt: ${{ github.run_attempt }}"
+          echo "gh-run-id: ${{ github.run_id }}"
+          echo "gh-run-number: ${{ github.run_number }}"
           
       - name: print github default variables-2.
         run: |
