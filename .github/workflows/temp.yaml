@@ -41,7 +41,7 @@ jobs:
           echo "gh-action: ${{ github.action}}"
           echo "gh-actor: ${{ github.actor }}"
           echo "gh-actor-id: ${{ github.actor_id }} "
-          echo "gh-api-url: {{ github.api_url }}"
+          echo "gh-api-url: ${{ github.api_url }}"
           
       - name: print github default variables-2.
         run: |
