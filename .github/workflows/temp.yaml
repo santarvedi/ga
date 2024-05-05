@@ -42,7 +42,14 @@ jobs:
           echo "gh-actor: ${{ github.actor }}"
           echo "gh-actor-id: ${{ github.actor_id }} "
           echo "gh-api-url: ${{ github.api_url }}"
+          
+          #target branch of the pull request in a workflow run. 
+          #This is only set when the event that triggers a workflow run is 
+          #either pull_request or pull_request_target. 
+          #
+          #For example, main.
           echo "gh-base-ref: ${{ github.base_ref }}"
+          echo "gh-env: ${{ github.env }}"
           
       - name: print github default variables-2.
         run: |
