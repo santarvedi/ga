@@ -8,11 +8,10 @@ jobs:
   githubcontext: 
     runs-on: ubuntu-latest
     steps:
-      - id: "github-action"
+      - name: "github-action"
+        id: "github-action"
         run: |
-          echo "Hello Srinivas!"
-          echo "${{ github }}"
-          echo "Github-action: ${{ github.action }}"
+          echo "${{ github.action }}"
       - name: "github-actor"
         id: "github-actor"
         run: |
