@@ -1,0 +1,90 @@
+name: Learn - Github actions
+run-name: Triggered by @${{ github.actor }}
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.test }}
+      output2: ${{ steps.step2.outputs.test }}
+    steps:
+      - name: step1
+        id: step1
+        run: |
+          echo "test=hello" >> $GITHUB_OUTPUT
+      - name: step2
+        id: step2
+        run: |
+          echo "test=world" >> $GITHUB_OUTPUT
+    
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - env:
+          mysql_host: ${{ vars.MYSQL_HOST}}
+          mysql_port: ${{ vars.MYSQL_PORT}}
+          mysql_user: ${{ vars.MYSQL_USER}}
+          out1: ${{ needs.job1.outputs.output1 }}
+          out2: ${{ needs.job1.outputs.output2 }}
+        run: |
+          echo "$out1 $out2"
+          echo "mysql-host: $mysql_host"
+          echo "mysql-port: $mysql_port"
+
+      - name: print github default variables.
+        id: github_default_vars_test
+        run: |
+          echo "gh-action: ${{ github.action}}"
+          echo "gh-actor: ${{ github.actor }}"
+          echo "gh-actor-id: ${{ github.actor_id }} "
+          echo "gh-api-url: ${{ github.api_url }}"
+          
+          #The name of the base ref (or) target branch of the pull request in a workflow run. 
+          #This is only set when the event that triggers a workflow run is 
+          #either pull_request or pull_request_target. 
+          #
+          #For example, main.
+          
+          #The head ref or source branch of the pull request in a workflow run.
+          #This property is only set when the event that triggers a workflow run is
+          #either pull_request or pull_request_target.
+          #
+          #For example, feature-branch-1
+          
+          echo "gh-base-ref: ${{ github.base_ref }}"
+          echo "gh-head-ref: ${{ github.head_ref }}"
+          
+          echo "gh-env: ${{ github.env }}"
+          echo "gh-event-name: ${{ github.event_name }}"
+          echo "gh-event-path: ${{ github.event_path }}"
+
+          echo "gh-job: ${{ github.job }}"
+          echo "gh-output: ${{ github.output }}"
+          echo "gh-path: ${{ github.path }} "
+          echo "gh-ref: ${{ github.ref }}"
+          echo "gh-ref-name: ${{ github.ref_name }}"
+          echo "gh-ref-protected: ${{ github.ref_protected}}"
+          echo "gh-ref-type: ${{ github.ref_type }}"
+          echo "gh-repository: ${{ github.repository }}"
+          echo "gh-repository-id: ${{ github.repository_id }}"
+          echo "gh-repository-owner: ${{ github.repository_owner }}"
+          echo "gh-repository-owner-id: ${{ github.repository_owner_id }}"
+          echo "gh-retention-days: ${{ github.retention_days }}"
+          echo "gh-run-attempt: ${{ github.run_attempt }}"
+          echo "gh-run-id: ${{ github.run_id }}"
+          echo "gh-run-number: ${{ github.run_number }}"
+
+          echo "gh-server-url: ${{ github.server_url }}"
+          echo "gh-sha:  ${{ github.sha }}" 
+          echo "gh-workflow:  ${{ github.workflow }}"
+          echo "gh-workspace: ${{ github.workspace }}"
+          echo " ${{ runner.name }}"
+          echo " ${{ runner.os }}"
+          
+      - name: print github default variables-2.
+        run: |
+          echo "gh-action: ${{ github.action}}"
