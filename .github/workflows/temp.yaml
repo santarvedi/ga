@@ -16,3 +16,9 @@ jobs:
         id: "github-actor"
         run: |
           echo "${{ github.actor }}"
+      - name: "github-env"
+        id: "github-env"
+        run: |
+          echo "${{ github.env }}"
+         
+        
