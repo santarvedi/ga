@@ -13,6 +13,7 @@ jobs:
           echo "Hello Srinivas!"
           echo "${{ github }}"
           echo "Github-action: ${{ github.action }}"
-      - id: "github-actor"
+      - name: "github-actor"
+        id: "github-actor"
         run: |
           echo "${{ github.actor }}"
