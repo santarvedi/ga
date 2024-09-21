@@ -8,17 +8,12 @@ jobs:
   githubcontext: 
     runs-on: ubuntu-latest
     steps:
-      - name: "github-action"
-        id: "github-action"
+      - name: "github-context"
+        id: "github-context"
         run: |
-          echo "${{ github.action }}"
-      - name: "github-actor"
-        id: "github-actor"
-        run: |
-          echo "${{ github.actor }}"
-      - name: "github-env"
-        id: "github-env"
-        run: |
-          echo "${{ github.env }}"
+          echo "action: ${{ github.action }}"
+          echo " actor: ${{ github.actor }}"
+          echo "   env: ${{ github.env }}"
+          echo " event: ${{ github.event }}"
          
         
