@@ -15,4 +15,4 @@ jobs:
           echo "Github-action: ${{ github.action }}"
       - id: "github-actor"
         run: |
-          echo "{{ github.actor }}"
+          echo "${{ github.actor }}"
