@@ -5,10 +5,11 @@ on:
       - main
 
 jobs:
-  gitcontenxt: 
+  githubcontext: 
     runs-on: ubuntu-latest
     steps:
       - name: "step1"
+        id: "github-context"
         run: |
           echo "Hello Srinivas!"
           echo "${{ github }}"
