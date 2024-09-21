@@ -12,4 +12,5 @@ jobs:
         run: |
           echo "Hello Srinivas!"
           echo "${{ github }}"
+          echo "Github-action: ${{ github.action }}"
         
