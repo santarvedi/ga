@@ -1,5 +1,5 @@
 
->Git
+>Git Config
 - git config list --local
 ```
 core.repositoryformatversion=0
@@ -62,3 +62,14 @@ Tip: Use --global for all repos, omit it for local changes.
 
 ```
 
+
+>Git Remote
+```
+Git remote is a command used to manage the set of repositories (remotes) whose branches you track.
+It allows you to add, remove, and manage connections to other repositories.
+```
+- Listing Remotes
+```
+To list all the remotes associated with your repository, use
+`git remote`
+```
