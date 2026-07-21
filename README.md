@@ -15,12 +15,11 @@ branch.main.vscode-merge-base=origin/main
 user.name=Srinivas Antarvedi
 user.email=srinivas.antarvedi@gmail.com
 ```
-
->git config list --global
-user.name=Naga Antarvedi
+- git config list --global
+```user.name=Naga Antarvedi
 user.email=nagaantarvedi@fortna.com
 credential.https://scm.wcs.fortna.com.provider=github
-
+```
 
 git config --local user.name "Srinivas Antarvedi"
 git config --local user.email "srinivas.antarvedi@gmail.com"
