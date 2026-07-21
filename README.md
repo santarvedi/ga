@@ -23,8 +23,6 @@ user.email=nagaantarvedi@fortna.com
 credential.https://scm.wcs.fortna.com.provider=github
 ```
 
-- git config --local user.name "Srinivas Antarvedi"
-- git config --local user.email "srinivas.antarvedi@gmail.com"
 
 > Global Configuration To edit the global config (applies to all repositories)
 - git config --global --edit
@@ -40,20 +38,27 @@ Make changes, then press `Esc`, type `:wq,` and hit Enter to save and exit
 This edits .git/config inside the current repo
 ```
 
-- git remote -v
-```
-origin  https://github.com/santarvedi/ga.git (fetch)
-origin  https://github.com/santarvedi/ga.git (push)
-```
-
 - Check specific values (Get Values)
 ```
-git config user.name            Srinivas Antarvedi
-git config user.email           srinivas.antarvedi@gmail.com
+git config user.name            ( Srinivas Antarvedi )
+git config user.email           ( srinivas.antarvedi@gmail.com )
 
-git config --global user.name   Naga Antarvedi
-git config --global user.email  nagaantarvedi@fortna.com
+git config --global user.name   ( Naga Antarvedi )
+git config --global user.email  ( nagaantarvedi@fortna.com )
 
 Tip: Use --global for all repos, omit it for local changes.
 
 ```
+
+- Check specific values (Set Values)
+```
+git config user.name  "Srinivas Antarvedi"
+git config user.email  "srinivas.antarvedi@gmail.com"
+
+git config --global user.name "Naga Antarvedi"
+git config --global user.email "nagaantarvedi@fortna.com"
+
+Tip: Use --global for all repos, omit it for local changes.
+
+```
+
