@@ -26,3 +26,8 @@ credential.https://scm.wcs.fortna.com.provider=github
 - git config --local user.name "Srinivas Antarvedi"
 - git config --local user.email "srinivas.antarvedi@gmail.com"
 
+- git remote -v
+```
+origin  https://github.com/santarvedi/ga.git (fetch)
+origin  https://github.com/santarvedi/ga.git (push)
+```
