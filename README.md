@@ -1,8 +1,7 @@
 
 >Git
-- git config list --local
-`
-core.repositoryformatversion=0
+- git config list --local 
+`core.repositoryformatversion=0
 core.filemode=false
 core.bare=false
 core.logallrefupdates=true
@@ -14,8 +13,8 @@ branch.main.remote=origin
 branch.main.merge=refs/heads/main
 branch.main.vscode-merge-base=origin/main
 user.name=Srinivas Antarvedi
-user.email=srinivas.antarvedi@gmail.com
-`
+user.email=srinivas.antarvedi@gmail.com `
+
 >git config list --global
 user.name=Naga Antarvedi
 user.email=nagaantarvedi@fortna.com
