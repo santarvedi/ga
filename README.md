@@ -122,82 +122,84 @@ git remote set-url origin https://github.com/user/newrepo.git
 > Cheat Sheet
 ##### Setup & Configuration
 ```
-git config --global user.name "Your Name" # Set global username
+git config --global user.name "Your Name"        # Set global username
 git config --global user.email "you@example.com" # Set global email
-git config --list # View all configurations
-git help # Show help for commands
+git config --list                                # View all configurations
+git help                                         # Show help for commands
 ```
 
 ##### Repository Initialization & Cloning
 ```
-git init # Initialize a new repository
-git clone <repo_url> # Clone a remote repository
+git init                               # Initialize a new repository
+git clone <repo_url>                   # Clone a remote repository
 git clone --branch <branch> <repo_url> # Clone specific branch
 ```
 
 ##### Staging & Committing
 ```
-git add <file> # Stage a file
-git add . # Stage all changes
-git status # Show working tree status
-git diff # Show unstaged changes
-git commit -m "message" # Commit staged changes
+git add <file>           # Stage a file
+git add .                # Stage all changes
+git status               # Show working tree status
+git diff                 # Show unstaged changes
+git commit -m "message"  # Commit staged changes
 git commit -am "message" # Stage & commit tracked files
 ```
 
 ##### Branching & Merging
 ```
-git branch # List branches
-git branch <name> # Create branch
-git checkout <name> # Switch branch
+git branch             # List branches
+git branch <name>      # Create branch
+git checkout <name>    # Switch branch
 git checkout -b <name> # Create & switch branch
-git merge <branch> # Merge branch into current
+git merge <branch>     # Merge branch into current
 ```
 
 ##### Remote Operations
 ```
-git remote -v # List remotes
-git remote add origin <url> # Add remote
-git fetch # Fetch changes
-git pull # Fetch & merge
-git push # Push changes
-git push -u origin <branch> # Push & set upstream
+git remote                         # List remotes 
+git remote -v                      # list remotes with their URLs
+git remote add origin <url>        # Add remote
+git remote set-url <name> <newurl> # To change URL of a repository
+git fetch                          # Fetch changes
+git pull                           # Fetch & merge
+git push                           # Push changes
+git push -u origin <branch>        # Push & set upstream
 ```
 
 ##### History & Inspection
 ```
-git log # Commit history
+git log                         # Commit history
 git log --oneline --graph --all # Compact graph view
-git show <commit> # Show commit details
-git blame <file> # Show last change per line
+git show <commit>               # Show commit details
+git blame <file>                # Show last change per line
 ```
 
 ##### Undoing Changes
 ```
-git restore <file> # Discard changes in file
+git restore <file>        # Discard changes in file
 git reset --soft <commit> # Move HEAD, keep changes staged
 git reset --hard <commit> # Reset & discard changes
-git revert <commit> # Create commit to undo changes
+git revert <commit>       # Create commit to undo changes
 ```
 
 ##### Stashing
 ```
-git stash # Save uncommitted changes
+git stash      # Save uncommitted changes
 git stash list # List stashes
-git stash pop # Apply & remove latest stash
+git stash pop  # Apply & remove latest stash
 ```
 
 ##### Tags
 ```
-git tag # List tags
-git tag <tagname> # Create lightweight tag
+git tag                           # List tags
+git tag <tagname>                 # Create lightweight tag
 git tag -a <tagname> -m "message" # Annotated tag
-git push origin <tagname> # Push tag
+git push origin <tagname>         # Push tag
 ```
 
 ##### Advanced Tools
 ```
-git rebase <branch> # Reapply commits on another base
-git reflog # Show HEAD history
+git rebase <branch>      # Reapply commits on another base
+git reflog               # Show HEAD history
 git cherry-pick <commit> # Apply specific commit
 ```
