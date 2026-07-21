@@ -1,7 +1,8 @@
 
 >Git
 - git config list --local
-```core.repositoryformatversion=0
+```
+core.repositoryformatversion=0
 core.filemode=false
 core.bare=false
 core.logallrefupdates=true
@@ -16,7 +17,8 @@ user.name=Srinivas Antarvedi
 user.email=srinivas.antarvedi@gmail.com
 ```
 - git config list --global
-```user.name=Naga Antarvedi
+```
+user.name=Naga Antarvedi
 user.email=nagaantarvedi@fortna.com
 credential.https://scm.wcs.fortna.com.provider=github
 ```
