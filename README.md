@@ -203,3 +203,19 @@ git rebase <branch>      # Reapply commits on another base
 git reflog               # Show HEAD history
 git cherry-pick <commit> # Apply specific commit
 ```
+
+##### Checkout - Git commit ID
+```
+Get the commit ID (SHA) that you want to checkout.
+From your local repository, you can get the commit SHA from the log
+
+git log
+git checkout <commit>
+
+You need to be **very careful with this checkout**. It will be in the **detached HEAD mode**.
+Meaning, you can play around with making the changes without impacting any branches.
+So if you need to make any actual changes to a specific commit, use a branch checkout
+as explained in the next step
+
+git checkout -b <new-branch-name> <commit-id-sha>
+```
