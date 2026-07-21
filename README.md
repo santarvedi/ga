@@ -24,7 +24,7 @@ credential.https://scm.wcs.fortna.com.provider=github
 ```
 
 
-### Global Configuration To edit the global config (applies to all repositories)
+###### Global Configuration To edit the global config (applies to all repositories)
 - git config --global --edit
 ```
 This opens the ~/.gitconfig file in your default editor (often vi if none is set).
@@ -32,7 +32,7 @@ Press `i` to enter insert mode in `vi` editor
 Make changes, then press `Esc`, type `:wq,` and hit Enter to save and exit
 ```
 
-### Local Configuration For repository-specific settings
+###### Local Configuration For repository-specific settings
 - git config --edit
 ```
 This edits .git/config inside the current repo
