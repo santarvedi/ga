@@ -77,3 +77,44 @@ git remote
 ```
 git remote -v
 ```
+
+- Adding a Remote (To add a new remote repository, use:)
+```
+git remote add <name> <URL>
+
+ex:
+git remote add origin https://github.com/user/repo.git
+```
+
+- Removing a Remote
+```
+git remote remove <name>
+
+ex:
+git remote remove origin
+```
+
+- Renaming a Remote
+```
+git remote rename <old> <new>
+
+ex:
+git remote rename origin upstream
+```
+
+- Fetching from a Remote (To fetch updates from a remote repository, use:)
+```
+git fetch <name>
+
+ex:
+git fetch origin
+```
+
+- Setting the URL for a Remote (To change the URL of a remote repository, use:)
+```
+git remote set-url <name> <newurl>
+
+ex:
+git remote set-url origin https://github.com/user/newrepo.git
+```
+
