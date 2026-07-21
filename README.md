@@ -155,7 +155,8 @@ git merge <branch>                          # Merge branch into current
 git branch -m <old-branch> <new-branch>     # Move/rename a branch
 git branch -M <old-branch> <new-branch>     # --move --force, iff, <new-branch> already exists
 git config --global init.defaultBranch main # To ensure Git automatically uses main instead of master whenever you
-                                            initialize a completely new project locally, run the following global configuration command
+                                            initialize a completely new project locally, run the following global
+                                            configuration command
 ```
 
 ##### Remote Operations
