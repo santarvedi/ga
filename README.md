@@ -68,8 +68,12 @@ Tip: Use --global for all repos, omit it for local changes.
 Git remote is a command used to manage the set of repositories (remotes) whose branches you track.
 It allows you to add, remove, and manage connections to other repositories.
 ```
-- Listing Remotes
+- Listing Remotes (To list all the remotes associated with your repository, use)
 ```
-To list all the remotes associated with your repository, use
-`git remote`
+git remote
+```
+
+- To list remotes with their URLs, use:
+```
+git remote -v
 ```
