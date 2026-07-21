@@ -147,11 +147,15 @@ git commit -am "message" # Stage & commit tracked files
 
 ##### Branching & Merging
 ```
-git branch             # List branches
-git branch <name>      # Create branch
-git checkout <name>    # Switch branch
-git checkout -b <name> # Create & switch branch
-git merge <branch>     # Merge branch into current
+git branch                                  # List branches
+git branch <name>                           # Create branch
+git checkout <name>                         # Switch branch
+git checkout -b <name>                      # Create & switch branch
+git merge <branch>                          # Merge branch into current
+git branch -m <old-branch> <new-branch>     # Move/rename a branch
+git branch -M <old-branch> <new-branch>     # --move --force, iff, <new-branch> already exists
+git config --global init.defaultBranch main # To ensure Git automatically uses main instead of master whenever you
+                                            initialize a completely new project locally, run the following global configuration command
 ```
 
 ##### Remote Operations
@@ -220,7 +224,7 @@ as explained in the next step
 $ git checkout -b <new-branch-name> <commit-id-sha>
 ```
 
-##### checkout/revert/reset commit ID
+##### Checkout/revert/reset commit ID
 ```
                               Modifies   Safe for            Result
                               History    Shared branches 
