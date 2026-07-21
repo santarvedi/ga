@@ -209,13 +209,28 @@ git cherry-pick <commit> # Apply specific commit
 Get the commit ID (SHA) that you want to checkout.
 From your local repository, you can get the commit SHA from the log
 
-git log
-git checkout <commit>
+$ git log
+$ git checkout <commit-id-sha>
 
-You need to be **very careful with this checkout**. It will be in the **detached HEAD mode**.
+You need to be very careful with this checkout. It will be in the detached HEAD mode.
 Meaning, you can play around with making the changes without impacting any branches.
 So if you need to make any actual changes to a specific commit, use a branch checkout
 as explained in the next step
 
-git checkout -b <new-branch-name> <commit-id-sha>
+$ git checkout -b <new-branch-name> <commit-id-sha>
+```
+
+##### checkout/revert/reset commit ID
+```
+                              Modifies   Safe for            Result
+                              History    Shared branches 
+
+$ git checkout <commit>       No         Yes                  Switches your working tree to that commit in a
+                                                              read-only "detached HEAD" state.
+                          
+$ git revert   <commit>       No         Yes                  Creates a brand-new commit that reverses the exact
+                                                              changes of the specified ID. 
+
+$ git reset    <commit>       Yes        No                   Moves the current branch pointer backward,
+                                                              effectively erasing or restaging subsequent commits.
 ```
