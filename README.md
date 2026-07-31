@@ -243,10 +243,10 @@ $ git reset    <commit>       Yes        No                   Moves the current 
 
 ##### Stashing
 ```
-git stash is a Git command that temporarily saves your uncommitted changes\
+git stash is a Git command that temporarily saves your uncommitted changes
  so you can work on something else without committing incomplete work.
 
-Think of it as putting your current work into a "temporary drawer." Later,\
+Think of it as putting your current work into a "temporary drawer." Later,
  you can retrieve those changes and continue where you left off.
 
 (I). Suppose you modified some files.
@@ -260,7 +260,8 @@ Now you need to switch branches, but you don't want to commit unfinished work.
 1. Save your changes
 $ git stash
 
-Git saves your modified tracked files and restores your working directory to the last commit.
+Git saves your modified tracked files and restores your working directory to
+ the last commit.
 
 2. Switch branches
 $ git checkout feature/login
@@ -285,15 +286,15 @@ $ git stash list                          # View all stashes
   stash@{1}: On feature: Fix navbar
 
 $ git stash apply                         # Apply stash without deleting it            
-$ git stash apply stash@{1}               # Apply a specific stash without deleting it
+$ git stash apply stash@{1}               # Apply a specific stash without deleting
 
 $ git stash drop stash@{0}                # Removes a stash
 $ git stash clear                         # Removes all stashes
 
 
-$ git stash -u                            # By default, git stash only stashes changes to tracked
-$ git stash --include-untracked           # files, to also stash new(untracked) files use either 
-                                          # of these
+$ git stash -u                            # By default, git stash only stashes changes
+$ git stash --include-untracked           #  to tracked files, to also stash new(untracked)
+                                          #files use either of these
 
 $ git stash -a                            # To include ignored files as well.
 
