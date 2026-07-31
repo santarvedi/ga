@@ -240,3 +240,71 @@ $ git revert   <commit>       No         Yes                  Creates a brand-ne
 $ git reset    <commit>       Yes        No                   Moves the current branch pointer backward,
                                                               effectively erasing or restaging subsequent commits.
 ```
+
+##### Stashing
+```
+git stash is a Git command that temporarily saves your uncommitted changes so you can work on something else without committing incomplete work.
+
+Think of it as putting your current work into a "temporary drawer." Later, you can retrieve those changes and continue where you left off.
+
+(I). Suppose you modified some files.
+
+$ git status
+modified: app.js
+modified: styles.css
+
+Now you need to switch branches, but you don't want to commit unfinished work.
+
+1. Save your changes
+$ git stash
+
+Git saves your modified tracked files and restores your working directory to the last commit.
+
+2. Switch branches
+$ git checkout feature/login
+
+work on other task.
+
+3. Restore your changes
+
+When you are ready to continue: 
+$ git stash pop
+
+This:
+      - Restores your changes.
+      - Removes the stash from the stash list
+
+(II) Cheat
+
+$ git stash push -m "WIP: login page"     # Save with a message
+
+$ git stash list                          # View all stashes
+  stash@{0}: On main: WIP: login page
+  stash@{1}: On feature: Fix navbar
+
+$ git stash apply                         # Apply stash without deleting it            
+$ git stash apply stash@{1}               # Apply a specific stash without deleting it
+
+$ git stash drop stash@{0}                # Removes a stash
+$ git stash clear                         # Removes all stashes
+
+
+$ git stash -u                            # By default, git stash only stashes changes to tracked
+$ git stash --include-untracked           # files, to also stash new(untracked) files use either 
+                                          # of these
+
+$ git stash -a                            # To include ignored files as well.
+
+
+When should you use git stash ?
+
+Use it when you:
+  - Need to quickly switch branches
+  - Want to save latest changes without committing unfinished work
+  - Are experimenting and don't want to create a temporary commit
+  - Need to pause one task to work on another
+
+In short, git stash is a convenient way to temporarily set aside uncommitted changes
+so you can work on something else, then restore those changes later. 
+
+```
