@@ -243,9 +243,11 @@ $ git reset    <commit>       Yes        No                   Moves the current 
 
 ##### Stashing
 ```
-git stash is a Git command that temporarily saves your uncommitted changes so you can work on something else without committing incomplete work.
+git stash is a Git command that temporarily saves your uncommitted changes\
+ so you can work on something else without committing incomplete work.
 
-Think of it as putting your current work into a "temporary drawer." Later, you can retrieve those changes and continue where you left off.
+Think of it as putting your current work into a "temporary drawer." Later,\
+ you can retrieve those changes and continue where you left off.
 
 (I). Suppose you modified some files.
 
