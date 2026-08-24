@@ -10,4 +10,8 @@ remote repositories or deployment targets. The id of a server blocks connects di
 to the repository configurations defined elsewhere.
 ```
 
-<profiles>: Provides local environment configurations. While pom.xml profiles can contain heavy build changes, settings.xml profiles are intentionally restricted. They generally only allow configuring remote artifact repositories, plugin repositories, and custom environment properties
+```
+<profiles>: Provides local environment configurations. While pom.xml profiles can contain
+heavy build changes, settings.xml profiles are intentionally restricted. They generally only
+allow configuring remote artifact repositories, plugin repositories, and custom environment properties
+```
