@@ -79,3 +79,61 @@ MANIFEST.MF
 $  cat META-INF/MANIFEST.MF
 Manifest-Version: 1.0
 Created-By: 21.0.12.1 (Red Hat, Inc.)
+```
+
+> Java 3rd Party Library Inclusion
+```
+How to build a Java SourceCode with a 3rd party library Included
+```
+
+> 1. Modify Java SourceCode to include 3rd party lib
+```bash
+$ cat HelloWorld.java
+import org.apache.commons.lang3.StringUtils;
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello World !");
+        System.out.println(StringUtils.capitalize("hello world"));
+    }
+}
+```
+> 2. Compile the Java SourceCode
+```bash
+$ javac -classpath ./commons-lang3-3.20.0/commons-lang3-3.20.0.jar HelloWorld.java
+$ 
+```
+
+> 3. Throws Errors, if lib location missed
+```bash
+$ javac HelloWorld.java
+HelloWorld.java:1: error: package org.apache.commons.lang3 does not exist
+import org.apache.commons.lang3.StringUtils;
+                               ^
+HelloWorld.java:6: error: cannot find symbol
+        System.out.println(StringUtils.capitalize("hello world"));
+                           ^
+  symbol:   variable StringUtils
+  location: class HelloWorld
+2 errors
+```
+
+> 4. Run the Java Code (Lib in classpath)
+```bash
+$ java -classpath commons-lang3-3.20.0/commons-lang3-3.20.0.jar:./ HelloWorld
+Hello World !
+Hello world
+```
+
+> 5. Run the Java Code (Lib not in classpath)
+```bash
+$ java HelloWorld
+Hello World !
+Exception in thread "main" java.lang.NoClassDefFoundError: org/apache/commons/lang3/StringUtils
+        at HelloWorld.main(HelloWorld.java:6)
+Caused by: java.lang.ClassNotFoundException: org.apache.commons.lang3.StringUtils
+        at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+        at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+        at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+        ... 1 more
+```
