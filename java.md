@@ -141,3 +141,249 @@ Caused by: java.lang.ClassNotFoundException: org.apache.commons.lang3.StringUtil
 ```
 
 ---
+> Compile, Package using - Maven
+
+> Minimum pom.xml
+```bash
+$ ls
+HelloWorld.java  pom.xml
+
+$ cat pom.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+
+<groupId>guru.springframework</groupId>
+<artifactId>hello-world</artifactId>
+<version>0.0.1-SNAPSHOT</version>
+
+<properties>
+  <java.version>21</java.version>
+</properties>
+
+
+</project>
+
+```
+> maven version
+```bash
+$ mvn --version
+Apache Maven 3.9.16 (2bdd9fddda4b155ebf8000e807eb73fd829a51d5)
+Maven home: /opt/apache-maven-3.9.16
+Java version: 21.0.12.1, vendor: Red Hat, Inc., runtime: /usr/lib/jvm/java-21-openjdk-21.0.12.1.1-1.2.0.1.el9.x86_64
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "6.6.87.2-microsoft-standard-wsl2", arch: "amd64", family: "unix"
+```
+> maven clean - Cleans the maven environment
+```bash
+$ mvn clean
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------< guru.springframework:hello-world >------------------
+[INFO] Building hello-world 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.2.0:clean (default-clean) @ hello-world ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.234 s
+[INFO] Finished at: 2026-08-27T09:47:53+05:30
+[INFO] ------------------------------------------------------------------------
+```
+> maven package - Builds a jar 
+```bash
+$ mvn package
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------< guru.springframework:hello-world >------------------
+[INFO] Building hello-world 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.4.0:resources (default-resources) @ hello-world ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/nagaantarvedi/maven/pom/src/main/resources
+[INFO]
+[INFO] --- compiler:3.15.0:compile (default-compile) @ hello-world ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ hello-world ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/nagaantarvedi/maven/pom/src/test/resources
+[INFO]
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ hello-world ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- surefire:3.5.4:test (default-test) @ hello-world ---
+[INFO] No tests to run.
+[INFO]
+[INFO] --- jar:3.5.0:jar (default-jar) @ hello-world ---
+[WARNING] JAR will be empty - no content was marked for inclusion!
+[INFO] Building jar: /home/nagaantarvedi/maven/pom/target/hello-world-0.0.1-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.815 s
+[INFO] Finished at: 2026-08-27T09:51:25+05:30
+[INFO] ------------------------------------------------------------------------
+
+
+$ ls
+HelloWorld.java  pom.xml  target
+$ cd target
+$ ls
+hello-world-0.0.1-SNAPSHOT.jar  maven-archiver
+$ unzip hello-world-0.0.1-SNAPSHOT.jar
+Archive:  hello-world-0.0.1-SNAPSHOT.jar
+   creating: META-INF/
+  inflating: META-INF/MANIFEST.MF
+   creating: META-INF/maven/
+   creating: META-INF/maven/guru.springframework/
+   creating: META-INF/maven/guru.springframework/hello-world/
+  inflating: META-INF/maven/guru.springframework/hello-world/pom.xml
+  inflating: META-INF/maven/guru.springframework/hello-world/pom.properties
+$ cat META-INF/MANIFEST.MF
+Manifest-Version: 1.0
+Created-By: Maven JAR Plugin 3.5.0
+Build-Jdk-Spec: 21
+
+$ cd ..
+$ ls
+HelloWorld.java  pom.xml  target
+
+$ mvn clean
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------< guru.springframework:hello-world >------------------
+[INFO] Building hello-world 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.2.0:clean (default-clean) @ hello-world ---
+[INFO] Deleting /home/nagaantarvedi/maven/pom/target
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.220 s
+[INFO] Finished at: 2026-08-27T09:57:51+05:30
+[INFO] ------------------------------------------------------------------------
+
+$ ls
+HelloWorld.java  pom.xml   <-- target directory is deleted
+
+```
+
+> Java Source Files
+```bash
+$ ls
+HelloWorld.java  pom.xml
+$ mkdir -v -p src/main/java
+mkdir: created directory 'src'
+mkdir: created directory 'src/main'
+mkdir: created directory 'src/main/java'
+$ ls
+HelloWorld.java  pom.xml  src
+
+$ mv HelloWorld.java src/main/java/
+$ ls
+pom.xml  src
+
+$ cd src/main/java/
+$ ls
+HelloWorld.java
+
+$ cd ../../..
+$ ls
+pom.xml  src
+
+$ mvn clean package
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------< guru.springframework:hello-world >------------------
+[INFO] Building hello-world 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.2.0:clean (default-clean) @ hello-world ---
+[INFO]
+[INFO] --- resources:3.4.0:resources (default-resources) @ hello-world ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/nagaantarvedi/maven/pom/src/main/resources
+[INFO]
+[INFO] --- compiler:3.15.0:compile (default-compile) @ hello-world ---
+[INFO] Recompiling the module because of changed source code.
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file with javac [debug target 1.8] to target/classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[WARNING] source value 8 is obsolete and will be removed in a future release
+[WARNING] target value 8 is obsolete and will be removed in a future release
+[WARNING] To suppress warnings about obsolete options, use -Xlint:-options.
+[INFO]
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ hello-world ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/nagaantarvedi/maven/pom/src/test/resources
+[INFO]
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ hello-world ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- surefire:3.5.4:test (default-test) @ hello-world ---
+[INFO] No tests to run.
+[INFO]
+[INFO] --- jar:3.5.0:jar (default-jar) @ hello-world ---
+[INFO] Building jar: /home/nagaantarvedi/maven/pom/target/hello-world-0.0.1-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.469 s
+[INFO] Finished at: 2026-08-27T10:06:41+05:30
+[INFO] ------------------------------------------------------------------------
+
+]$ ls
+pom.xml  src  target
+
+$ cd target
+$ ls
+classes  generated-sources  hello-world-0.0.1-SNAPSHOT.jar  maven-archiver  maven-status
+$ ls classes/
+HelloWorld.class
+$ unzip hello-world-0.0.1-SNAPSHOT.jar
+Archive:  hello-world-0.0.1-SNAPSHOT.jar
+   creating: META-INF/
+  inflating: META-INF/MANIFEST.MF
+   creating: META-INF/maven/
+   creating: META-INF/maven/guru.springframework/
+   creating: META-INF/maven/guru.springframework/hello-world/
+  inflating: HelloWorld.class
+  inflating: META-INF/maven/guru.springframework/hello-world/pom.xml
+  inflating: META-INF/maven/guru.springframework/hello-world/pom.properties
+$ cat META-INF/MANIFEST.MF
+Manifest-Version: 1.0
+Created-By: Maven JAR Plugin 3.5.0
+Build-Jdk-Spec: 21
+
+$ cd ../
+]$ ls
+pom.xml  src  target
+]$ mvn clean
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------< guru.springframework:hello-world >------------------
+[INFO] Building hello-world 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.2.0:clean (default-clean) @ hello-world ---
+[INFO] Deleting /home/nagaantarvedi/maven/pom/target
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.210 s
+[INFO] Finished at: 2026-08-27T10:16:27+05:30
+[INFO] ------------------------------------------------------------------------
+
+$ ls
+pom.xml  src
+```
