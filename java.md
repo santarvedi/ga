@@ -81,6 +81,8 @@ Manifest-Version: 1.0
 Created-By: 21.0.12.1 (Red Hat, Inc.)
 ```
 
+---
+
 > Java 3rd Party Library Inclusion
 ```
 How to build a Java SourceCode with a 3rd party library Included
