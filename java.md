@@ -369,10 +369,6 @@ $ tree .
 12 directories, 7 files
 
 $ cd target
-$ ls
-classes  generated-sources  hello-world-0.0.1-SNAPSHOT.jar  maven-archiver  maven-status
-$ ls classes/
-HelloWorld.class
 $ unzip hello-world-0.0.1-SNAPSHOT.jar
 Archive:  hello-world-0.0.1-SNAPSHOT.jar
    creating: META-INF/
