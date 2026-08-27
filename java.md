@@ -417,3 +417,182 @@ $ tree .
 
 3 directories, 2 files
 ```
+---
+> Including dependencies using maven pom.xml
+```bash
+$ tree .
+.
+├── pom.xml
+└── src
+    └── main
+        └── java
+            └── HelloWorld.java
+
+3 directories, 2 files
+
+$ cat src/main/java/HelloWorld.java
+import org.apache.commons.lang3.StringUtils;
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello World !");
+        System.out.println(StringUtils.capitalize("hello world"));
+    }
+}
+
+```
+
+> mvn clean packge - will fail, cause the dependency will not resolve
+```bash
+$ mvn clean package
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------< guru.springframework:hello-world >------------------
+[INFO] Building hello-world 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.2.0:clean (default-clean) @ hello-world ---
+[INFO]
+[INFO] --- resources:3.4.0:resources (default-resources) @ hello-world ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/nagaantarvedi/maven/pom/src/main/resources
+[INFO]
+[INFO] --- compiler:3.15.0:compile (default-compile) @ hello-world ---
+[INFO] Recompiling the module because of changed source code.
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file with javac [debug target 1.8] to target/classes
+[INFO] -------------------------------------------------------------
+[WARNING] COMPILATION WARNING :
+[INFO] -------------------------------------------------------------
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[WARNING] source value 8 is obsolete and will be removed in a future release
+[WARNING] target value 8 is obsolete and will be removed in a future release
+[WARNING] To suppress warnings about obsolete options, use -Xlint:-options.
+[INFO] 4 warnings
+[INFO] -------------------------------------------------------------
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR :
+[INFO] -------------------------------------------------------------
+[ERROR] /home/nagaantarvedi/maven/pom/src/main/java/HelloWorld.java:[1,32] package org.apache.commons.lang3 does not exist
+[ERROR] /home/nagaantarvedi/maven/pom/src/main/java/HelloWorld.java:[6,28] cannot find symbol
+  symbol:   variable StringUtils
+  location: class HelloWorld
+[INFO] 2 errors
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.969 s
+[INFO] Finished at: 2026-08-27T11:08:20+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.15.0:compile (default-compile) on project hello-world: Compilation failure: Compilation failure:
+[ERROR] /home/nagaantarvedi/maven/pom/src/main/java/HelloWorld.java:[1,32] package org.apache.commons.lang3 does not exist
+[ERROR] /home/nagaantarvedi/maven/pom/src/main/java/HelloWorld.java:[6,28] cannot find symbol
+[ERROR]   symbol:   variable StringUtils
+[ERROR]   location: class HelloWorld
+[ERROR] -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+```
+
+> pom.xml - add dependency
+```bash
+$ cat pom.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+
+<groupId>guru.springframework</groupId>
+<artifactId>hello-world</artifactId>
+<version>0.0.1-SNAPSHOT</version>
+
+<properties>
+  <java.version>21</java.version>
+</properties>
+
+<dependencies>
+<dependency>
+  <groupId>org.apache.commons</groupId>
+  <artifactId>commons-lang3</artifactId>
+  <version>3.20.0</version>
+</dependency>
+</dependencies>
+
+</project>
+```
+> now, run - mvn clean package - will succeed.
+```bash
+$ mvn clean package
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------< guru.springframework:hello-world >------------------
+[INFO] Building hello-world 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.2.0:clean (default-clean) @ hello-world ---
+[INFO]
+[INFO] --- resources:3.4.0:resources (default-resources) @ hello-world ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/nagaantarvedi/maven/pom/src/main/resources
+[INFO]
+[INFO] --- compiler:3.15.0:compile (default-compile) @ hello-world ---
+[INFO] Recompiling the module because of changed source code.
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file with javac [debug target 1.8] to target/classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[WARNING] source value 8 is obsolete and will be removed in a future release
+[WARNING] target value 8 is obsolete and will be removed in a future release
+[WARNING] To suppress warnings about obsolete options, use -Xlint:-options.
+[INFO]
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ hello-world ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/nagaantarvedi/maven/pom/src/test/resources
+[INFO]
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ hello-world ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- surefire:3.5.4:test (default-test) @ hello-world ---
+[INFO] No tests to run.
+[INFO]
+[INFO] --- jar:3.5.0:jar (default-jar) @ hello-world ---
+[INFO] Building jar: /home/nagaantarvedi/maven/pom/target/hello-world-0.0.1-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.476 s
+[INFO] Finished at: 2026-08-27T11:22:32+05:30
+[INFO] ------------------------------------------------------------------------
+
+
+$ tree .
+.
+├── pom.xml
+├── src
+│   └── main
+│       └── java
+│           └── HelloWorld.java
+└── target
+    ├── classes
+    │   └── HelloWorld.class
+    ├── generated-sources
+    │   └── annotations
+    ├── hello-world-0.0.1-SNAPSHOT.jar
+    ├── maven-archiver
+    │   └── pom.properties
+    └── maven-status
+        └── maven-compiler-plugin
+            └── compile
+                └── default-compile
+                    ├── createdFiles.lst
+                    └── inputFiles.lst
+
+12 directories, 7 files
+```
