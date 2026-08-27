@@ -341,8 +341,32 @@ $ mvn clean package
 [INFO] Finished at: 2026-08-27T10:06:41+05:30
 [INFO] ------------------------------------------------------------------------
 
-]$ ls
+$ ls
 pom.xml  src  target
+
+$ tree .
+.
+├── pom.xml
+├── src
+│   └── main
+│       └── java
+│           └── HelloWorld.java
+└── target
+    ├── classes
+    │   └── HelloWorld.class
+    ├── generated-sources
+    │   └── annotations
+    ├── hello-world-0.0.1-SNAPSHOT.jar
+    ├── maven-archiver
+    │   └── pom.properties
+    └── maven-status
+        └── maven-compiler-plugin
+            └── compile
+                └── default-compile
+                    ├── createdFiles.lst
+                    └── inputFiles.lst
+
+12 directories, 7 files
 
 $ cd target
 $ ls
