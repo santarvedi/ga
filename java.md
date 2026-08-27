@@ -386,4 +386,14 @@ pom.xml  src  target
 
 $ ls
 pom.xml  src
+
+$ tree .
+.
+├── pom.xml
+└── src
+    └── main
+        └── java
+            └── HelloWorld.java
+
+3 directories, 2 files
 ```
