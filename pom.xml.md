@@ -369,3 +369,44 @@ automatically applies version 3.14.0
 </dependencies>
 ```
 ---
+
+> ${project.basedir} ${project.build.directory}
+```
+In a Maven pom.xml, ${project.basedir} and ${project.build.directory} are 
+predefined properties used to reference specific directories in your project structure
+
+Here is the direct distinction between the two:
+
+- ${project.basedir} points to the root directory of the current Maven module
+  (the exact folder where that module's pom.xml file is located).
+
+- ${project.build.directory} points to the output directory of the build, which defaults
+ to the target folder inside the base directory (${project.basedir}/target)
+ ```
+
+ ##### Detailed Comparision
+
+ > ${project.basedir}
+ ```
+ Absolute path to the folder containing pom.xml
+ Used to reference source code, local assets, or project configuration files.
+ ```
+
+> ${project.build.directory}
+```
+${project.basedir}/target
+Used to reference or modify where compiled classes, test results, and JAR/WAR packages
+are generated.
+```
+
+##### Key Differences to Keep in Mind
+```
+- Multi-Module Projects: If you have a parent project with sub-modules, ${project.basedir}
+  will always evaluate to the directory of the specific module currently being executed,
+  not the parent project's root folder.
+
+- Deprecated Alternative: You may occasionally see older configurations use ${basedir}.
+  While they behave identically, using the fully qualified ${project.basedir} is the
+  recommended standard in modern Maven projects
+```
+---
