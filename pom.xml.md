@@ -283,3 +283,70 @@ The <scope> tag tells Maven when and where the library should be available
 - Transitive Dependencies: Libraries that your direct dependencies rely on. Maven handles these
   automatically,so if you import Library A, and Library A requires Library B, Maven fetches both
 ```
+---
+
+#### dependencyManagement
+
+```
+The primary use of the <dependencyManagement> section in a Maven pom.xml file is centralized
+ version control and configuration for project dependencies
+
+ Unlike the standard <dependencies> block, declaring an artifact inside <dependencyManagement>
+  does not actually add the library to your project's classpath. Instead,
+  it acts as a lookup table or blueprint
+```
+
+##### Key Benifits
+
+```
+Version Consistency: It defines a single source of truth for library versions across multi-module
+ projects. Every child module inheriting from this POM will automatically use the specified version
+ without needing to explicitly state it
+
+Cleaner Child POMs: Because the versions, exclusions, and scopes are managed centrally, child modules
+ only need to specify the groupId and artifactId to pull in a dependency
+
+Transitive Dependency Control: If a library you use relies on a third-party dependency
+ (a transitive dependency) that is causing conflicts, you can use <dependencyManagement>
+  to force Maven to use a specific, compatible version of that background library
+
+BOM (Bill of Materials) Imports: It allows you to import third-party dependency ecosystems
+ (like Spring Boot or AWS SDK) as a BOM using the import scope, ensuring all framework components
+ remain perfectly compatible
+
+```
+
+##### How It Works (Example)
+
+> 1. Defined in the Parent POM:
+```
+You declare the version details centrally inside <dependencyManagement>
+```
+```xml
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.14.0</version>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+```
+
+> 2. Used in the Child POM:
+```
+The child module explicitly pulls in the dependency, but omits the version.
+ Maven matches the groupId and artifactId against the parent's lookup table and
+automatically applies version 3.14.0
+```
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <!-- No version tag needed here! -->
+    </dependency>
+</dependencies>
+```
+---
