@@ -160,6 +160,56 @@ To specify how your application should build, declare the element right below
 ```
 Modules in a Maven POM are used to define a multi-module project (also known as an aggregator project).
  This configuration allows you to split a large codebase into smaller, reusable, and manageable
-sub-projects (child modules) that can be built together using a single command
+ sub-projects (child modules) that can be built together using a single command
 ```
 
+##### The <modules> Element Syntax
+```
+In the parent or aggregator pom.xml, the <modules> block lists the relative paths to the subdirectories
+ containing the child modules:
+```
+```xml
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>my-parent-project</artifactId>
+    <version>1.0.0</version>
+    
+    <!-- 1. The parent must use 'pom' packaging -->
+    <packaging>pom</packaging>
+
+    <!-- 2. List the relative directory paths of child modules -->
+    <modules>
+        <module>my-core-module</module>
+        <module>my-web-module</module>
+        <module>my-util-module</module>
+    </modules>
+</project>
+
+```
+
+##### Key Requirements
+
+```
+- Parent Packaging: The aggregator pom.xml must have its <packaging> set to pom.
+                    It does not contain source code itself; it only orchestrates the build.
+
+-   Relative Paths: The value inside the <module> tag is the name of the folder containing
+                    the sub-project, relative to the parent directory.
+
+- Child References: Each child module's pom.xml should include a <parent> block pointing back
+                    to the parent coordinates (groupId, artifactId, version) to inherit
+                    configurations and dependencies          
+```
+
+##### Why Use Maven Modules?
+```
+ - Centralized Dependency Management: Define third-party library versions in the parent POM using    <dependencyManagement> so all sub-modules automatically inherit the same versions
+
+ - Code Reusability: Separate your project into logical layers (e.g., core, api, ui). For instance,
+ the ui module can simply declare the core module as a dependency.
+
+ - Single Command Execution: Running mvn clean install on the parent directory automatically triggers
+ the lifecycle for all nested child modules
+```
+---
