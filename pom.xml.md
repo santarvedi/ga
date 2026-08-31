@@ -283,6 +283,25 @@ The <scope> tag tells Maven when and where the library should be available
 - Transitive Dependencies: Libraries that your direct dependencies rely on. Maven handles these
   automatically,so if you import Library A, and Library A requires Library B, Maven fetches both
 ```
+
+> 5. Excluding Transitive Dependencies
+```
+If a transitive dependency causes a conflict, you can block it using the <exclusions> tag:
+```
+```xml
+<dependency>
+    <groupId>org.example</groupId>
+    <artifactId>some-library</artifactId>
+    <version>1.0.0</version>
+    <exclusions>
+        <exclusion>
+            <groupId>org.unwanted</groupId>
+            <artifactId>conflicting-jar</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+
+```
 ---
 
 #### dependencyManagement
