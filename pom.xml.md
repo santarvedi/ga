@@ -70,8 +70,9 @@ Maven coordinates are a unique set of identifiers known as GAV that pinpoint
 ```
 
 ##### Core Components (GAV)
-+ groupId
+
 ```
++ groupId
 Uniquely identifies the project group or organization, usually following
  reverse domain name notation (e.g., org.apache.maven)
 ```
