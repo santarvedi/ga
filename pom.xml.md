@@ -204,12 +204,13 @@ In the parent or aggregator pom.xml, the <modules> block lists the relative path
 
 ##### Why Use Maven Modules?
 ```
- - Centralized Dependency Management: Define third-party library versions in the parent POM using <dependencyManagement> so all sub-modules automatically inherit the same versions
+ - Centralized Dependency Management: Define third-party library versions in the parent POM
+   using <dependencyManagement> so all sub-modules automatically inherit the same versions
 
  - Code Reusability: Separate your project into logical layers (e.g., core, api, ui). For instance,
- the ui module can simply declare the core module as a dependency.
+   the ui module can simply declare the core module as a dependency.
 
  - Single Command Execution: Running mvn clean install on the parent directory automatically triggers
- the lifecycle for all nested child modules
+   the lifecycle for all nested child modules
 ```
 ---
