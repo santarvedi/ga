@@ -265,7 +265,8 @@ The <scope> tag tells Maven when and where the library should be available
 - test   : Only available during compilation and execution of test classes.
            Testing frameworks (e.g., JUnit, Mockito)
 
-- provided: Used for compilation/test but expected to be provided by the runtime environment (like Tomcat)
+- provided: Used for compilation/test but expected to be provided by the runtime environment
+           (like Tomcat)
             Servlet APIs or server-runtime frameworks.
 
 - runtime: Not needed to compile the code, but required to run it.
@@ -279,6 +280,6 @@ The <scope> tag tells Maven when and where the library should be available
 > 4. Direct vs. Transitive Dependencies
 ```
 - Direct Dependencies: Libraries you explicitly declare in your pom.xml.
-- Transitive Dependencies: Libraries that your direct dependencies rely on. Maven handles these automatically,
-  so if you import Library A, and Library A requires Library B, Maven fetches both
+- Transitive Dependencies: Libraries that your direct dependencies rely on. Maven handles these
+  automatically,so if you import Library A, and Library A requires Library B, Maven fetches both
 ```
