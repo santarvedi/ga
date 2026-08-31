@@ -59,3 +59,47 @@ Disable Local Search (<relativePath/>): An empty tag tells Maven to skip the loc
 Root project  - parent pom - fetch from repositories
 Child project - parent pom - looks one folder up at ../pom.xml 
 ```
+
+#### Maven coordinates
+
+```
+Maven coordinates are a unique set of identifiers known as GAV that pinpoint
+ a specific project, plugin, or dependency in a repository. They consist of
+ three core elements: groupId, artifactId, and version, often supplemented by
+ optional packaging and classifier attributes
+```
+
+##### Core Components (GAV)
++ groupId
+```
+Uniquely identifies the project group or organization, usually following
+ reverse domain name notation (e.g., org.apache.maven)
+```
++ artifactId
+```
+The unique name of the specific project or library module (e.g., maven-core).
+```
++ version
+```
+version: The exact release or snapshot version of the artifact (e.g., 3.9.9)
+```
+
+##### Optional Components
+
++ packaging:
+``` 
+The file type or format, such as jar, war, or pom (defaults to jar).
+```
++ classifier:
+``` 
+Distinguishes secondary builds of the same artifact, such as -sources or -javadoc
+```
+
+###### Example
+```xml
+<dependency>
+    <groupId>org.apache.maven</groupId>
+    <artifactId>maven-artifact</artifactId>
+    <version>3.9.13</version>
+</dendency>
+```
