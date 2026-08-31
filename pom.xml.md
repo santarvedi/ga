@@ -214,3 +214,35 @@ In the parent or aggregator pom.xml, the <modules> block lists the relative path
    the lifecycle for all nested child modules
 ```
 ---
+
+#### Dependency
+
+```
+In a Maven project, a dependency is an external Java library or framework (like Spring, JUnit,
+ or Apache Commons) that your project needs to compile, test, or run. You declare these inside
+ the pom.xml file so that Maven can automatically download, manage, and add them to your project's
+ classpath
+```
+
+> 1. Basic Structure
+```
+All individual dependencies must be placed inside a parent <dependencies> tag. Each dependency
+ is uniquely identified by its "coordinates": groupId, artifactId, and version
+```
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0" ...>
+    <!-- Other configuration tags -->
+
+    <dependencies>
+        <!-- Example: Adding Apache Commons Lang -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.14.0</version>
+            <scope>compile</scope> <!-- Optional: defaults to compile -->
+        </dependency>
+    </dependencies>
+
+</project>
+
+```
