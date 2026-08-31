@@ -153,3 +153,13 @@ To specify how your application should build, declare the element right below
     <packaging>war</packaging> 
 </project>
 ```
+---
+
+#### Modules
+
+```
+Modules in a Maven POM are used to define a multi-module project (also known as an aggregator project).
+ This configuration allows you to split a large codebase into smaller, reusable, and manageable
+sub-projects (child modules) that can be built together using a single command
+```
+
