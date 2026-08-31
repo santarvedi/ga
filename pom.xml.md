@@ -13,7 +13,7 @@
 relativePath in a Maven pom.xml tells Maven where to find the parent project's
 pom.xml file on your computer's hard drive.
 ```
-### How It Works
+#### How It Works
 
 ```
 Default Value:
@@ -21,7 +21,7 @@ Default Value:
 
 Search Order: Maven searches the given relative path first. If it fails to find it there,
  it checks your local .m2 repository, and finally looks in remote repositories.
- 
+
 Custom Path: You can point to a different folder if your project files are laid out differently,
  like <relativePath>subfolder/pom.xml</relativePath>
 ```
