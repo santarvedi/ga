@@ -137,7 +137,7 @@ Maven provides several built-in packaging types:
 - ejb: Generates a package optimized for Enterprise JavaBeans modules
 ```
 
-###### example
+###### Example
 
 ```
 To specify how your application should build, declare the element right below
