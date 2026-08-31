@@ -54,5 +54,8 @@ Disable Local Search (<relativePath/>): An empty tag tells Maven to skip the loc
         <version>${revision}</version>
 </parent>
 ```
-> In Root project  - parent pom - fetch from repositories
-> in Child project - parent pom - looks one folder up at ../pom.xml 
+
+```
+Root project  - parent pom - fetch from repositories
+Child project - parent pom - looks one folder up at ../pom.xml 
+```
