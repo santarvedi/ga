@@ -246,3 +246,39 @@ All individual dependencies must be placed inside a parent <dependencies> tag. E
 </project>
 
 ```
+
+> 2. Core Coordinates Explained
+```
+- <groupId>: The organization or package name that created the library (e.g., org.junit.jupiter).
+- <artifactId>: The unique name of the specific project/JAR module (e.g., junit-jupiter-api).
+- <version>: The specific release version you want to use (e.g., 5.10.2).
+```
+
+> 3. Dependency Scopes
+```
+The <scope> tag tells Maven when and where the library should be available
+
+- compile: Default scope.
+           Available everywhere (compile, test, and execution).
+           Core application libraries (e.g., Log4j, Jackson).
+
+- test   : Only available during compilation and execution of test classes.
+           Testing frameworks (e.g., JUnit, Mockito)
+
+- provided: Used for compilation/test but expected to be provided by the runtime environment (like Tomcat)
+            Servlet APIs or server-runtime frameworks.
+
+- runtime: Not needed to compile the code, but required to run it.
+           Database drivers (e.g., MySQL or PostgreSQL drivers).
+
+- system: Loaded from a hardcoded local file path instead of a repository (discouraged).
+          Legacy/proprietary local .jar files.
+
+```
+
+> 4. Direct vs. Transitive Dependencies
+```
+- Direct Dependencies: Libraries you explicitly declare in your pom.xml.
+- Transitive Dependencies: Libraries that your direct dependencies rely on. Maven handles these automatically,
+  so if you import Library A, and Library A requires Library B, Maven fetches both
+```
