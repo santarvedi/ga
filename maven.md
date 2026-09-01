@@ -126,9 +126,7 @@ The site lifecycle creates documentation, tracking pages, and reports for your J
 ##### Key Concepts: Phases vs. Goals
 ```text
 - Phases are steps in the lifecycle (e.g., compile, package).
-
 - Goals represent the actual tasks executed during those steps.
-
 - A phase can have zero or more goals bound to it. Plugins supply these goals 
   (e.g., the compiler:compile goal binds to the compile phase)
 ```
