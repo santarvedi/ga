@@ -83,7 +83,7 @@ The default lifecycle handles the actual compilation and distribution of your co
 
 - test: Runs unit tests using frameworks like JUnit or TestNG.
 
-- package: Takes the compiled code and packages it into a distributable format (like a JAR or WAR file).
+- package: Takes the compiled code and packages it into a distributable format (like a JAR/WAR file).
 
 - integration-test: Processes and deploys the package into an environment where integration tests
                     can be run.
