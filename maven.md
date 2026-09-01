@@ -135,5 +135,5 @@ The site lifecycle creates documentation, tracking pages, and reports for your J
 ```text
 You can combine lifecycles in a single command line interface. For instance, <mvn clean install>
  tells Maven to clear the old build directory entirely using the clean lifecycle,
-and then run all phases up through install in the default lifecycle. 
+ and then run all phases up through install in the default lifecycle. 
 ```
