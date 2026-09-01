@@ -155,20 +155,20 @@ The core difference is that <mvn install> copies your built file into your local
 
 ##### Side-by-Side Comparison
 
----
->Feature                         mvn package                  mvn install
----
+```bash
+Feature                         mvn package                  mvn install
+
 Compiles Code                   Yes                          Yes
---- 
+
 Runs Tests                      Yes                          Yes
----
+
 Creates Jar/War                 Yes                          Yes
----
+
 Output Location                 target/ directory only       target/ AND local
                                                              repository
----
+
 Local Path                      myProj/target/artifact.jar   ~/.m2/repository/...
----
+
 Usable by other                 No                            Yes
 local apps
----
+```
