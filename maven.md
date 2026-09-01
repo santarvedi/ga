@@ -174,3 +174,12 @@ Usable by other                 No                            Yes
 local apps
 ----------------------------------------------------------------------------------
 ```
+
+##### When to use which?
+```text
+- Use <mvn package> if you just need the final compiled file (like a JAR or WAR) to run locally,
+ test, or manually deploy to a server.
+ - Use <mvn install> if you are working on a multi-module project, or if another independent project
+  on your computer needs to import this project as a dependency.
+```
+---
