@@ -1,10 +1,9 @@
 #### Apache Maven standard directory layout
 
 ```
-The Apache Maven standard directory layout is a predefined, rigid folder structure
- that ensures consistency across all Maven projects. By adhering to this layout,
- Maven automatically locates source code, resources, and tests without requiring
- manual path configuration
+The Apache Maven standard directory layout is a predefined, rigid folder structure that ensures
+ consistency across all Maven projects. By adhering to this layout, Maven automatically locates
+ source code, resources, and tests without requiring manual path configuration
 ```
 
 ##### Core Project Structure
