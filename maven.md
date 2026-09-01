@@ -137,3 +137,18 @@ You can combine lifecycles in a single command line interface. For instance, <mv
  tells Maven to clear the old build directory entirely using the clean lifecycle,
  and then run all phases up through install in the default lifecycle. 
 ```
+---
+
+#### mvn package Vs mvn install
+
+```text
+The core difference is that <mvn install> copies your built file into your local repository,
+ while <mvn package> does not.
+
+ Because Apache Maven uses a sequential build lifecycle, executing any phase automatically
+  runs all the phases that come before it.
+```
+
+##### The Lifecycle Sequence
+
+> validate --> compile --> test --> package --> verify --> install --> deploy
