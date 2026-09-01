@@ -85,7 +85,8 @@ The default lifecycle handles the actual compilation and distribution of your co
 
 - package: Takes the compiled code and packages it into a distributable format (like a JAR or WAR file).
 
-- integration-test: Processes and deploys the package into an environment where integration tests can be run.
+- integration-test: Processes and deploys the package into an environment where integration tests
+                    can be run.
 
 - verify: Runs quality and validity checks to ensure the packaged artifact meets required criteria.
 
