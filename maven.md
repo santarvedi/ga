@@ -111,7 +111,7 @@ The clean lifecycle ensures a fresh build environment by wiping away the target 
 
 ##### 3. The Site Lifecycle
 
-```
+```text
 The site lifecycle creates documentation, tracking pages, and reports for your Java project. 
 
 - pre-site: Prepares the environment before generating documentation.
@@ -124,7 +124,7 @@ The site lifecycle creates documentation, tracking pages, and reports for your J
 ```
 
 ##### Key Concepts: Phases vs. Goals
-```
+```text
 - Phases are steps in the lifecycle (e.g., compile, package).
 
 - Goals represent the actual tasks executed during those steps.
@@ -134,7 +134,7 @@ The site lifecycle creates documentation, tracking pages, and reports for your J
 ```
 
 ##### Common Commands
-```
+```text
 You can combine lifecycles in a single command line interface. For instance, <mvn clean install>
  tells Maven to clear the old build directory entirely using the clean lifecycle,
 and then run all phases up through install in the default lifecycle. 
