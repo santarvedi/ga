@@ -90,8 +90,8 @@ The default lifecycle handles the actual compilation and distribution of your co
 
 - verify: Runs quality and validity checks to ensure the packaged artifact meets required criteria.
 
-- install: Installs the package into your local repository (~/.m2), allowing it to be used as a dependency
-           in other local projects.
+- install: Installs the package into your local repository (~/.m2), allowing it to be used as a
+           dependency in other local projects.
 
 - deploy: Copies the final package to a remote repository to share with other developers and 
           production environments
