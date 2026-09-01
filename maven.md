@@ -74,8 +74,7 @@ Each lifecycle consists of a sequential list of phases. When you run a specific 
 
 ```text
 The default lifecycle handles the actual compilation and distribution of your code. While it
- contains 23 total phases internally, developers primarily interact with these
- 8 major phases:
+ contains 23 total phases internally, developers primarily interact with these 8 major phases:
 
 - validate: Checks if the project is correct and all required information/dependencies are available.
 
