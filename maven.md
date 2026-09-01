@@ -99,8 +99,8 @@ The default lifecycle handles the actual compilation and distribution of your co
 ##### 2. The Clean Lifecycle
 
 ```text
-The clean lifecycle ensures a fresh build environment by wiping away the target directory created during
- previous compilations
+The clean lifecycle ensures a fresh build environment by wiping away the target directory created
+ during previous compilations
 
  - pre-clean: Executes initial processes needed before cleaning.
 
