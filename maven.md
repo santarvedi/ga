@@ -139,7 +139,7 @@ You can combine lifecycles in a single command line interface. For instance, <mv
 ```
 ---
 
-#### mvn package Vs mvn install
+#### mvn package vs mvn install
 
 ```text
 The core difference is that <mvn install> copies your built file into your local repository,
