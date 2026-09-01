@@ -51,3 +51,48 @@ my-project/
                         (like a JAR or WAR file)
 
 ```
+---
+
+#### Maven lifecycle
+
+```text
+A Maven lifecycle is a clearly defined process for building and distributing a project
+
+Maven has three built-in lifecycles: 
+
+1. default (or build): Handles project compilation, testing, packaging, and deployment.
+
+2. clean: Handles project cleaning and removing previous build artifacts
+
+3. site: Handles the generation of project documentation and site reports.
+
+Each lifecycle consists of a sequential list of phases. When you run a specific phase command,
+ Maven automatically executes all preceding phases in that lifecycle first.
+```
+
+##### 1. The Default Lifecycle (Core Phases)
+
+```text
+The default lifecycle handles the actual compilation and distribution of your code. While it
+ contains 23 total phases internally, developers primarily interact with these
+ 8 major phases:
+
+- validate: Checks if the project is correct and all required information/dependencies are available.
+
+- compile: Compiles the source code of the project (converts .java to .class files).
+
+- test: Runs unit tests using frameworks like JUnit or TestNG.
+
+- package: Takes the compiled code and packages it into a distributable format (like a JAR or WAR file).
+
+- integration-test: Processes and deploys the package into an environment where integration tests can be run.
+
+- verify: Runs quality and validity checks to ensure the packaged artifact meets required criteria.
+
+- install: Installs the package into your local repository (~/.m2), allowing it to be used as a dependency
+           in other local projects.
+
+- deploy: Copies the final package to a remote repository to share with other developers and 
+          production environments
+
+```
