@@ -156,7 +156,7 @@ The core difference is that <mvn install> copies your built file into your local
 ##### Side-by-Side Comparison
 
 ---
-Feature                         mvn package                  mvn install
+>Feature                         mvn package                  mvn install
 ---
 Compiles Code                   Yes                          Yes
 --- 
