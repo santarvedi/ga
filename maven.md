@@ -236,7 +236,7 @@ mvn deploy:deploy-file -Dfile=path/to/file.jar -Durl=https://example.com \
 -Dversion=1.0.0
 ```
 
->
+
 ```xml
 <properties>
   <release.url>file://${project.build.directory}/releases</release.url>
@@ -257,7 +257,8 @@ mvn deploy:deploy-file -Dfile=path/to/file.jar -Durl=https://example.com \
     </distributionManagement>
 ```
 ```text
-These properties define local file paths instead of remote servers for deploying your project's artifacts.
+These properties define local file paths instead of remote servers for deploying your
+project's artifacts.
 ```
 
 ##### Meaning
