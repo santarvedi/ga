@@ -186,7 +186,7 @@ local apps
 
 ### Build Plugins
 
-> maven-deploy-plugin
+> 1. maven-deploy-plugin
 ```text
 The Apache Maven Deploy Plugin uploads build artifacts to a remote repository like Nexus or Artifactory
  during the deploy phase of the build lifecycle. It requires target server credentials and repository
@@ -235,3 +235,161 @@ mvn deploy:deploy-file -Dfile=path/to/file.jar -Durl=https://example.com \
 -DrepositoryId=corporate-releases -DgroupId=com.example -DartifactId=my-app \
 -Dversion=1.0.0
 ```
+
+>
+```xml
+<properties>
+  <release.url>file://${project.build.directory}/releases</release.url>
+  <snapshot.url>file://${project.build.directory}/snapshots</snapshot.url>
+</properties>
+
+<distributionManagement>
+        <repository>
+            <id>release</id>
+            <name>ThermoFisher release</name>
+            <url>${release.url}</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshot</id>
+            <name>ThermoFisher snapshot</name>
+            <url>${snapshot.url}</url>
+        </snapshotRepository>
+    </distributionManagement>
+```
+```text
+These properties define local file paths instead of remote servers for deploying your project's artifacts.
+```
+
+##### Meaning
+
+```text
+- file:// Protocol: Instructs Maven to use the local filesystem rather than network protocols like
+                    http:// or https://.
+
+- ${project.build.directory}: Points to the standard Maven target/ folder inside your project directory.
+
+- releases & snapshots: Creates subdirectories named target/releases/ and target/snapshots/ 
+                        to store your packaged JARs, WARs, and POMs.
+```
+
+##### Implications
+
+```text
+- No Remote Sharing: Team members or CI/CD pipelines cannot access these artifacts.
+                     The files stay locked on your local machine.
+
+Temporary Storage: Running mvn clean completely deletes the target/ directory. Your deployed artifacts
+                   will be permanently wiped out with every clean build.
+
+Ideal for Testing: This is a great, lightweight setup for testing your deployment configuration locally
+                   without needing setup permissions on a live repository server like Nexus or Artifactory.
+```
+
+> if i build using mvn package, will the above plugin activate/works and pushes the code to mentioned places?
+```text
+No, running mvn package will not activate the deploy plugin or push your files to those locations.
+```
+
+##### Why it won't work
+
+```text
+Maven operates on a sequential build lifecycle. When you run a command, Maven executes all phases up to and
+ including the one you named, but it stops there:
+ 
+ 1. compile (Compiles code)
+ 2. test    (Runs tests)
+ 3. package (Creates your JAR/WAR in the target/ folder) #mvn package STOPS HERE
+ 4. verify  (Runs integration tests)
+ 5. install (Copies the package to your local ~/.m2 folder)
+ 6. deploy  (Triggers the maven-deploy-plugin to upload the files)
+```
+
+##### How to make it work
+
+> To activate the deploy plugin and push the files to your target directories, you must run:
+```bash
+mvn deploy
+```
+
+> 
+```text
+The Apache Maven Deploy Plugin uploads build artifacts to a remote repository like Nexus or Artifactory
+ during the deploy phase of the build lifecycle. It requires target server credentials and repository 
+ details mapped in your project files
+```
+> Mapping - Repository Details vs Target server credentials
+```text
+To map your server credentials and repository details safely, Maven splits the configuration into
+ two separate files. This keeps your sensitive passwords out of your source code repository (like Git).
+
+Here is how you achieve it step-by-step:
+```
+
+##### Step 1: Define the Repositories in your pom.xml
+
+```text
+Add the distributionManagement section to your project's pom.xml file. Use the
+ unique <id> tags to link these repositories to your credentials later.
+```
+```xml
+<project>
+  <!-- ... your other config ... -->
+
+  <distributionManagement>
+    <repository>
+      <id>my-corp-releases</id>
+      <name>Corporate Release Repository</name>
+      <url>https://example.com</url>
+    </repository>
+    <snapshotRepository>
+      <id>my-corp-snapshots</id>
+      <name>Corporate Snapshot Repository</name>
+      <url>https://example.com</url>
+    </snapshotRepository>
+  </distributionManagement>
+</project>
+```
+
+##### Step 2: Add Credentials in your settings.xml
+
+```text
+Open or create your global or user-specific settings.xml file
+
+- File Location: Usually found in your user home directory at ~/.m2/settings.xml (Mac/Linux)
+ or C:\Users\YourName\.m2\settings.xml (Windows).
+
+- Add a <server> block inside the <servers> tag. The <id> in your settings.xml must exactly
+  match the <id> in your pom.xml.
+```
+```xml
+<settings xmlns="http://apache.org"
+          xmlns:xsi="http://w3.org"
+          xsi:schemaLocation="http://apache.org https://apache.org">
+  
+  <servers>
+    <!-- Credentials for Releases -->
+    <server>
+      <id>my-corp-releases</id>
+      <username>your_deployment_username</username>
+      <password>your_secret_password_or_token</password>
+    </server>
+
+    <!-- Credentials for Snapshots -->
+    <server>
+      <id>my-corp-snapshots</id>
+      <username>your_deployment_username</username>
+      <password>your_secret_password_or_token</password>
+    </server>
+  </servers>
+
+</settings>
+```
+
+##### Why this works
+
+```text
+When you run mvn deploy, Maven reads the <id> from the pom.xml (e.g., my-corp-releases),
+ looks up the matching <id> in your local settings.xml, extracts the username/password,
+and securely injects them into the HTTP upload request to your repository manager.
+```
+---
