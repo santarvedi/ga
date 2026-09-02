@@ -183,3 +183,55 @@ local apps
   on your computer needs to import this project as a dependency.
 ```
 ---
+
+### Build Plugins
+
+> maven-deploy-plugin
+```text
+The Apache Maven Deploy Plugin uploads build artifacts to a remote repository like Nexus or Artifactory
+ during the deploy phase of the build lifecycle. It requires target server credentials and repository
+details mapped in your project files
+```
+
+##### Main Goals
+
+```text
+- deploy:deploy: Automatically uploads built project files, POMs, and attachments using details from
+                 your pom.xml
+
+- deploy:deploy-file: Uploads a single, standalone file directly from the command line without a
+                      full project build.
+```
+
+##### Required Configuration
+
+```text
+Add a distributionManagement block to your pom.xml to define where files go
+```
+```xml
+<distributionManagement>
+  <repository>
+    <id>corporate-releases</id>
+    <url>https://example.com</url>
+  </repository>
+  <snapshotRepository>
+    <id>corporate-snapshots</id>
+    <url>https://example.com</url>
+  </snapshotRepository>
+</distributionManagement>
+```
+
+##### Common Commands
+
+
+> Run a standard build and deploy: 
+```bash 
+mvn clean deploy
+```
+
+> Deploy a single external file: 
+```bash 
+mvn deploy:deploy-file -Dfile=path/to/file.jar -Durl=https://example.com \ 
+-DrepositoryId=corporate-releases -DgroupId=com.example -DartifactId=my-app \
+-Dversion=1.0.0
+```
