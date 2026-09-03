@@ -457,3 +457,51 @@ mvn source:jar
 The resulting JAR file will be saved in your project's /target folder with a -sources.jar suffix
  appended to the name
 ```
+---
+```text
+which apache maven plugin only builds jar without including the source code files in the jar
+```
+> 3. maven-jar-plugin
+```text
+The Apache Maven JAR Plugin (maven-jar-plugin) is the tool responsible for packaging your compiled
+ Java class files and resources into a final JAR file without including the raw .java source code files.
+
+By default, Maven's standard build lifecycle compiles your source code from src/main/java/ into bytecode
+ (.class files) inside the target/classes/ directory. The Apache Maven JAR Plugin then packages only
+ the contents of that target/classes/ directory into your production JAR archive
+```
+
+##### 1. Default Behavior
+
+```text
+You do not need to explicitly configure any exclusions to leave out source code. The core Maven lifecycle
+ ensures that .java files are ignored during packaging. If source code is getting bundled, it usually means
+your project's structure is incorrectly placing source files inside the src/main/resources/ directory
+```
+
+##### 2. The Plugin That Does Include Source Code
+
+```text
+If your goal is strictly to avoid source bundling, ensure your pom.xml does not include the Apache Maven Source Plugin (maven-source-plugin). That specific plugin is designed explicitly to create a separate companion
+ *-sources.jar archive containing your uncompiled code for debugging purposes.
+```
+
+##### 3. Explicitly Excluding Specific Content
+
+```text
+If you have non-compiled files or accidental source duplicates bleeding into your packaging, you can explicitly enforce exclusions inside the Apache Maven JAR Plugin configuration block in your pom.xml:
+```
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <version>3.4.0</version> <!-- Use the latest stable version -->
+    <configuration>
+        <excludes>
+            <!-- Explicitly exclude any accidental java source files if needed -->
+            <exclude>**/*.java</exclude>
+        </excludes>
+    </configuration>
+</plugin>
+```
+---
