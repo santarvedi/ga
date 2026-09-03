@@ -434,18 +434,21 @@ To automatically generate and attach a source JAR during your standard build cyc
 The plugin provides five main goals depending on what sources you need to archive:
 
 - source:jar-no-fork (Recommended): Bundles the main source files into a JAR without restarting/forking
-                                    the lifecycle. This is the safest choice for binding to a build phase.
+                                    the lifecycle. This is the safest choice for binding to a build
+                                    phase.
 - source:jar: Bundles the main source files into a JAR, but forks the lifecycle to ensure all source
               generation steps run first.
 - source:test-jar-no-fork: Bundles the project's test source files into a separate JAR without forking.
 - source:test-jar: Bundles the project's test source files while forking the lifecycle.
-- source:aggregate: Aggregates source files from all sub-modules within a multi-module (aggregator) project
+- source:aggregate: Aggregates source files from all sub-modules within a multi-module (aggregator)
+                    project
 ```
 
 ##### Command Line Usage
 
 ```text
-If you prefer not to modify your pom.xml, you can generate a source JAR on demand from your terminal using:
+If you prefer not to modify your pom.xml, you can generate a source JAR on demand from your terminal
+ using:
 ```
 ```bash
 mvn source:jar
