@@ -510,3 +510,38 @@ pom.xml:
 </plugin>
 ```
 ---
+
+> Do I really need to define a build section in pom.xml ?, if my job is simply to create a jar?
+```text
+No, you do not need to define an explicit <build> section in your pom.xml just to create
+ a basic JAR file.
+```
+
+##### Why You Don't Need It
+
+```text
+- Default Packaging: Maven uses jar as the default value for the <packaging> tag if you do not
+                     specify one.
+- Built-in Lifecycles: Maven has a built-in default lifecycle with standard plugins attached
+                       to each phase.
+- The package Phase: Running the command mvn package automatically invokes the maven-jar-plugin
+                     under the hood. It compiles your code in src/main/java and packages the
+                     compiled classes into a .jar file inside the target/ directory without any
+                     extra configuration.
+```
+
+##### When You Do Need a <build> Section
+
+```text
+While a basic library or helper JAR requires zero build configurations, you must add a <build>
+section if you need to do any of the following:
+
+- Executable JAR: If your JAR needs a Main-Class manifest entry so users can run it via java -jar,
+  you must configure the maven-jar-plugin or use the maven-shade-plugin.
+- If your project has external dependencies and you need to bundle all of those dependent libraries
+  into a single standalone JAR file, you must configure a plugin like maven-assembly-plugin or
+  maven-shade-plugin.
+- Custom Java Version: If you need to force Maven to compile using a specific Java version
+  (like Java 17 or 21) rather than the system default, you configure the maven-compiler-plugin.
+```
+---
