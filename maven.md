@@ -546,7 +546,7 @@ section if you need to do any of the following:
 ```
 ---
 
-> Build an executable jar using maven-jar-plugin
+### Build an executable jar using maven-jar-plugin
 ```text
 To build your HelloWorld.java file into an executable JAR using the maven-jar-plugin,
  you need to configure the plugin inside a Maven pom.xml file. The plugin requires you
@@ -716,3 +716,196 @@ $ tree
 $ java -jar target/hello-world-0.0.1-SNAPSHOT.jar
 Hello World !
 ```
+---
+
+### Build a fat-JAR(or uber-JAR)
+
+```text 
+Does your Hello World project require external dependencies (like Gson, Spring, etc.)
+that need to be packaged into the JAR too?
+
+To include external dependencies like org.apache.commons.lang3.StringUtils inside
+ an executable JAR, the standard <maven-jar-plugin> alone is not enough because it
+ does not package external libraries into the final JAR file.
+
+To create a "fat JAR" (or "uber-JAR") that contains all of your dependencies, you should
+ switch to the <maven-assembly-plugin> or <maven-shade-plugin>. The <maven-assembly-plugin>
+ is the simplest method for this setup.
+ ```
+
+> 1. The Java Code (HelloWorld.java)
+```text
+Update your code to utilize StringUtils:
+```
+```java
+package guru.springframework;
+
+import org.apache.commons.lang3.StringUtils;
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello World !");
+        System.out.println(StringUtils.capitalize("hello world"));
+    }
+}
+```
+
+> 2. The Updated Configuration (pom.xml)
+```text
+Replace your pom.xml build section with the configuration below. This adds the Commons Lang 3
+ dependency and configures the <maven-assembly-plugin> to bundle it together with your code:
+```
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+
+<groupId>guru.springframework</groupId>
+<artifactId>hello-world</artifactId>
+<version>0.0.1-SNAPSHOT</version>
+
+<properties>
+  <java.version>21</java.version>
+</properties>
+
+<dependencies>
+<dependency>
+  <groupId>org.apache.commons</groupId>
+  <artifactId>commons-lang3</artifactId>
+  <version>3.20.0</version>
+</dependency>
+</dependencies>
+
+<build>
+        <plugins>
+                <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.7.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- The entry point for your application -->
+                            <mainClass>guru.springframework.HelloWorld</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <!-- Tells Maven to bundle all dependencies inside the JAR -->
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <!-- Binds this plugin to the 'package' phase -->
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+</build>
+
+</project>
+```
+> 3. Build and Run Commands
+```text
+Run the standard package command. Maven will now output two JAR files into your target/ folder:
+ the standard, empty JAR, and the larger executable JAR containing your dependencies.
+```
+- To compile and bundle everything:
+```bash
+mvn clean package
+```
+- To run the executable "fat" JAR:
+```bash
+java -jar target/hello-world-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+```
+
+> Execution
+```bash
+$ mvn clean package
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------< guru.springframework:hello-world >------------------
+[INFO] Building hello-world 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.2.0:clean (default-clean) @ hello-world ---
+[INFO] Deleting /home/nagaantarvedi/maven/uber-jar/target
+[INFO]
+[INFO] --- resources:3.4.0:resources (default-resources) @ hello-world ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/nagaantarvedi/maven/uber-jar/src/main/resources
+[INFO]
+[INFO] --- compiler:3.15.0:compile (default-compile) @ hello-world ---
+[INFO] Recompiling the module because of changed source code.
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file with javac [debug target 1.8] to target/classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[WARNING] source value 8 is obsolete and will be removed in a future release
+[WARNING] target value 8 is obsolete and will be removed in a future release
+[WARNING] To suppress warnings about obsolete options, use -Xlint:-options.
+[INFO]
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ hello-world ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/nagaantarvedi/maven/uber-jar/src/test/resources
+[INFO]
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ hello-world ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- surefire:3.5.4:test (default-test) @ hello-world ---
+[INFO] No tests to run.
+[INFO]
+[INFO] --- jar:3.5.0:jar (default-jar) @ hello-world ---
+[INFO] Building jar: /home/nagaantarvedi/maven/uber-jar/target/hello-world-0.0.1-SNAPSHOT.jar
+[INFO]
+[INFO] --- assembly:3.7.1:single (make-assembly) @ hello-world ---
+[INFO] Building jar: /home/nagaantarvedi/maven/uber-jar/target/hello-world-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.194 s
+[INFO] Finished at: 2026-09-03T23:03:19+05:30
+[INFO] ------------------------------------------------------------------------
+
+
+
+$ tree .
+.
+├── pom.xml
+├── src
+│   └── main
+│       └── java
+│           └── guru
+│               └── springframework
+│                   └── HelloWorld.java
+└── target
+    ├── archive-tmp
+    ├── classes
+    │   └── guru
+    │       └── springframework
+    │           └── HelloWorld.class
+    ├── generated-sources
+    │   └── annotations
+    ├── hello-world-0.0.1-SNAPSHOT.jar
+    ├── hello-world-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+    ├── maven-archiver
+    │   └── pom.properties
+    └── maven-status
+        └── maven-compiler-plugin
+            └── compile
+                └── default-compile
+                    ├── createdFiles.lst
+                    └── inputFiles.lst
+
+
+$ java -jar target/hello-world-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+Hello World !
+Hello world
+```
+---
