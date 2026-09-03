@@ -264,7 +264,8 @@ mvn deploy:deploy-file -Dfile=path/to/file.jar -Durl=https://example.com \
 - file:// Protocol: Instructs Maven to use the local filesystem rather than network protocols like
                     http:// or https://.
 
-- ${project.build.directory}: Points to the standard Maven target/ folder inside your project directory.
+- ${project.build.directory}: Points to the standard Maven target/ folder inside your project
+                              directory.
 
 - releases & snapshots: Creates subdirectories named target/releases/ and target/snapshots/ 
                         to store your packaged JARs, WARs, and POMs.
@@ -280,7 +281,8 @@ Temporary Storage: Running mvn clean completely deletes the target/ directory. Y
                    will be permanently wiped out with every clean build.
 
 Ideal for Testing: This is a great, lightweight setup for testing your deployment configuration locally
-                   without needing setup permissions on a live repository server like Nexus or Artifactory.
+                   without needing setup permissions on a live repository server like Nexus or
+                  Artifactory.
 ```
 
 > if i build using mvn package, will the above plugin activate/works and pushes the code to mentioned places?
@@ -291,8 +293,8 @@ No, running mvn package will not activate the deploy plugin or push your files t
 ##### Why it won't work
 
 ```text
-Maven operates on a sequential build lifecycle. When you run a command, Maven executes all phases up to and
- including the one you named, but it stops there:
+Maven operates on a sequential build lifecycle. When you run a command, Maven executes all phases
+ up to and including the one you named, but it stops there:
  
  1. compile (Compiles code)
  2. test    (Runs tests)
