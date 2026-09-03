@@ -393,3 +393,64 @@ When you run mvn deploy, Maven reads the <id> from the pom.xml (e.g., my-corp-re
 and securely injects them into the HTTP upload request to your repository manager.
 ```
 ---
+> 2. maven-source-plugin
+```text
+Apache Maven Source Plugin is a core Maven plugin used to create a JAR archive containing
+ the source code files (.java) of your project. This is typically done alongside your main
+ project build so that other developers or downstream applications can view and debug your
+ source code from their IDEs.
+```
+
+##### Standard Configuration
+
+```text
+To automatically generate and attach a source JAR during your standard build cycle (the package phase),
+ add the following configuration to your project's pom.xml:
+```
+```xml
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>3.3.0</version> <!-- Use the latest stable version -->
+            <executions>
+                <execution>
+                    <id>attach-sources</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>jar-no-fork</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
+```
+
+##### Key Goals Overview
+
+```
+The plugin provides five main goals depending on what sources you need to archive:
+
+- source:jar-no-fork (Recommended): Bundles the main source files into a JAR without restarting/forking
+                                    the lifecycle. This is the safest choice for binding to a build phase.
+- source:jar: Bundles the main source files into a JAR, but forks the lifecycle to ensure all source
+              generation steps run first.
+- source:test-jar-no-fork: Bundles the project's test source files into a separate JAR without forking.
+- source:test-jar: Bundles the project's test source files while forking the lifecycle.
+- source:aggregate: Aggregates source files from all sub-modules within a multi-module (aggregator) project
+```
+
+##### Command Line Usage
+
+```text
+If you prefer not to modify your pom.xml, you can generate a source JAR on demand from your terminal using:
+```
+```bash
+mvn source:jar
+```
+```text
+The resulting JAR file will be saved in your project's /target folder with a -sources.jar suffix
+ appended to the name
+```
