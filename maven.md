@@ -254,7 +254,7 @@ mvn deploy:deploy-file -Dfile=path/to/file.jar -Durl=https://example.com \
             <name>ThermoFisher snapshot</name>
             <url>${snapshot.url}</url>
         </snapshotRepository>
-    </distributionManagement>
+</distributionManagement>
 ```
 
 
