@@ -1357,6 +1357,61 @@ $ sdiff -s pom.xml /tmp/META-INF/maven/guru.springframework/hello-world/pom.xml
                                                               <
 
 ```
+
+> Explain
+```text
+Resolves variables and parents: Evaluates properties, replaces placeholders (like CI-friendly
+                                  ${revision} tags), and flattens parent relationships
+```
+
+```text
+When Maven builds a project, it usually copies your exact pom.xml file into the target
+ repository. If your POM relies on complex relationships or dynamic variables, anyone
+ downloading your library later would also need those same files and variables to make
+ sense of it.
+
+The flatten-maven-plugin fixes this by "baking in" all the dynamic data before publishing.
+ Here is exactly what those three actions mean:
+```
+> 1. Evaluates Properties
+```text
+In a standard Maven file, you often define versions or configurations in a <properties>
+ block to manage them in one place:
+
+- Before flattening: Your dependency version might say <version>${spring.version}</version>.
+- After flattening: The plugin replaces the property with the actual hardcoded value,
+                    like <version>6.1.5</version>
+
+This ensures that consumer projects don't have to guess what ${spring.version} was.
+```
+
+> 2. Replaces Placeholders (CI-Friendly ${revision} tags)
+```text
+In modern DevOps, you often don't want to hardcode project versions in git. Instead, you use
+ a placeholder like ${revision} so a CI/CD tool (like Jenkins or GitHub Actions) can pass the
+ version dynamically at build time (e.g., mvn clean deploy -Drevision=2.4.1).
+
+ - The Problem: If you deploy a POM containing <version>${revision}</version>, any project
+   trying to use your library will crash because their build doesn't know what ${revision} means.
+ 
+ - The Flatten Solution: The plugin intercepts the build, resolves ${revision} to the actual version
+  passed by the CI tool (e.g., 2.4.1), and writes that hardcoded string into the published POM.
+```
+
+> 3. Flattens Parent Relationships
+```text
+In multi-module projects, child modules inherit dependencies, plugins, and configurations
+ from a <parent> POM.
+
+- Before flattening: A child module's POM is tiny because it relies heavily on the parent POM to
+  inherit core settings.
+
+- After flattening: The plugin merges the necessary inherited information directly into the
+  child's POM and strips away or simplifies the <parent> pointer
+
+This means your deployed library becomes fully self-contained. A developer downloading your JAR doesn't
+need to fetch your internal corporate parent POM just to read your library's dependency tree.
+```
 ---
 
 
