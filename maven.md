@@ -393,6 +393,8 @@ When you run mvn deploy, Maven reads the <id> from the pom.xml (e.g., my-corp-re
 and securely injects them into the HTTP upload request to your repository manager.
 ```
 ---
+
+
 > 2. maven-source-plugin
 ```text
 Apache Maven Source Plugin is a core Maven plugin used to create a JAR archive containing
@@ -461,6 +463,8 @@ The resulting JAR file will be saved in your project's /target folder with a -so
 ```text
 which apache maven plugin only builds jar without including the source code files in the jar
 ```
+
+
 > 3. maven-jar-plugin
 ```text
 The Apache Maven JAR Plugin (maven-jar-plugin) is the tool responsible for packaging your compiled
@@ -909,3 +913,446 @@ Hello World !
 Hello world
 ```
 ---
+
+### 4. flatten-maven-plugin
+
+```text
+The Flatten Maven Plugin creates a cleaned-up, resolved version of your pom.xml file that Maven
+ installs and deploys instead of your original project file
+```
+> What It Does
+```text
+- Removes build clutter: Strips out build-specific and development-only elements that consumers
+                        of your library do not need.
+- Resolves variables and parents: Evaluates properties, replaces placeholders (like CI-friendly
+                                  ${revision} tags), and flattens parent relationships
+- Publishes clean artifacts: Generates a standard POM file for repositories while letting you
+                             keep advanced build setups locally.
+```
+> Basic Configuration
+```text
+You can add the plugin to your pom.xml inside the build section:
+```
+```xml
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>flatten-maven-plugin</artifactId>
+      <version>1.8.0</version>
+      <executions>
+        <execution>
+          <id>flatten</id>
+          <phase>process-resources</phase>
+          <goals>
+            <goal>flatten</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+```
+
+> Example code
+```xml
+<build>
+  <plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>flatten-maven-plugin</artifactId>
+      <version>1.2.1</version>
+      <configuration>
+           <updatePomFile>true</updatePomFile>
+      </configuration>
+      <executions>
+          <execution>
+              <id>flatten</id>
+              <phase>process-resources</phase>
+              <goals>
+                  <goal>flatten</goal>
+              </goals>
+          </execution>
+          <execution>
+              <id>flatten.clean</id>
+              <phase>clean</phase>
+              <goals>
+                  <goal>clean</goal>
+              </goals>
+          </execution>
+      </executions>
+  </plugin>
+</build>
+```
+```text
+This XML code configures the flatten-maven-plugin, which generates a simplified,
+ "flattened" version of your pom.xml for deployment while keeping your original
+  POM intact for local development.
+
+Here is a breakdown of what each specific part of this configuration does:
+```
+
+##### Key Configuration
+
+```text
+<updatePomFile>true</updatePomFile>: This is a critical setting. By default, the plugin
+ creates a flattened file named .flattened-pom.xml but doesn't force Maven to use it for
+ subsequent build steps on your local machine. Setting this to true tells Maven to actively
+ swap your original pom.xml with the flattened version for the remainder of the build
+ lifecycle (such as during packaging, installation, and deployment)
+```
+
+##### Executions (Automation Steps)
+
+```text
+The plugin is configured to run automatically during two different phases of the Maven lifecycle:
+
+1. id: flatten (Runs during process-resources)
+
+   1. What it does: It triggers the flatten goal early in the build.
+   2. Why it matters: It reads your source pom.xml, resolves all properties, inheritance, and dynamic
+      variables, and generates the flattened POM before your project is packaged into a JAR or WAR file.
+
+2. id: flatten.clean (Runs during clean)
+  
+   1. What it does: It triggers the clean goal
+   2. Why it matters: When you run mvn clean, this step ensures that the temporary .flattened-pom.xml
+      file generated in previous builds is deleted, keeping your project directory clean.
+```
+
+##### Why use this configuration?
+
+```text
+This specific setup is the industry standard for CI-Friendly Versions (using placeholders like
+ ${revision} for project versions). It ensures that your target repository (like Nexus or Artifactory)
+receives a clean POM with hardcoded, resolved version numbers, preventing consumer projects from breaking.
+```
+
+> Execution
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+
+<groupId>guru.springframework</groupId>
+<artifactId>hello-world</artifactId>
+<version>0.0.1-SNAPSHOT</version>
+
+<properties>
+  <java.version>21</java.version>
+  <release.url>file://${project.build.directory}/releases</release.url>
+  <snapshot.url>file://${project.build.directory}/snapshots</snapshot.url>
+</properties>
+
+<distributionManagement>
+        <repository>
+         <id>release</id>
+         <name>Thermofisher release</name>
+         <url>${release.url}</url>
+        </repository>
+        <snapshotRepository>
+                <id>snapshot</id>
+                <name>Thermofisher snapshot</name>
+                <url>${snapshot.url}</url>
+        </snapshotRepository>
+</distributionManagement>
+
+<dependencies>
+<dependency>
+  <groupId>org.apache.commons</groupId>
+  <artifactId>commons-lang3</artifactId>
+  <version>3.20.0</version>
+</dependency>
+</dependencies>
+
+<build>
+        <plugins>
+                <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <version>3.4.2</version>
+                        <configuration>
+                                <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <!-- The fully qualified name of your main class -->
+                            <mainClass>guru.springframework.HelloWorld</mainClass>
+                        </manifest>
+                    </archive>
+                        </configuration>
+                </plugin>
+                <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>3.3.0</version> <!-- Use the latest stable version -->
+            <executions>
+                <execution>
+                    <id>attach-sources</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>jar-no-fork</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+  <plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>flatten-maven-plugin</artifactId>
+      <version>1.2.1</version>
+      <configuration>
+           <updatePomFile>true</updatePomFile>
+      </configuration>
+      <executions>
+          <execution>
+              <id>flatten</id>
+              <phase>process-resources</phase>
+              <goals>
+                  <goal>flatten</goal>
+              </goals>
+          </execution>
+          <execution>
+              <id>flatten.clean</id>
+              <phase>clean</phase>
+              <goals>
+                  <goal>clean</goal>
+              </goals>
+          </execution>
+      </executions>
+</plugin>
+        </plugins>
+</build>
+
+</project>
+```
+```bash
+$ tree -a
+.
+├── pom.xml
+└── src
+    └── main
+        └── java
+            └── guru
+                └── springframework
+                    └── HelloWorld.java
+
+
+$ mvn clean package
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------< guru.springframework:hello-world >------------------
+[INFO] Building hello-world 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.2.0:clean (default-clean) @ hello-world ---
+[INFO]
+[INFO] --- flatten:1.2.1:clean (flatten.clean) @ hello-world ---
+[INFO]
+[INFO] --- resources:3.4.0:resources (default-resources) @ hello-world ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/nagaantarvedi/maven/executable-jar/src/main/resources
+[INFO]
+[INFO] --- flatten:1.2.1:flatten (flatten) @ hello-world ---
+[INFO] Generating flattened POM of project guru.springframework:hello-world:jar:0.0.1-SNAPSHOT...
+[INFO]
+[INFO] --- compiler:3.15.0:compile (default-compile) @ hello-world ---
+[INFO] Recompiling the module because of changed source code.
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file with javac [debug target 1.8] to target/classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[WARNING] source value 8 is obsolete and will be removed in a future release
+[WARNING] target value 8 is obsolete and will be removed in a future release
+[WARNING] To suppress warnings about obsolete options, use -Xlint:-options.
+[INFO]
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ hello-world ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/nagaantarvedi/maven/executable-jar/src/test/resources
+[INFO]
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ hello-world ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- surefire:3.5.4:test (default-test) @ hello-world ---
+[INFO] No tests to run.
+[INFO]
+[INFO] --- jar:3.4.2:jar (default-jar) @ hello-world ---
+[INFO] Building jar: /home/nagaantarvedi/maven/executable-jar/target/hello-world-0.0.1-SNAPSHOT.jar
+[INFO]
+[INFO] --- source:3.3.0:jar-no-fork (attach-sources) @ hello-world ---
+[INFO] Building jar: /home/nagaantarvedi/maven/executable-jar/target/hello-world-0.0.1-SNAPSHOT-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.414 s
+[INFO] Finished at: 2026-09-05T21:30:51+05:30
+[INFO] ------------------------------------------------------------------------
+
+
+
+$ tree -a
+.
+├── .flattened-pom.xml
+├── pom.xml
+├── src
+│   └── main
+│       └── java
+│           └── guru
+│               └── springframework
+│                   └── HelloWorld.java
+└── target
+    ├── classes
+    │   └── guru
+    │       └── springframework
+    │           └── HelloWorld.class
+    ├── generated-sources
+    │   └── annotations
+    ├── hello-world-0.0.1-SNAPSHOT.jar
+    ├── hello-world-0.0.1-SNAPSHOT-sources.jar
+    ├── maven-archiver
+    │   └── pom.properties
+    └── maven-status
+        └── maven-compiler-plugin
+            └── compile
+                └── default-compile
+                    ├── createdFiles.lst
+                    └── inputFiles.lst
+
+
+$ cp -v target/hello-world-0.0.1-SNAPSHOT.jar /tmp/
+'target/hello-world-0.0.1-SNAPSHOT.jar' -> '/tmp/hello-world-0.0.1-SNAPSHOT.jar'
+
+$ unzip -d /tmp/ /tmp/hello-world-0.0.1-SNAPSHOT.jar
+Archive:  /tmp/hello-world-0.0.1-SNAPSHOT.jar
+   creating: /tmp/META-INF/
+  inflating: /tmp/META-INF/MANIFEST.MF
+   creating: /tmp/guru/
+   creating: /tmp/guru/springframework/
+   creating: /tmp/META-INF/maven/
+   creating: /tmp/META-INF/maven/guru.springframework/
+   creating: /tmp/META-INF/maven/guru.springframework/hello-world/
+  inflating: /tmp/guru/springframework/HelloWorld.class
+  inflating: /tmp/META-INF/maven/guru.springframework/hello-world/pom.xml
+  inflating: /tmp/META-INF/maven/guru.springframework/hello-world/pom.properties
+
+
+$ sdiff .flattened-pom.xml /tmp/META-INF/maven/guru.springframework/hello-world/pom.xml
+<?xml version="1.0" encoding="UTF-8"?>                          <?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.   <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>                              <modelVersion>4.0.0</modelVersion>
+  <groupId>guru.springframework</groupId>                         <groupId>guru.springframework</groupId>
+  <artifactId>hello-world</artifactId>                            <artifactId>hello-world</artifactId>
+  <version>0.0.1-SNAPSHOT</version>                               <version>0.0.1-SNAPSHOT</version>
+  <dependencies>                                                  <dependencies>
+    <dependency>                                                    <dependency>
+      <groupId>org.apache.commons</groupId>                           <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>                          <artifactId>commons-lang3</artifactId>
+      <version>3.20.0</version>                                       <version>3.20.0</version>
+      <scope>compile</scope>                                          <scope>compile</scope>
+    </dependency>                                                   </dependency>
+  </dependencies>                                                 </dependencies>
+</project>                                                      </project>
+
+
+
+$ sdiff -s .flattened-pom.xml /tmp/META-INF/maven/guru.springframework/hello-world/pom.xml
+
+
+$ sdiff -s pom.xml /tmp/META-INF/maven/guru.springframework/hello-world/pom.xml
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi= | <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0. |     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<modelVersion>4.0.0</modelVersion>                            |   <modelVersion>4.0.0</modelVersion>
+                                                              |   <groupId>guru.springframework</groupId>
+<groupId>guru.springframework</groupId>                       |   <artifactId>hello-world</artifactId>
+<artifactId>hello-world</artifactId>                          |   <version>0.0.1-SNAPSHOT</version>
+<version>0.0.1-SNAPSHOT</version>                             |   <dependencies>
+                                                              |     <dependency>
+<properties>                                                  |       <groupId>org.apache.commons</groupId>
+  <java.version>21</java.version>                             |       <artifactId>commons-lang3</artifactId>
+  <release.url>file://${project.build.directory}/releases</re |       <version>3.20.0</version>
+  <snapshot.url>file://${project.build.directory}/snapshots</ |       <scope>compile</scope>
+</properties>                                                 |     </dependency>
+                                                              |   </dependencies>
+<distributionManagement>                                      <
+        <repository>                                          <
+         <id>release</id>                                     <
+         <name>Thermofisher release</name>                    <
+         <url>${release.url}</url>                            <
+        </repository>                                         <
+        <snapshotRepository>                                  <
+                <id>snapshot</id>                             <
+                <name>Thermofisher snapshot</name>            <
+                <url>${snapshot.url}</url>                    <
+        </snapshotRepository>                                 <
+</distributionManagement>                                     <
+                                                              <
+<dependencies>                                                <
+<dependency>                                                  <
+  <groupId>org.apache.commons</groupId>                       <
+  <artifactId>commons-lang3</artifactId>                      <
+  <version>3.20.0</version>                                   <
+</dependency>                                                 <
+</dependencies>                                               <
+                                                              <
+<build>                                                       <
+        <plugins>                                             <
+                <plugin>                                      <
+                        <groupId>org.apache.maven.plugins</gr <
+                        <artifactId>maven-jar-plugin</artifac <
+                        <version>3.4.2</version>              <
+                        <configuration>                       <
+                                <archive>                     <
+                        <manifest>                            <
+                            <addClasspath>true</addClasspath> <
+                            <!-- The fully qualified name of  <
+                            <mainClass>guru.springframework.H <
+                        </manifest>                           <
+                    </archive>                                <
+                        </configuration>                      <
+                </plugin>                                     <
+                <plugin>                                      <
+            <groupId>org.apache.maven.plugins</groupId>       <
+            <artifactId>maven-source-plugin</artifactId>      <
+            <version>3.3.0</version> <!-- Use the latest stab <
+            <executions>                                      <
+                <execution>                                   <
+                    <id>attach-sources</id>                   <
+                    <phase>package</phase>                    <
+                    <goals>                                   <
+                        <goal>jar-no-fork</goal>              <
+                    </goals>                                  <
+                </execution>                                  <
+            </executions>                                     <
+        </plugin>                                             <
+  <plugin>                                                    <
+      <groupId>org.codehaus.mojo</groupId>                    <
+      <artifactId>flatten-maven-plugin</artifactId>           <
+      <version>1.2.1</version>                                <
+      <configuration>                                         <
+           <updatePomFile>true</updatePomFile>                <
+      </configuration>                                        <
+      <executions>                                            <
+          <execution>                                         <
+              <id>flatten</id>                                <
+              <phase>process-resources</phase>                <
+              <goals>                                         <
+                  <goal>flatten</goal>                        <
+              </goals>                                        <
+          </execution>                                        <
+          <execution>                                         <
+              <id>flatten.clean</id>                          <
+              <phase>clean</phase>                            <
+              <goals>                                         <
+                  <goal>clean</goal>                          <
+              </goals>                                        <
+          </execution>                                        <
+      </executions>                                           <
+</plugin>                                                     <
+        </plugins>                                            <
+</build>                                                      <
+                                                              <
+
+```
+---
+
+
+
