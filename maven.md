@@ -1009,8 +1009,9 @@ The plugin is configured to run automatically during two different phases of the
 1. id: flatten (Runs during process-resources)
 
    1. What it does: It triggers the flatten goal early in the build.
-   2. Why it matters: It reads your source pom.xml, resolves all properties, inheritance, and dynamic
-      variables, and generates the flattened POM before your project is packaged into a JAR or WAR file.
+   2. Why it matters: It reads your source pom.xml, resolves all properties, inheritance, and
+      dynamic variables, and generates the flattened POM before your project is packaged into
+      a JAR or WAR file.
 
 2. id: flatten.clean (Runs during clean)
   
