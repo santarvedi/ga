@@ -1024,8 +1024,9 @@ The plugin is configured to run automatically during two different phases of the
 
 ```text
 This specific setup is the industry standard for CI-Friendly Versions (using placeholders like
- ${revision} for project versions). It ensures that your target repository (like Nexus or Artifactory)
-receives a clean POM with hardcoded, resolved version numbers, preventing consumer projects from breaking.
+ ${revision} for project versions). It ensures that your target repository (like Nexus or
+ Artifactory) receives a clean POM with hardcoded, resolved version numbers, preventing consumer
+ projects from breaking.
 ```
 
 > Execution
