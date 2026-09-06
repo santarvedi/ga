@@ -1588,4 +1588,131 @@ build tools expect it.
     file named .flattened-pom.xml from your project's root folder, copies it into the /target folder,
     and renames it to pom.xml
   ```
+
+  > Execution
+  
+  ```bash
+  $ cat pom.xml  <!-- only ant-run code snippet -->
+  ```
+  ```xml
+  #pom.xml
+      <!-- Ant-run -->
+<build>
+ <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-antrun-plugin</artifactId>
+    <version>1.8</version>
+    <executions>
+        <execution>
+        <id>copy-flattened-pom</id>
+        <phase>package</phase>
+        <configuration>
+            <target>
+                <mkdir dir="${basedir}/target"/>
+                <copy file=".flattened-pom.xml" toFile="${basedir}/target/pom.xml"/>
+            </target>
+        </configuration>
+        <goals>
+            <goal>run</goal>
+        </goals>
+        </execution>
+    </executions>
+  </plugin>
+</build>
+  ```
+  ```bash
+  $ mvn clean package
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------< guru.springframework:hello-world >------------------
+[INFO] Building hello-world 1.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.2.0:clean (default-clean) @ hello-world ---
+[INFO] Deleting /home/nagaantarvedi/maven/executable-jar/target
+[INFO]
+[INFO] --- flatten:1.2.1:clean (flatten.clean) @ hello-world ---
+[INFO] Deleting /home/nagaantarvedi/maven/executable-jar/.flattened-pom.xml
+[INFO]
+[INFO] --- resources:3.4.0:resources (default-resources) @ hello-world ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/nagaantarvedi/maven/executable-jar/src/main/resources
+[INFO]
+[INFO] --- flatten:1.2.1:flatten (flatten) @ hello-world ---
+[INFO] Generating flattened POM of project guru.springframework:hello-world:jar:1.0.1-SNAPSHOT...
+[INFO]
+[INFO] --- compiler:3.15.0:compile (default-compile) @ hello-world ---
+[INFO] Recompiling the module because of changed source code.
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file with javac [debug target 1.8] to target/classes
+[WARNING] bootstrap class path not set in conjunction with -source 8
+[WARNING] source value 8 is obsolete and will be removed in a future release
+[WARNING] target value 8 is obsolete and will be removed in a future release
+[WARNING] To suppress warnings about obsolete options, use -Xlint:-options.
+[INFO]
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ hello-world ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/nagaantarvedi/maven/executable-jar/src/test/resources
+[INFO]
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ hello-world ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- surefire:3.5.4:test (default-test) @ hello-world ---
+[INFO] No tests to run.
+[INFO]
+[INFO] --- jar:3.4.2:jar (default-jar) @ hello-world ---
+[INFO] Building jar: /home/nagaantarvedi/maven/executable-jar/target/hello-world-1.0.1-SNAPSHOT.jar
+[INFO]
+[INFO] --- source:3.3.0:jar-no-fork (attach-sources) @ hello-world ---
+[INFO] Building jar: /home/nagaantarvedi/maven/executable-jar/target/hello-world-1.0.1-SNAPSHOT-sources.jar
+[INFO]
+[INFO] --- antrun:1.8:run (copy-flattened-pom) @ hello-world ---
+[INFO] Executing tasks
+
+main:
+     [copy] Copying 1 file to /home/nagaantarvedi/maven/executable-jar/target
+[INFO] Executed tasks
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.713 s
+[INFO] Finished at: 2026-09-06T13:42:52+05:30
+[INFO] ------------------------------------------------------------------------
+
+
+$ tree -a
+.
+├── .flattened-pom.xml
+├── pom.xml
+├── src
+│   └── main
+│       └── java
+│           └── guru
+│               └── springframework
+│                   └── HelloWorld.java
+└── target
+    ├── antrun
+    │   └── build-main.xml
+    ├── classes
+    │   └── guru
+    │       └── springframework
+    │           └── HelloWorld.class
+    ├── generated-sources
+    │   └── annotations
+    ├── hello-world-1.0.1-SNAPSHOT.jar
+    ├── hello-world-1.0.1-SNAPSHOT-sources.jar
+    ├── maven-archiver
+    │   └── pom.properties
+    ├── maven-status
+    │   └── maven-compiler-plugin
+    │       └── compile
+    │           └── default-compile
+    │               ├── createdFiles.lst
+    │               └── inputFiles.lst
+    └── pom.xml
+
+$ sdiff -s .flattened-pom.xml target/pom.xml
+$
+```
   ---
