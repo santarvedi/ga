@@ -1478,7 +1478,7 @@ $ cat .flattened-pom.xml
 ```
 ---
 
-### maven-antrun-plugin
+### 5. maven-antrun-plugin
 
 ```text
 The <maven-antrun-plugin> is a core Apache Maven plugin that allows you to execute
