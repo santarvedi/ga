@@ -1478,5 +1478,114 @@ $ cat .flattened-pom.xml
 ```
 ---
 
+### maven-antrun-plugin
 
+```text
+The <maven-antrun-plugin> is a core Apache Maven plugin that allows you to execute
+ Apache Ant tasks directly from within a Maven build. It is highly useful for
+ migrating projects from Ant to Maven or handling complex, custom build steps that
+ standard Maven plugins do not support out of the box.
+```
 
+##### Key Configuration & Usage
+
+```text
+To use the plugin, you add it to the <plugins> block of your pom.xml. You tie the plugin's
+run goal to a specific Maven lifecycle phase and define your Ant tasks inside the <target> tag
+```
+
+###### Basic Example
+
+```text
+Below is a standard configuration that prints a message during the compile phase:
+```
+```xml
+<project>
+    ...
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>ant-echo</id>
+                        <!-- Bind to a Maven lifecycle phase -->
+                        <phase>compile</phase> 
+                        <configuration>
+                            <!-- Define your Ant tasks here -->
+                            <target>
+                                <echo message="Hello from the Maven AntRun Plugin!"/>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+```
+
+##### Explain Code Snippet
+```xml
+<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <id>copy-flattened-pom</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <target>
+                                <mkdir dir="${basedir}/target"/>
+                                <copy file=".flattened-pom.xml" toFile="${basedir}/target/pom.xml"/>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+```
+```text
+This Maven configuration uses the <maven-antrun-plugin> to copy and rename a flattened
+ POM file into the project's target directory during the package build phase.
+
+This is a common pattern when using plugins like flatten-maven-plugin to ensure that the
+ simplified, deployment-ready version of your pom.xml is placed exactly where standard
+build tools expect it.
+```
+
+###### Step-by-Step Breakdown
+
+```text
+- <plugin> Identification: It loads version 1.8 of the official Apache maven-antrun-plugin.
+- <id>copy-flattened-pom: A custom, human-readable name given to this specific execution
+  block to distinguish it from other Ant tasks in the same project
+- <phase>package: This specifies when the code runs. It Hooks into the package phase of
+  the Maven lifecycle, meaning these tasks execute right after the project's main code is
+  compiled and packaged into a JAR/WAR file
+- <goals><goal>run</goal></goals>: Instructs Maven to execute the run goal of the plugin,
+  which triggers the inner Ant script.
+  ```
+
+  ###### Inside the <target> (The Ant Tasks)
+
+  ```text
+  The actual operations happen sequentially inside the <target> block:
+
+  1. <mkdir dir="${basedir}/target"/>Ensures that the output build directory (/target) exists.
+   ${basedir} is a built-in Maven property pointing to the root directory of your project module.
+   If the directory already exists, Ant safely skips this step without an error.
+
+  2. <copy file=".flattened-pom.xml" toFile="${basedir}/target/pom.xml"/>Takes an existing hidden
+    file named .flattened-pom.xml from your project's root folder, copies it into the /target folder,
+    and renames it to pom.xml
+  ```
+  ---
