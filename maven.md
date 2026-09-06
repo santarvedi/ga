@@ -186,7 +186,7 @@ local apps
 
 ### Build Plugins
 
-> 1. maven-deploy-plugin
+### 1. maven-deploy-plugin
 ```text
 The Apache Maven Deploy Plugin uploads build artifacts to a remote repository like Nexus or Artifactory
  during the deploy phase of the build lifecycle. It requires target server credentials and repository
@@ -395,7 +395,8 @@ and securely injects them into the HTTP upload request to your repository manage
 ---
 
 
-> 2. maven-source-plugin
+### 2. maven-source-plugin
+
 ```text
 Apache Maven Source Plugin is a core Maven plugin used to create a JAR archive containing
  the source code files (.java) of your project. This is typically done alongside your main
@@ -464,8 +465,8 @@ The resulting JAR file will be saved in your project's /target folder with a -so
 which apache maven plugin only builds jar without including the source code files in the jar
 ```
 
+### 3. maven-jar-plugin
 
-> 3. maven-jar-plugin
 ```text
 The Apache Maven JAR Plugin (maven-jar-plugin) is the tool responsible for packaging your compiled
  Java class files and resources into a final JAR file without including the raw .java source code
@@ -1461,7 +1462,7 @@ $ mvn clean package -Drevision=2.4.1-198
 $ cat .flattened-pom.xml
 
   <!-- Trucated few lines -->
-  
+
   <groupId>guru.springframework</groupId>
   <artifactId>hello-world</artifactId>
   <version>2.4.1-198</version>
