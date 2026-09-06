@@ -1412,6 +1412,69 @@ In multi-module projects, child modules inherit dependencies, plugins, and confi
 This means your deployed library becomes fully self-contained. A developer downloading your JAR doesn't
 need to fetch your internal corporate parent POM just to read your library's dependency tree.
 ```
+
+> Override revision using CLI (or) CI/CD.
+```text
+pom.xml targetting revision
+```
+```xml
+<groupId>guru.springframework</groupId>
+<artifactId>hello-world</artifactId>
+<version>${revision}</version>
+
+<properties>
+  <revision>1.0.1-SNAPSHOT</revision>
+  <java.version>21</java.version>
+  <release.url>file://${project.build.directory}/releases</release.url>
+  <snapshot.url>file://${project.build.directory}/snapshots</snapshot.url>
+</properties>
+```
+```bash
+$ mvn clean package  
+
+# above produces following .flattened-pom.xml
+$ cat .flattened-pom.xml
+  
+  <!-- Trucated few lines -->
+
+  <groupId>guru.springframework</groupId>
+  <artifactId>hello-world</artifactId>
+  <version>1.0.1-SNAPSHOT</version>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.20.0</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+</project>
+
+```
+```text
+Withs same pom.xml file, passing a revision using command line
+```
+```bash
+$ mvn clean package -Drevision=2.4.1-198
+
+#Above revision override from cmdline produces following .flattened-pom.xml
+$ cat .flattened-pom.xml
+
+  <!-- Trucated few lines -->
+  
+  <groupId>guru.springframework</groupId>
+  <artifactId>hello-world</artifactId>
+  <version>2.4.1-198</version>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.20.0</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+</project>
+```
 ---
 
 
