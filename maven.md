@@ -1533,25 +1533,25 @@ Below is a standard configuration that prints a message during the compile phase
 ##### Explain Code Snippet
 ```xml
 <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.8</version>
-                <executions>
-                    <execution>
-                        <id>copy-flattened-pom</id>
-                        <phase>package</phase>
-                        <configuration>
-                            <target>
-                                <mkdir dir="${basedir}/target"/>
-                                <copy file=".flattened-pom.xml" toFile="${basedir}/target/pom.xml"/>
-                            </target>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-antrun-plugin</artifactId>
+    <version>1.8</version>
+    <executions>
+        <execution>
+        <id>copy-flattened-pom</id>
+        <phase>package</phase>
+        <configuration>
+            <target>
+                <mkdir dir="${basedir}/target"/>
+                <copy file=".flattened-pom.xml" toFile="${basedir}/target/pom.xml"/>
+            </target>
+        </configuration>
+        <goals>
+            <goal>run</goal>
+        </goals>
+        </execution>
+    </executions>
+</plugin>
 ```
 ```text
 This Maven configuration uses the <maven-antrun-plugin> to copy and rename a flattened
