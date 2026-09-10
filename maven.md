@@ -96,6 +96,42 @@ The default lifecycle handles the actual compilation and distribution of your co
           production environments
 ```
 
+```text
+The default build lifecycle in Apache Maven executes in a strict, sequential order from project
+ validation through final deployment.
+```
+
+##### Default Lifecycle Phases Sequence
+```text
+Here is the exact order of the primary phases in the Maven default lifecycle:
+
+- validate: Checks if all project information and configurations (pom.xml) are correct 
+            and available
+- initialize: Sets up build state, like property initialization or directory creation.
+- generate-sources: Creates any source code needed before compilation.
+- process-sources: Filters or processes the source code
+- generate-resources: Creates resources for inclusion in the package.
+- process-resources: Copies and filters resources into the output directory.
+- compile: Compiles the main project source code (src/main/java) into class files.
+- process-classes: Post-processes compiled files (e.g., bytecode enhancement)
+- generate-test-sources: Generates test source code.
+- process-test-sources: Processes test source code.
+- generate-test-resources: Creates resources for tests.
+- process-test-resources: Copies test resources into the test output directory.
+- test-compile: Compiles the test source code (src/test/java).
+- test: Runs unit tests via a testing framework like Surefire.
+- prepare-package: Performs necessary operations before packaging.
+- package: Takes compiled code and packages it into a distributable format like a JAR or WAR.
+- pre-integration-test: Runs tasks required before integration tests
+- integration-test: Deploys and runs integration tests if needed.
+- post-integration-test: Performs cleanup after integration tests
+- verify: Runs quality checks to ensure the package is valid.
+- install: Installs the final package into your local Maven repository (.m2) for use by other
+           local projects.
+- deploy: Copies the final package to a remote repository for sharing with other developers and teams
+```
+
+
 ##### 2. The Clean Lifecycle
 
 ```text
