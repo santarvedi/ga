@@ -1031,11 +1031,19 @@ Here is a breakdown of what each specific part of this configuration does:
 ##### Key Configuration
 
 ```text
-<updatePomFile>true</updatePomFile>: This is a critical setting. By default, the plugin
- creates a flattened file named .flattened-pom.xml but doesn't force Maven to use it for
- subsequent build steps on your local machine. Setting this to true tells Maven to actively
- swap your original pom.xml with the flattened version for the remainder of the build
- lifecycle (such as during packaging, installation, and deployment)
+<configuration><updatePomFile>true</updatePomFile></configuration> is redundant
+ in the flatten-maven-plugin because true is already the default value for
+the <updatePomFile> parameter.
+```
+
+###### Why it's redundant
+```text
+By default, the plugin automatically updates your project's pom.xml file during the
+ build execution so that subsequent build steps (like maven-install-plugin
+ or maven-deploy-plugin) use the flattened version of the POM instead of the original
+ one.You only need to explicitly declare this property if you want to disable it by
+ setting it to false (e.g., if you only want to generate the flattened POM file without
+ actually applying it to the current build lifecycle).
 ```
 
 ##### Executions (Automation Steps)
