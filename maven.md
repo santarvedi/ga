@@ -1822,7 +1822,7 @@ The Compiler Plugin is used to compile the sources of your project. The default 
 The Compiler Plugin has two goals. Both are already bound to their proper phases within the
  Maven Lifecycle and are therefore, automatically executed during their respective phases.
 
-- compiler:compile is bound to the compile phase and is used to compile the main source files
+- compiler:compile     is bound to the compile phase and is used to compile the main source files
 - compiler:testCompile is bound to the test-compile phase and is used to compile the test
   source files.
 ```
@@ -1842,5 +1842,5 @@ $ mvn compile
 $ mvn test-compile
 #
 # The Above command will execute both compiler:compile and compiler:testCompile since the
-#  compile phase happens a few phases before the test-compile phase.
+# compile phase happens a few phases before the test-compile phase.
 ```
