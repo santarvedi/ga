@@ -1807,4 +1807,43 @@ $ tree -a
 $ sdiff -s .flattened-pom.xml target/pom.xml
 $
 ```
-  ---
+---
+
+### 5. maven-compiler-plugin
+
+> Apache Maven Compiler Plugin
+```text
+The Compiler Plugin is used to compile the sources of your project. The default compiler
+ used to compile Java sources is javac
+```
+
+> Goals Overview
+```text
+The Compiler Plugin has two goals. Both are already bound to their proper phases within the
+ Maven Lifecycle and are therefore, automatically executed during their respective phases.
+
+- compiler:compile is bound to the compile phase and is used to compile the main source files
+- compiler:testCompile is bound to the test-compile phase and is used to compile the test
+  source files.
+```
+
+> Usage
+> Compiling Your Java Sources
+```text
+The goals for the Compiler Plugin are bound to their respective phases in the build lifecycle.
+ So to compile your sources, you need only to tell maven until which lifecycle to execute.
+```
+```text
+The following will compile your sources:
+```
+```bash
+mvn compile
+```
+```text
+To compile your test sources, you'll do:
+The command will execute both compiler:compile and compiler:testCompile since the compile
+ hase happens a few phases before the test-compile phase.
+```
+```bash
+mvn test-compile
+```
