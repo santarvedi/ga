@@ -1829,21 +1829,18 @@ The Compiler Plugin has two goals. Both are already bound to their proper phases
 
 > Usage
 > Compiling Your Java Sources
-```text
-The goals for the Compiler Plugin are bound to their respective phases in the build lifecycle.
- So to compile your sources, you need only to tell maven until which lifecycle to execute.
-```
-```text
-The following will compile your sources:
-```
-```bash
-mvn compile
-```
-```text
-To compile your test sources, you'll do:
-The command will execute both compiler:compile and compiler:testCompile since the compile
- hase happens a few phases before the test-compile phase.
-```
-```bash
-mvn test-compile
+```bash 
+# The goals for the Compiler Plugin are bound to their respective phases in the build lifecycle.
+# So to compile your sources, you need only to tell maven until which lifecycle to execute.
+
+# The following will compile your sources:
+#
+$ mvn compile
+
+# To compile your test sources, you'll do:
+#
+$ mvn test-compile
+#
+# The Above command will execute both compiler:compile and compiler:testCompile since the
+#  compile phase happens a few phases before the test-compile phase.
 ```
