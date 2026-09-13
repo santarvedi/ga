@@ -1844,3 +1844,242 @@ $ mvn test-compile
 # The Above command will execute both compiler:compile and compiler:testCompile since the
 # compile phase happens a few phases before the test-compile phase.
 ```
+
+> mvn compiler:compile
+```bash
+$ mvn compiler:compile
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------< guru.springframework:hello-world >------------------
+[INFO] Building hello-world 1.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- compiler:3.15.0:compile (default-cli) @ hello-world ---
+[INFO] Recompiling the module because of changed source code.
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file with javac [debug release 21] to target/classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.943 s
+[INFO] Finished at: 2026-09-13T09:12:18+05:30
+[INFO] ------------------------------------------------------------------------
+
+$ tree -a
+.
+├── pom.xml
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── guru
+│   │   │       └── springframework
+│   │   │           └── HelloWorld.java
+│   │   └── resources
+│   │       └── application.properties
+│   └── test
+│       └── java
+│           └── HelloWorldTest.java
+└── target
+    ├── classes
+    │   └── guru
+    │       └── springframework
+    │           └── HelloWorld.class   <!--COMPILES ONLY SOURCE -->
+    ├── generated-sources
+    │   └── annotations
+    └── maven-status
+        └── maven-compiler-plugin
+            └── compile
+                └── default-cli
+                    ├── createdFiles.lst
+                    └── inputFiles.lst
+```
+
+> mvn compiler:testCompile
+```bash
+
+$ mvn compiler:testCompile
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------< guru.springframework:hello-world >------------------
+[INFO] Building hello-world 1.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- compiler:3.15.0:testCompile (default-cli) @ hello-world ---
+[INFO] Recompiling the module because of changed source code.
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file with javac [debug release 21] to target/test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.883 s
+[INFO] Finished at: 2026-09-13T09:15:50+05:30
+[INFO] ------------------------------------------------------------------------
+
+
+$ tree -a
+.
+├── pom.xml
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── guru
+│   │   │       └── springframework
+│   │   │           └── HelloWorld.java
+│   │   └── resources
+│   │       └── application.properties
+│   └── test
+│       └── java
+│           └── HelloWorldTest.java
+└── target
+    ├── generated-test-sources
+    │   └── test-annotations
+    ├── maven-status
+    │   └── maven-compiler-plugin
+    │       └── testCompile
+    │           └── default-cli
+    │               ├── createdFiles.lst
+    │               └── inputFiles.lst
+    └── test-classes
+        └── HelloWorldTest.class               <!--COMPILES ONLY TEST-SOURCE -->
+```
+
+> mvn compile
+```bash
+$ mvn compile
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------< guru.springframework:hello-world >------------------
+[INFO] Building hello-world 1.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.4.0:resources (default-resources) @ hello-world ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO]
+[INFO] --- flatten:1.2.1:flatten (flatten) @ hello-world ---
+[INFO] Generating flattened POM of project guru.springframework:hello-world:jar:1.0.1-SNAPSHOT...
+[INFO]
+[INFO] --- compiler:3.15.0:compile (default-compile) @ hello-world ---
+[INFO] Recompiling the module because of changed source code.
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file with javac [debug release 21] to target/classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.309 s
+[INFO] Finished at: 2026-09-13T09:19:52+05:30
+[INFO] ------------------------------------------------------------------------
+
+
+$ tree -a
+.
+├── .flattened-pom.xml                       <!-- process-resources -->
+├── pom.xml
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── guru
+│   │   │       └── springframework
+│   │   │           └── HelloWorld.java
+│   │   └── resources
+│   │       └── application.properties
+│   └── test
+│       └── java
+│           └── HelloWorldTest.java
+└── target
+    ├── classes
+    │   ├── application.properties           <!-- process-resources -->
+    │   └── guru
+    │       └── springframework
+    │           └── HelloWorld.class         <!-- compiler:compile -->
+    ├── generated-sources
+    │   └── annotations
+    └── maven-status
+        └── maven-compiler-plugin
+            └── compile
+                └── default-compile
+                    ├── createdFiles.lst
+                    └── inputFiles.lst
+```
+
+> mvn test-compile
+```bash
+
+$ mvn test-compile
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------< guru.springframework:hello-world >------------------
+[INFO] Building hello-world 1.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.4.0:resources (default-resources) @ hello-world ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO]
+[INFO] --- flatten:1.2.1:flatten (flatten) @ hello-world ---
+[INFO] Generating flattened POM of project guru.springframework:hello-world:jar:1.0.1-SNAPSHOT...
+[INFO]
+[INFO] --- compiler:3.15.0:compile (default-compile) @ hello-world ---
+[INFO] Recompiling the module because of changed source code.
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file with javac [debug release 21] to target/classes
+[INFO]
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ hello-world ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/nagaantarvedi/maven/executable-jar/src/test/resources
+[INFO]
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ hello-world ---
+[INFO] Recompiling the module because of changed dependency.
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file with javac [debug release 21] to target/test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.439 s
+[INFO] Finished at: 2026-09-13T09:27:03+05:30
+[INFO] ------------------------------------------------------------------------
+
+$ tree -a
+.
+├── .flattened-pom.xml                            <!-- process-resources -->
+├── pom.xml
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── guru
+│   │   │       └── springframework
+│   │   │           └── HelloWorld.java
+│   │   └── resources
+│   │       └── application.properties
+│   └── test
+│       └── java
+│           └── HelloWorldTest.java
+└── target
+    ├── classes
+    │   ├── application.properties               <!-- process-resources -->   
+    │   └── guru
+    │       └── springframework
+    │           └── HelloWorld.class             <!-- compiler:compile -->
+    ├── generated-sources
+    │   └── annotations
+    ├── generated-test-sources
+    │   └── test-annotations
+    ├── maven-status
+    │   └── maven-compiler-plugin
+    │       ├── compile
+    │       │   └── default-compile
+    │       │       ├── createdFiles.lst
+    │       │       └── inputFiles.lst
+    │       └── testCompile
+    │           └── default-testCompile
+    │               ├── createdFiles.lst
+    │               └── inputFiles.lst
+    └── test-classes
+        └── HelloWorldTest.class               <!-- compiler:testCompile -->
+```
+---
+
