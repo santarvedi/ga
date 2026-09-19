@@ -1,6 +1,6 @@
 #!/bin/bash -
 echo ""
 echo "---------------"
-for i in (1..10);do
+for i in Alpha Beta Gamma Naga;do
 echo $i
 done
