@@ -7,4 +7,14 @@ jobs:
       - name: Welcome
         run: echo "Welcome... Srinivas"
       - name: GoodBye
-        run: echo "GoodBye... Srinivas" 
+        run: echo "GoodBye... Srinivas"
+      - name: Using bash
+        shell: bash
+        run:  |
+          echo "----------"
+          echo ""
+          uname -a
+          echo ""
+          cat /etc/*release*
+          echo ""
+          echo "-----------"
