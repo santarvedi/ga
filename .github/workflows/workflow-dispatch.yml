@@ -7,8 +7,12 @@ jobs:
       - name: Welcome
         run: echo "Welcome... Srinivas"
       - name: GoodBye
-        run: echo "GoodBye... Srinivas"
-      - name: Using bash
+        run: echo "This is single bash commands"
+      - name: Multiple bash commands without shell definition
+        run: |
+          echo "Hi"
+          echo "This is multiple bash commands"
+      - name: Using bash shell explicitely
         shell: bash
         run:  |
           echo "----------"
