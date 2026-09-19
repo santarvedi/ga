@@ -24,3 +24,14 @@ jobs:
           cat /etc/*release*
           echo ""
           echo "-----------"
+# Running a script that is stored in the repository.
+# For this
+# 1. checout the code to the runner first
+# 2. execute the script.             
+      - name: checkout
+        uses: actions/checkout@4
+      - name: execute the script
+        shell: bash
+        run:  |
+          chmod +x .github/scripts/myTestScript.sh
+          ./.github/scripts/myTestScript.sh
