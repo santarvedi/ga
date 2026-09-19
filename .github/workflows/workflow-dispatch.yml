@@ -33,5 +33,4 @@ jobs:
       - name: execute the script
         shell: bash
         run:  |
-          chmod +x .github/scripts/myTestScript.sh
-          ./.github/scripts/myTestScript.sh
+          bash ./.github/scripts/myTestScript.sh
