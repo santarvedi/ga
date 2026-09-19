@@ -13,6 +13,8 @@ jobs:
         run:  |
           echo "----------"
           echo ""
+          dmidecode -t 1
+          echo ""
           uname -a
           echo ""
           cat /etc/*release*
