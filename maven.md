@@ -1826,9 +1826,8 @@ The Compiler Plugin is used to compile the sources of your project. The default 
 > - `compiler:testCompile` is bound to the test-compile phase and is used to compile the test
 >  source files.
 >
-> ###### Usage  
->
-> ###### Compiling Your Java Sources
+> ##### Usage:  
+> ###### Compiling Your Java Sources  
 >
 > The goals for the Compiler Plugin are bound to their respective phases in the build lifecycle.
 > So to compile your sources, you need only to tell maven until which lifecycle to execute.
