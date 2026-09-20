@@ -2082,4 +2082,7 @@ $ tree -a
         └── HelloWorldTest.class               <!-- compiler:testCompile -->
 ```
 ---
-
+> \[!NOTE]
+>
+>  ${revision} vs ${project.version}
+> 
