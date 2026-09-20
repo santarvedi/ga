@@ -1812,20 +1812,18 @@ $
 ### 5. maven-compiler-plugin
 
 > Apache Maven Compiler Plugin 
- 
+
 The Compiler Plugin is used to compile the sources of your project. The default compiler
  used to compile Java sources is javac
 
 
 > \[!NOTE]
 > 
->  
->
 > The Compiler Plugin has two goals. Both are already bound to their proper phases within the
 > Maven Lifecycle and are therefore, automatically executed during their respective phases.
 >
-> - compiler:compile     is bound to the compile phase and is used to compile the main source files
-> - compiler:testCompile is bound to the test-compile phase and is used to compile the test
+> - `compiler:compile`     is bound to the compile phase and is used to compile the main source files
+> - `compiler:testCompile` is bound to the test-compile phase and is used to compile the test
 >  source files.
 
 
