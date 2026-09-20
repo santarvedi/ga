@@ -40,6 +40,7 @@ jobs:
           echo "WORKSPACE: ${{ github.workspace }}"
           echo "ENV: $GITHUB_WORKSPACE "
           echo $GITHUB_WORKSPACE
+          echo "GITHUB_SHA: $GITHUB_SHA"
       - name: execute the script
         shell: bash
         run:  |
