@@ -27,8 +27,8 @@
 >```
 > Resulting location: `/path/to/actions-runner/_work/<repository-name>/my-custom-folder`
 >
->  ##### A Critical Difference: ${{ github.workspace }} vs $GITHUB_WORKSPACE
 >
+>  ##### A Critical Difference: ${{ github.workspace }} vs $GITHUB_WORKSPACE
 ```bash
 __________________________________________________________________________________
 Feature         ${{ github.workspace }}            $GITHUB_WORKSPACE     
