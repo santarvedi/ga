@@ -34,3 +34,9 @@ jobs:
         shell: bash
         run:  |
           bash ./.github/scripts/myTestScript.sh
+      - name: Directory - code checked out
+        shell: bash
+        run:  |
+          echo "WORKSPACE: ${{ github.workspace }}"
+          echo "ENV: $GITHUB_WORKSPACE "
+          echo $GITHUB_WORKSPACE
