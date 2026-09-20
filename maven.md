@@ -1833,10 +1833,10 @@ The Compiler Plugin is used to compile the sources of your project. The default 
 > The goals for the Compiler Plugin are bound to their respective phases in the build lifecycle.
 > So to compile your sources, you need only to tell maven until which lifecycle to execute.
 >
-> The following will compile your sources:
+> The following will compile your sources:  
 > `mvn compile`
 >
-> To compile your test sources, you'll do:
+> To compile your test sources, you'll do:  
 > `mvn test-compile`
 >
 > The Above command will execute both compiler:compile and compiler:testCompile since the
