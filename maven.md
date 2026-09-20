@@ -1840,6 +1840,7 @@ The Compiler Plugin is used to compile the sources of your project. The default 
 >
 > The Above command will execute both compiler:compile and compiler:testCompile since the
 > compile phase happens a few phases before the test-compile phase.
+>
 
 
 >  `mvn compiler:compile`
