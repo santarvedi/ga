@@ -1842,7 +1842,7 @@ The Compiler Plugin is used to compile the sources of your project. The default 
 > compile phase happens a few phases before the test-compile phase.
 
 
-> mvn compiler:compile
+> `mvn compiler:compile`
 ```bash
 $ mvn compiler:compile
 [INFO] Scanning for projects...
