@@ -20,7 +20,7 @@
 >
 >If you prefer the code to be placed somewhere else (for instance, if you are running concurrent jobs or need a cleaner directory structure), you can customize it using the path parameter in the checkout action:
 >
->\- name: Checkout code
+> - name: Checkout code
 >   uses: actions/checkout@v4
 >   with:
 >     path: 'my-custom-folder'
