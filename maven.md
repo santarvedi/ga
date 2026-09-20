@@ -1816,9 +1816,9 @@ The Compiler Plugin is used to compile the sources of your project. The default 
  used to compile Java sources is javac
 
 
-\[!NOTE]
+> \[!NOTE]
 > 
-> `Goals Overview`
+>  `Goals Overview`
 >
 > The Compiler Plugin has two goals. Both are already bound to their proper phases within the
 > Maven Lifecycle and are therefore, automatically executed during their respective phases.
