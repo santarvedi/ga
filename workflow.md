@@ -30,5 +30,5 @@
 > ##### A Critical Difference: ${{ github.workspace }} vs $GITHUB_WORKSPACE
 >
 > Feature          ${{ github.workspace }}          $GITHUB_WORKSPACE     
->                   (GitHub Context)                 (Shell Env Var)  
+>                  (GitHub Context)                 (Shell Env Var)
 >---
