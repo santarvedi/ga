@@ -19,10 +19,10 @@
 > ##### Customizing the Checkout Location
 >
 >If you prefer the code to be placed somewhere else (for instance, if you are running concurrent jobs or need a cleaner directory structure), you can customize it using the path parameter in the checkout action:
-```yaml
-- name: Checkout code
-  uses: actions/checkout@v4
-  with:
-    path: 'my-custom-folder'
-```
+>
+>\- name: Checkout code
+>   uses: actions/checkout@v4
+>   with:
+>     path: 'my-custom-folder'
+>
 > Resulting location: `/path/to/actions-runner/_work/<repository-name>/my-custom-folder`
