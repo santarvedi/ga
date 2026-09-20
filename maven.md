@@ -1816,7 +1816,7 @@ The Compiler Plugin is used to compile the sources of your project. The default 
  used to compile Java sources is javac
 
 
-> \[!Goals Overview]
+> \[!NOTE]
 > 
 >  
 >
