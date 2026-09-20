@@ -30,13 +30,18 @@ jobs:
 # 2. execute the script.             
       - name: checkout
         uses: actions/checkout@v4
-      - name: execute the script
-        shell: bash
-        run:  |
-          bash ./.github/scripts/myTestScript.sh
+      # - name: execute the script
+      #   shell: bash
+      #   run:  |
+      #     bash ./.github/scripts/myTestScript.sh
       - name: Directory - code checked out
         shell: bash
         run:  |
           echo "WORKSPACE: ${{ github.workspace }}"
           echo "ENV: $GITHUB_WORKSPACE "
           echo $GITHUB_WORKSPACE
+      - name: execute the script
+        shell: bash
+        run: |
+          cd ${{ github.workspace }}/.github/scripts
+          bash myTestScript.sh
