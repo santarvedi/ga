@@ -30,9 +30,20 @@
 >  ##### A Critical Difference: ${{ github.workspace }} vs $GITHUB_WORKSPACE
 >
 ```bash
-Feature          ${{ github.workspace }}          $GITHUB_WORKSPACE     
-                   (GitHub Context)                 (Shell Env Var)
----
+__________________________________________________________________________________
+Feature         ${{ github.workspace }}            $GITHUB_WORKSPACE     
+                (GitHub Context)                   (Shell Env Var)
+___________________________________________________________________________________
+Who            GitHub's engine before the          The runner's operating system
+evaluates      script is sent to the runner.       shell (bash, cmd, powershell)
+it?                                                during execution.
+____________________________________________________________________________________
+Where to        Anywhere in the YAML               Strictly inside a `run:` block
+use it?        ( `with:`, `env:`, `if:`, `name:`)
+_____________________________________________________________________________________
+Syntax          Always wrapped in ${{ }}            Depends on OS:
+                                                    $GITHUB_WORKSPACE (Linux/MacOS)
+                                                    $env.GITHUB_WORKSPACE(PowerShell)
+______________________________________________________________________________________
 ```
->
 ---
