@@ -1892,9 +1892,9 @@ $ tree -a
                     ├── createdFiles.lst
                     └── inputFiles.lst
 ```
->
+
 > `mvn compiler:testCompile`
->
+
 ```bash
 
 $ mvn compiler:testCompile
