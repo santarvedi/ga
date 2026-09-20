@@ -24,5 +24,5 @@
   uses: actions/checkout@v4
   with:
     path: 'my-custom-folder'
-
 ```
+> Resulting location: `/path/to/actions-runner/_work/<repository-name>/my-custom-folder`
