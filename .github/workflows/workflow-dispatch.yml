@@ -42,6 +42,11 @@ jobs:
           echo $GITHUB_WORKSPACE
       - name: execute the script
         shell: bash
-        run: |
+        run:  |
           cd ${{ github.workspace }}/.github/scripts
+          bash myTestScript.sh
+      - name: execute the script
+        shell: bash
+        run:  |
+          cd $GITHUB_WORKSPACE/.github/scripts
           bash myTestScript.sh
