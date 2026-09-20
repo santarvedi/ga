@@ -1944,7 +1944,7 @@ $ tree -a
         └── HelloWorldTest.class               <!--COMPILES ONLY TEST-SOURCE -->
 ```
 
-> mvn compile
+> `mvn compile`
 ```bash
 $ mvn compile
 [INFO] Scanning for projects...
@@ -2004,7 +2004,7 @@ $ tree -a
                     └── inputFiles.lst
 ```
 
-> mvn test-compile
+> `mvn test-compile`
 ```bash
 
 $ mvn test-compile
