@@ -1811,7 +1811,8 @@ $
 
 ### 5. maven-compiler-plugin
 
-> Apache Maven Compiler Plugin  
+> Apache Maven Compiler Plugin 
+ 
 The Compiler Plugin is used to compile the sources of your project. The default compiler
  used to compile Java sources is javac
 
