@@ -36,3 +36,27 @@
 >```bash
 > git checkout -b branch-name v1.0.0
 >```
+>
+> **git tag --points-at**
+>
+> The `git tag --points-at` command **lists only the tags that point to a specific commit or Git object**. If no object is provided, it defaults to the `HEAD` **commit** (your current checkout position)
+>
+> ### Common Use Cases
+>
+> - Check tags on your current commit:
+>```bash
+> git tag --points-at
+>```
+> (Equivalently, you can type git tag --points-at HEAD)
+>
+> - Check tags on a specific branch or commit hash:
+>
+>```bash
+> git tag --points-at main
+> git tag --points-at 7f3a1b2
+>```
+>
+> | Command | What it displays
+> | :--- | :--- |
+> |`git tag --points-at <commit>`|Only tags attached exactly to that specific commit|
+> |`git tag`|Lists every tag in the entire repository history|
