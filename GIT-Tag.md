@@ -7,6 +7,7 @@
 >| Action | Command | Purpose / Notes |
 >| :--- | :--- | :--- |
 >| List Tags | `git tag` | Lists all local tags in alphabetical order. |
+>| List Specific Commit tags|`git tag --points-at 7f3a1b2`|Only tags attached exactly to that specific commit.|
 >| Search Tags | `git tag -l "v1.4*"` | Finds tags matching a specific pattern. |
 >| Create Annotated Tag | `git tag -a v1.0.0 -m "Release message"` | Recommended for releases.Includes metadata and a message.|
 >| Create Lightweight Tag | `git tag v1.0.0-l` | Creates a simple pointer without metadata (private/temporary).|
