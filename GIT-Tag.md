@@ -63,7 +63,7 @@
 >
 > ```bash
 > $ git log --oneline
-> `101d7ab` (HEAD -> master, tag: 1.0.0.106) TFID-1232: group item master slots/UOMs per SKU and select iLPN slot by operation
+> `101d7ab` (HEAD -> master, tag: 1.0.0.106) TFID-1232: group item master slots/UOMs per SKU and select iLPN slot
 > 0f932d8 (tag: 1.0.0.105) TFID-1221: map decant inv-adj expiration epoch and CC reason to WMS (#110)
 >39e9be9 (tag: 1.0.0.104) TFID-1213: subscribe IMS cycle-count-complete NATS subject (#109)
 >f2be710 (tag: 1.0.0.103) TFID-1078: map stocking_unit for cycle count ESB routes (#108)
