@@ -8,4 +8,4 @@
 >| List Tags | `git tag` | Lists all local tags in alphabetical order. |
 >| Search Tags | `git tag -l "v1.4*"` | Finds tags matching a specific pattern. |
 >| Create Annotated Tag | `git tag -a v1.0.0 -m "Release message"` | Recommended for releases. Includes metadata and a message. |
->| Create Lightweight Tag | Row 4, Text B | Row 4, Text C |
+>| Create Lightweight Tag | `git tag v1.0.0-l` | Creates a simple pointer without metadata (private/temporary). |
