@@ -20,7 +20,7 @@
 >
 > ### Core Concepts
 >
-> 1. Annotated vs. Lightweight Tags
+> 1. **Annotated vs. Lightweight Tags**
 >
-> + Annotated Tags (-a) : These are stored as full objects in the Git database. They record the tagger’s name, email, date, and a message. They can also be cryptographically signed using GPG. Always use these for public and official releases
-> + Lightweight Tags:  These are simply pointers to a specific commit (like a branch that doesn’t move). They don't store extra metadata or messages. Use them for private, quick, or temporary bookmarks.
+> + **Annotated Tags (-a):** These are stored as full objects in the Git database. They record the tagger’s name, email, date, and a message. They can also be cryptographically signed using GPG. Always use these for public and official releases
+> + **Lightweight Tags:**  These are simply pointers to a specific commit (like a branch that doesn’t move). They don't store extra metadata or messages. Use them for private, quick, or temporary bookmarks.
