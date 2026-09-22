@@ -3,4 +3,9 @@
 >
 > ### Quick Reference Cheat Sheet  
 > 
-> List tags      `git tag`              Lists all tags in Alphabetical order.
+> - List Tags            `git tag`              Lists all tags in Alphabetical order.
+> - Search Tags          `git tag -l "v1.4*"`   Finds tags matching a specific pattern.
+> - Create Annotated     git tag -a v1.0.0 -m   Recommended for releases. Includes metadata
+>   Tag                  "Release message"       and a message.
+>
+>
