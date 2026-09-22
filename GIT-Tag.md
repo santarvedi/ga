@@ -61,6 +61,8 @@
 > |`git tag --points-at <commit>`|Only tags attached exactly to that specific commit|
 > |`git tag`|Lists every tag in the entire repository history|
 >
+>
+>
 > ```bash
 > $ git log --oneline
 > `101d7ab` (HEAD -> master, tag: 1.0.0.106) TFID-1232: group item master slots/UOMs per SKU and select iLPN slot
