@@ -24,3 +24,10 @@
 >
 > + **Annotated Tags (-a):** These are stored as full objects in the Git database. They record the tagger’s name, email, date, and a message. They can also be cryptographically signed using GPG. Always use these for public and official releases
 > + **Lightweight Tags:**  These are simply pointers to a specific commit (like a branch that doesn’t move). They don't store extra metadata or messages. Use them for private, quick, or temporary bookmarks.
+>
+> **2. Checking Out a Tag**
+>
+> If you want to view the files at a specific tag, you can check it out:
+> ```bash
+> git checkout v1.0.0
+>```
