@@ -63,25 +63,25 @@
 >
 > ```bash
 > $ git log --oneline
-101d7ab (HEAD -> master, tag: 1.0.0.106) TFID-1232: group item master slots/UOMs per SKU and select iLPN slot by operation (#112)
-0f932d8 (tag: 1.0.0.105) TFID-1221: map decant inv-adj expiration epoch and CC reason to WMS (#110)
-39e9be9 (tag: 1.0.0.104) TFID-1213: subscribe IMS cycle-count-complete NATS subject (#109)
-f2be710 (tag: 1.0.0.103) TFID-1078: map stocking_unit for cycle count ESB routes (#108)
-9bd91ca (tag: 1.0.0.102) TFID-1073: pass wave UOM to OE stocking_unit for GTP pick (#107)
-2f19de4 (tag: 1.0.0.101) TFID-1147, TFID-1150: fix decant ESB outbound to WMS (#105)
-39fb179 (tag: 1.0.0.100) TFID-1124: wave download validation and SFTP archive (#104)
-bbe5f6a (tag: 1.0.0.99) Merge pull request #103 from ThermoFisherKY/feature/TFID-1131
-218fb17 (origin/feature/TFID-1131) TFID-1131: Split Item Master ADD/UPDATE list before WES MDS item write: code changes
-4359f6c (tag: 1.0.0.98) Merge pull request #102 from ThermoFisherKY/feature/TFID-1143
-0412c7b (origin/feature/TFID-1143) TFID-1143 update pick line update stream
-0b432ad (tag: 1.0.0.97) Merge pull request #101 from ThermoFisherKY/TFID-1068-1
-9c48244 (origin/TFID-1068-1) TFID-1068 update stocking_unit changes to ESB
-07326b8 (tag: 1.0.0.96) TFID-1127: consume OE pick line-update for PICKCONFIRM (#100)
-65cdf46 (tag: 1.0.0.95) Merge pull request #99 from ThermoFisherKY/fix/TFID-1112
-8b769ba (origin/fix/TFID-1112) TFID-1112: map wave lot to OE lot_number attribute.
-191987b (tag: 1.0.0.94) Merge pull request #98 from ThermoFisherKY/TFID-1068
-f4253ce (origin/TFID-1068) TFID-1068 add stocking_unit changes to ESB
+> 101d7ab (HEAD -> master, tag: 1.0.0.106) TFID-1232: group item master slots/UOMs per SKU and select iLPN slot by operation (#112)
+> 0f932d8 (tag: 1.0.0.105) TFID-1221: map decant inv-adj expiration epoch and CC reason to WMS (#110)
+>39e9be9 (tag: 1.0.0.104) TFID-1213: subscribe IMS cycle-count-complete NATS subject (#109)
+>f2be710 (tag: 1.0.0.103) TFID-1078: map stocking_unit for cycle count ESB routes (#108)
+> 9bd91ca (tag: 1.0.0.102) TFID-1073: pass wave UOM to OE stocking_unit for GTP pick (#107)
+> 2f19de4 (tag: 1.0.0.101) TFID-1147, TFID-1150: fix decant ESB outbound to WMS (#105)
+> 39fb179 (tag: 1.0.0.100) TFID-1124: wave download validation and SFTP archive (#104)
+> bbe5f6a (tag: 1.0.0.99) Merge pull request #103 from ThermoFisherKY/feature/TFID-1131
+> 218fb17 (origin/feature/TFID-1131) TFID-1131: Split Item Master ADD/UPDATE list before WES MDS item write: code changes
+> 4359f6c (tag: 1.0.0.98) Merge pull request #102 from ThermoFisherKY/feature/TFID-1143
+> 0412c7b (origin/feature/TFID-1143) TFID-1143 update pick line update stream
+> 0b432ad (tag: 1.0.0.97) Merge pull request #101 from ThermoFisherKY/TFID-1068-1
+> 9c48244 (origin/TFID-1068-1) TFID-1068 update stocking_unit changes to ESB
+> 07326b8 (tag: 1.0.0.96) TFID-1127: consume OE pick line-update for PICKCONFIRM (#100)
+> 65cdf46 (tag: 1.0.0.95) Merge pull request #99 from ThermoFisherKY/fix/TFID-1112
+> 8b769ba (origin/fix/TFID-1112) TFID-1112: map wave lot to OE lot_number attribute.
+> 191987b (tag: 1.0.0.94) Merge pull request #98 from ThermoFisherKY/TFID-1068
+> f4253ce (origin/TFID-1068) TFID-1068 add stocking_unit changes to ESB
 > 
-> git tag --points-at 101d7ab                           
+> $ git tag --points-at 101d7ab                           
 > 1.0.0.106
 >```
