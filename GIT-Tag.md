@@ -3,7 +3,7 @@
 >
 > ---
 > ### Quick Reference Cheat Sheet  
->
+> ______________________________________________________________________________
 > Action                Command              Purpose/Notes
-> ---
+> ______________________________________________________________________________
 > List Tags             `git tag`            List all tags in Alphabetical order 
