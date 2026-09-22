@@ -31,3 +31,7 @@
 > ```bash
 > git checkout v1.0.0
 >```
+>Note: This puts your repository in a "detached HEAD" state. If you plan to make changes, you should create a new branch from that tag instead
+>```bash
+> git checkout -b branch-name v1.0.0
+>```
