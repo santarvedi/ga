@@ -3,4 +3,4 @@
 >
 > ### Quick Reference Cheat Sheet  
 > 
-> List tags
+> List tags      `git tag`              Lists all tags in Alphabetical order.
