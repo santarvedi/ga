@@ -1,2 +1,2 @@
-> \[!IDEA]
+> \[!NOTE]
 > Srinivas
