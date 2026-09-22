@@ -37,7 +37,7 @@
 > git checkout -b branch-name v1.0.0
 >```
 >
-> **3. `git tag --points-at`**
+> **3. git tag --points-at**
 >
 > The `git tag --points-at` command **lists only the tags that point to a specific commit or Git object**. If no object is provided, it defaults to the `HEAD` **commit** (your current checkout position)
 >
