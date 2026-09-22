@@ -3,6 +3,7 @@
 >
 > ### Quick Reference Cheat Sheet  
 >  
+>
 >| Action | Command | Purpose / Notes |
 >| :--- | :--- | :--- |
 >| List Tags | `git tag` | Lists all local tags in alphabetical order. |
