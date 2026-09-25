@@ -1,5 +1,6 @@
 name: First Workflow
 on: workflow_dispatch
+run-name: "Run by User - ${{github.actor}}"
 jobs:
   first-job:
     runs-on: [ self-hosted ]
