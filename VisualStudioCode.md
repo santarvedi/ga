@@ -8,6 +8,6 @@
 > 3. A dropdown list of available shells will appear at the top. Select `Git Bash` (or your preferred Bash option)
 > 4. Close your current terminal pane and press ``Ctrl + ` `` to open a new one; it will now load in Bash
 > 
->  Hello
+>  Hello  
 >  How are you
 
