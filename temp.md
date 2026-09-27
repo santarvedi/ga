@@ -1,5 +1,4 @@
-> \[!NOTE]  
+> \[!NOTE]
 > Hi
-> How are you 
->
+> How are you
 
