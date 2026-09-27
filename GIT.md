@@ -173,9 +173,9 @@ git push -u origin <branch>        # Push & set upstream
 
 ##### History & Inspection
 ```
-`git log`                 # Commit History  
-`git log --oneline`       # Commit History in oneline  
-`git log --oneline -n 5`  # Top 5 commits  
+git log                            # Commit History  
+git log --oneline                  # Commit History in oneline  
+git log --oneline -n 5             # Top 5 commits  
 ```
 
 
