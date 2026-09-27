@@ -175,7 +175,7 @@ git push -u origin <branch>        # Push & set upstream
 
 > \[!NOTE]
 > git log            # Commits history
-> git log --oneline  # Commit history one line
+> git log --oneline  # Commit history one liner
 
 ##### Undoing Changes
 ```
