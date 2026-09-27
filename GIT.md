@@ -173,7 +173,7 @@ git push -u origin <branch>        # Push & set upstream
 
 ##### History & Inspection
 
-> \[!NOTE]
+>  \[!NOTE]
 >
 
 
