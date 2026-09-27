@@ -171,10 +171,10 @@ git push                           # Push changes
 git push -u origin <branch>        # Push & set upstream
 ```
 
-##### History & Inspection
+History & Inspection
 
 > \[!NOTE]
-> 
+
 
 ##### Undoing Changes
 ```
