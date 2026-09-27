@@ -174,11 +174,11 @@ git push -u origin <branch>        # Push & set upstream
 ##### History & Inspection
 > \[!NOTE]
 >
-> git log                         # Commit history
-> git log --oneline -n 5          # Show Latest 5 commits
-> git log --oneline --graph --all # Compact graph view
-> git show <commit>               # Show commit details
-> git blame <file>                # Show last change per line
+> git log                          - Commit history
+> git log --oneline -n 5           - Show Latest 5 commits
+> git log --oneline --graph --all  - Compact graph view
+> git show <commit>                - Show commit details
+> git blame <file>                 - Show last change per line
 >
 
 ##### Undoing Changes
