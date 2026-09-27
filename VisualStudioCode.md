@@ -9,6 +9,6 @@
 > 4. Close your current terminal pane and press ``Ctrl + ` `` to open a new one; it will now load in Bash
 > 5. Srinivas Antarvedi
 > 
-> Srinivas Antarvedi.
+> Srinivas Antarvedi
 > Hi
 
