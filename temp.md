@@ -1,1 +1,2 @@
-> \[!NOTE]
+> [!NOTE]
+> This is a correctly rendered note on GitHub.
