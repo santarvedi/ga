@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 name: First Workflow
 on: workflow_dispatch
 jobs:
@@ -50,3 +51,58 @@ jobs:
         run:  |
           cd $GITHUB_WORKSPACE/.github/scripts
           bash myTestScript.sh
+=======
+name: First Workflow
+on: workflow_dispatch
+# run-name: "Run by User - ${{github.actor}}"
+jobs:
+  first-job:
+    runs-on: [ self-hosted ]
+    steps:
+      - name: Welcome
+        run: echo "Welcome... Srinivas"
+      - name: GoodBye
+        run: echo "This is single bash commands"
+      - name: Multiple bash commands without shell definition
+        run: |
+          echo "Hi"
+          echo "This is multiple bash commands"
+      - name: Using bash shell explicitely
+        shell: bash
+        run:  |
+          echo "----------"
+          # echo ""
+          # dmidecode -t 1
+          echo ""
+          uname -a
+          echo ""
+          cat /etc/*release*
+          echo ""
+          echo "-----------"
+# Running a script that is stored in the repository.
+# For this
+# 1. checout the code to the runner first
+# 2. execute the script.             
+      - name: checkout
+        uses: actions/checkout@v4
+      # - name: execute the script
+      #   shell: bash
+      #   run:  |
+      #     bash ./.github/scripts/myTestScript.sh
+      - name: Directory - code checked out
+        shell: bash
+        run:  |
+          echo "github.workspace: ${{ github.workspace }}"
+          echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+          echo "      GITHUB_SHA: $GITHUB_SHA"
+      - name: execute the script
+        shell: bash
+        run:  |
+          cd ${{ github.workspace }}/.github/scripts
+          bash myTestScript.sh
+      - name: execute the script
+        shell: bash
+        run:  |
+          cd $GITHUB_WORKSPACE/.github/scripts
+          bash myTestScript.sh
+>>>>>>> 020d624416e912a285647405533abee956b3e460
