@@ -175,11 +175,11 @@ git push -u origin <branch>        # Push & set upstream
 
 > \[!NOTE]
 >
-> git log
-> git log --oneline -n 5
-> git log --oneline --graph --all
-> git show <commit>
-> git blame <file>
+> `git log`
+> `git log --oneline -n 5`
+> `git log --oneline --graph --all`
+> `git show <commit>`
+> `git blame <file>`
 >
 
 ##### Undoing Changes
