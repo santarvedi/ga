@@ -1,5 +1,0 @@
-# Handle line endings automatically for text files
-* text=auto
-
-# Explicitly declare text files you want to always use LF (great for Markdown/Code)
-*.md text eol=lf
