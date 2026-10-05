@@ -67,3 +67,17 @@ ________________________________________________________________________________
 >     clean: false  # Prevents deleting untracked files or resetting the directory on a new run
 >
 >```
+>
+> **2. Guard Against Post-Job Credential/State Removal**
+>
+> While `actions/checkout` doesn't delete the entire source code folder at the end of a job, its automatic "Post-job cleanup" step clears Git configurations, access tokens, and temporary files generated during execution
+> If you plan to use the checked-out repository outside of GitHub Actions on that machine later (e.g., matching a cron job or external script), you must ensure Git credentials aren't decoupled by turning off credential persistence:
+>```yaml
+>
+> - name: Checkout Code
+>   uses: actions/checkout@v4
+>   with:
+>     clean: false
+>     persist-credentials: false # Stops the post-job step from tampering with local Git config tokens
+>
+>```
