@@ -44,7 +44,7 @@ jobs:
           echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
           echo "      GITHUB_SHA: $GITHUB_SHA"
           echo "     github.ref : ${{ github.ref }}"
-          echo "github.ref.type : ${{ github.ref.type }}"
+          echo "github.ref.type : ${{ github.ref_type }}"
           echo "     GITHUB_REF: $GITHUB_REF"
           echo "GITHUB_REF_TYPE: $GITHUB_REF_TYPE"
       - name: execute the script
