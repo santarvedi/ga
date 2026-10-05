@@ -1,11 +1,11 @@
-> \[!NOTE]
+ > \[!NOTE]
 >
 > `git clean -fdx`
 >
 > `git clean -fdx` is used to `permanently delete all untracked files and directories from your Git working directory`, **including files that are ignored by .gitignore**.
 > Running this command will completely wipe your workspace of build artifacts, local configuration files, dependency folders (like node_modules), and any temporary files, effectively restoring your project to a pristine state.
 > 
-> **This Cannot Be Undone**
+> **This Cannot Be Undone**  
 > Because these files are untracked, Git does not have a history or backup of them. Running this command **bypasses the > recycle bin** and permanently deletes the files
 > 
 > ---
