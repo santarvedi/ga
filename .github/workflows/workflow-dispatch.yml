@@ -30,6 +30,9 @@ jobs:
 # 2. execute the script.             
       - name: checkout
         uses: actions/checkout@v4
+        with:
+          clean: false
+          persist-credentials: false
       # - name: execute the script
       #   shell: bash
       #   run:  |
