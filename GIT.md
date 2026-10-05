@@ -1,3 +1,29 @@
+> \[!NOTE]
+>
+> `git clean -fdx`
+>
+> `git clean -fdx` is used to `permanently delete all untracked files and directories from your Git working directory`, **including files that are ignored by .gitignore**.
+> Running this command will completely wipe your workspace of build artifacts, local configuration files, dependency folders (like node_modules), and any temporary files, effectively restoring your project to a pristine state.
+> 
+> **Warning**: This Cannot Be Undone
+> Because these files are untracked, Git does not have a history or backup of them. Running this command **bypasses the recycle bin** and permanently deletes the files
+> ---
+> **Breakdown of the Flags**
+>
+> `-f` **(force)**: Git's default configuration requires this flag to execute a deletion, preventing accidental wipes.
+> `-d` **(directories)**: Tells Git to remove untracked directories in addition to individual untracked files.
+> `-x` **(ignored files)**: Overrides standard .gitignore rules. This forces Git to delete ignored files like .env, build caches, and compiler outputs.
+>
+> `git clean -ndx`  -  Preview exactly what Git plans to delete - Dry Run
+> `git clean -fdx`  -  Execute the Full Clean
+> `git clean -ffdx` - If you have untracked folders containing their own .git subdirectories (like submodules), `git clean -fdx` will skip them. To force-delete those as well, you must use a double force flag:
+>
+> ---
+
+
+
+
+
 >Git Config
 - git config list --local
 ```
