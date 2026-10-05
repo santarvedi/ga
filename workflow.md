@@ -60,9 +60,9 @@ ________________________________________________________________________________
 >
 > To stop this and keep previous code modifications or artifacts alive in the workspace, set the `clean` option to `false`:
 > ```yaml
-- name: Checkout Code
-  uses: actions/checkout@v4
-  with:
-    clean: false  # Prevents deleting untracked files or resetting the directory on a new run
-
+> - name: Checkout Code
+>  uses: actions/checkout@v4
+>  with:
+>    clean: false  # Prevents deleting untracked files or resetting the directory on a new run
+>
 >```
