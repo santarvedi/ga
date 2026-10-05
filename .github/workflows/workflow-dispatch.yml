@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 name: First Workflow
 on: workflow_dispatch
 jobs:
@@ -105,4 +104,3 @@ jobs:
         run:  |
           cd $GITHUB_WORKSPACE/.github/scripts
           bash myTestScript.sh
->>>>>>> 020d624416e912a285647405533abee956b3e460
