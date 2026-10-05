@@ -11,9 +11,9 @@
 > ---
 > **Breakdown of the Flags**
 >
-> `-f` **(force)**: Git's default configuration requires this flag to execute a deletion, preventing accidental wipes.
-> `-d` **(directories)**: Tells Git to remove untracked directories in addition to individual untracked files.
-> `-x` **(ignored files)**: Overrides standard .gitignore rules. This forces Git to delete ignored files like .env, build caches, and compiler outputs.
+> - `-f` **(force)**: Git's default configuration requires this flag to execute a deletion, preventing accidental wipes.
+> - `-d` **(directories)**: Tells Git to remove untracked directories in addition to individual untracked files.
+> - `-x` **(ignored files)**: Overrides standard .gitignore rules. This forces Git to delete ignored files like .env, build caches, and compiler outputs.
 >
 > `git clean -ndx`  -  Preview exactly what Git plans to delete - Dry Run
 > `git clean -fdx`  -  Execute the Full Clean
