@@ -15,9 +15,9 @@
 > - `-d` **(directories)**: Tells Git to remove untracked directories in addition to individual untracked files.
 > - `-x` **(ignored files)**: Overrides standard .gitignore rules. This forces Git to delete ignored files like .env, build caches, and compiler outputs.
 >
-> `git clean -ndx`  -  Preview exactly what Git plans to delete - Dry Run
-> `git clean -fdx`  -  Execute the Full Clean
-> `git clean -ffdx` - If you have untracked folders containing their own .git subdirectories (like submodules), `git clean -fdx` will skip them. To force-delete those as well, you must use a double force flag:
+> - `git clean -ndx`  -  Preview exactly what Git plans to delete - Dry Run
+> - `git clean -fdx`  -  Execute the Full Clean
+> - `git clean -ffdx` - If you have untracked folders containing their own .git subdirectories (like submodules), `git clean -fdx` will skip them. To force-delete those as well, you must use a double force flag:
 >
 > ---
 
