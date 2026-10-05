@@ -49,7 +49,8 @@ ________________________________________________________________________________
 ---
 >
 > \[!NOTE]
-> ##### Can we keep the code that is checked out to the self hosted runner? without cleaned by github actions?
+>
+> #### Can we keep the code that is checked out to the self hosted runner? without cleaned by github actions?
 > 
 > Yes, you can absolutely keep the code checked out on your self-hosted runner. By default, self-hosted runners do not naturally destroy or wipe the local `_work` directory once a job finishes. However, the standard `actions/checkout` action behaves aggressively on subsequent runs or inside specific steps.
 >To permanently preserve the files and prevent GitHub Actions from cleaning them up, you need to adjust your workflow configuration to counter two default cleaning behaviors.
@@ -61,8 +62,8 @@ ________________________________________________________________________________
 > To stop this and keep previous code modifications or artifacts alive in the workspace, set the `clean` option to `false`:
 > ```yaml
 > - name: Checkout Code
->  uses: actions/checkout@v4
->  with:
->    clean: false  # Prevents deleting untracked files or resetting the directory on a new run
+>   uses: actions/checkout@v4
+>   with:
+>     clean: false  # Prevents deleting untracked files or resetting the directory on a new run
 >
 >```
