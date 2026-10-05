@@ -47,3 +47,6 @@ Syntax          Always wrapped in ${{ }}            Depends on OS:
 ______________________________________________________________________________________
 ```
 ---
+>
+> \[!NOTE]
+>  Can we keep the code that is checked out to the self hosted runner? without cleaned by github actions?
