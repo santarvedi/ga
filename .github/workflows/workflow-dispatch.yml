@@ -43,6 +43,7 @@ jobs:
           echo "github.workspace: ${{ github.workspace }}"
           echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
           echo "      GITHUB_SHA: $GITHUB_SHA"
+          echo "     GITHUB_REFS: ${{ github.refs }}"
       - name: execute the script
         shell: bash
         run:  |
