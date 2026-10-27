@@ -97,3 +97,10 @@
 > [root@ga-runners actions-runner]#
 >
 > ```
+> ---
+> 
+> **GITHUB_TOKEN Permissions**
+> 
+> The GITHUB_TOKEN is `an automatically generated, short-lived security token provided by GitHub Actions to authenticate workflow jobs within a repository`. To follow security best practices like the principle of least privilege, you should explicitly define what the token can read or modify.
+>
+> ###### Setting Token Permissions in YAML
