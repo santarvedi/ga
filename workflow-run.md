@@ -65,3 +65,12 @@
 > 3. `The Swap:` To avoid breaking a running job or causing downtime, it changes the symlink (bin -> bin.new.version). This allows older jobs to finish using the old directories while new jobs instantly use the updated ones.
 >
 > You should not delete or modify these folders or links manually, as doing so will break your self-hosted runner.
+>
+> **Runner name: 'Nantarvedi-LT'**
+> It is the runner choose by the current job from the list of runners for this repository and the list can be accessed via.
+> ```bash
+>.
+> └── Settings
+>     └── Actions
+>         └── Runners
+> ```
