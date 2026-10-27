@@ -1,0 +1,29 @@
+name: env-variables
+on:
+  workflow_dispatch
+
+jobs:
+  github-default-env-variables:
+    runs-on: [ self-hosted ]
+    steps:
+      - name: workflow Print
+        run: |
+          echo "github-workspace: ${{ github.workspace }}"
+          echo "github-repository: ${{ github.repository }}"
+          echo "github-ref: ${{ github.ref}}"
+          echo "github-ref-name: ${{ github.reference }}"
+# GITHUB_WORKSPACE	Repository working directory on the runner
+# GITHUB_REPOSITORY	Repository name, such as owner/repo
+# GITHUB_REF	Branch or tag reference
+# GITHUB_REF_NAME	Short branch or tag name
+# GITHUB_SHA	Commit SHA that triggered the workflow
+# GITHUB_RUN_ID	Unique workflow run ID
+# GITHUB_RUN_NUMBER	Run number within the repository
+# GITHUB_ACTOR	User or actor who initiated the run
+# GITHUB_EVENT_NAME	Trigger event, such as push
+# GITHUB_ENV	File used to export variables to subsequent steps
+# RUNNER_NAME	Name of the runner
+# RUNNER_OS	Runner OS: Linux, Windows, or macOS
+# RUNNER_ARCH	Runner architecture, such as X64 or ARM64
+# RUNNER_TEMP	Temporary directory on the runner
+# CI	Usually true in GitHub Actions
