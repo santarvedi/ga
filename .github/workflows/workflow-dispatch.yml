@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Welcome
         run: echo "Welcome... Srinivas"
+      - name: checkout
+        uses: actions/checkout@v4
       - name: Print env vars
         env:
           BUILD_MODE: Debug
