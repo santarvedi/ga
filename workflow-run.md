@@ -82,7 +82,7 @@
 > Runner group name: 'Default'
 > Machine name: 'Nantarvedi-LT'
 >```
-> - `Runner name:` the name you give to this runner.
+> - `Runner name:` the name you give to the runner.
 > - `Machine name:` the Runner machine's hostname
 >
 > A machine can have multiple runners
