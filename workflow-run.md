@@ -46,8 +46,8 @@
 > [nagaantarvedi@Nantarvedi-LT actions-runner]$
 >```
 >
-> bin -> /home/nagaantarvedi/actions-runner/bin.2.338.0
-> externals -> /home/nagaantarvedi/actions-runner/externals.2.338.0
+> `bin -> /home/nagaantarvedi/actions-runner/bin.2.338.0`  
+> `externals -> /home/nagaantarvedi/actions-runner/externals.2.338.0`  
 >
 > These are `symlinks (symbolic links) used by the GitHub Actions runner to perform seamless, zero-uptime self-updates`
 >
