@@ -9,7 +9,7 @@
 > Runner group name: 'Default'
 > Machine name: 'Nantarvedi-LT'
 > GITHUB_TOKEN Permissions
->   Contents: read
+>  Contents: read
 >  Metadata: read
 >  Packages: read
 > Secret source: Actions
