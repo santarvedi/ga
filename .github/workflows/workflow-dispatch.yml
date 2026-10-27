@@ -1,59 +1,75 @@
 name: First Workflow
 on: workflow_dispatch
+
+env:
+  APP_NAME: lms
+  BUILD_MODE: Release
+
 jobs:
   first-job:
     runs-on: [ self-hosted ]
+    env:
+      DOTNET_VERSION: "8.0"
     steps:
       - name: Welcome
         run: echo "Welcome... Srinivas"
-      - name: GoodBye
-        run: echo "This is single bash commands"
-      - name: Multiple bash commands without shell definition
+      - name: Print env vars
+        env:
+          CONFIGURATION: Release
+        shell: bash
         run: |
-          echo "Hi"
-          echo "This is multiple bash commands"
-      - name: Using bash shell explicitely
-        shell: bash
-        run:  |
-          echo "----------"
-          # echo ""
-          # dmidecode -t 1
-          echo ""
-          uname -a
-          echo ""
-          cat /etc/*release*
-          echo ""
-          echo "-----------"
-# Running a script that is stored in the repository.
-# For this
-# 1. checout the code to the runner first
-# 2. execute the script.             
-      - name: checkout
-        uses: actions/checkout@v4
-        # with:
-        #   clean: false
-        #   persist-credentials: false
-      # - name: execute the script
-      #   shell: bash
-      #   run:  |
-      #     bash ./.github/scripts/myTestScript.sh
-      - name: Directory - code checked out
-        shell: bash
-        run:  |
-          echo "github.workspace: ${{ github.workspace }}"
-          echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
-          echo "      GITHUB_SHA: $GITHUB_SHA"
-          echo "     github.ref : ${{ github.ref }}"
-          echo "github.ref.type : ${{ github.ref_type }}"
-          echo "     GITHUB_REF: $GITHUB_REF"
-          echo "GITHUB_REF_TYPE: $GITHUB_REF_TYPE"
-      - name: execute the script
-        shell: bash
-        run:  |
-          cd ${{ github.workspace }}/.github/scripts
-          bash myTestScript.sh
-      - name: execute the script
-        shell: bash
-        run:  |
-          cd $GITHUB_WORKSPACE/.github/scripts
-          bash myTestScript.sh
+          echo " App: $APP_NAME"
+          echo "Mode: $BUILD_MODE"
+          echo "Vers: $DOTNET_VERSION"
+          echo "Conf: $CONFIGURATION"
+#       - name: GoodBye
+#         run: echo "This is single bash commands"
+#       - name: Multiple bash commands without shell definition
+#         run: |
+#           echo "Hi"
+#           echo "This is multiple bash commands"
+#       - name: Using bash shell explicitely
+#         shell: bash
+#         run:  |
+#           echo "----------"
+#           # echo ""
+#           # dmidecode -t 1
+#           echo ""
+#           uname -a
+#           echo ""
+#           cat /etc/*release*
+#           echo ""
+#           echo "-----------"
+# # Running a script that is stored in the repository.
+# # For this
+# # 1. checout the code to the runner first
+# # 2. execute the script.             
+#       - name: checkout
+#         uses: actions/checkout@v4
+#         # with:
+#         #   clean: false
+#         #   persist-credentials: false
+#       # - name: execute the script
+#       #   shell: bash
+#       #   run:  |
+#       #     bash ./.github/scripts/myTestScript.sh
+#       - name: Directory - code checked out
+#         shell: bash
+#         run:  |
+#           echo "github.workspace: ${{ github.workspace }}"
+#           echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+#           echo "      GITHUB_SHA: $GITHUB_SHA"
+#           echo "     github.ref : ${{ github.ref }}"
+#           echo "github.ref.type : ${{ github.ref_type }}"
+#           echo "     GITHUB_REF: $GITHUB_REF"
+#           echo "GITHUB_REF_TYPE: $GITHUB_REF_TYPE"
+#       - name: execute the script
+#         shell: bash
+#         run:  |
+#           cd ${{ github.workspace }}/.github/scripts
+#           bash myTestScript.sh
+#       - name: execute the script
+#         shell: bash
+#         run:  |
+#           cd $GITHUB_WORKSPACE/.github/scripts
+#           bash myTestScript.sh
