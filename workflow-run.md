@@ -20,7 +20,7 @@
 > Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
 > Complete job name: first-job
 > ```
-> 
+> ---
 > **Current runner version: '2.338.0'**
 >
 > ```bash
