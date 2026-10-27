@@ -155,3 +155,44 @@
 > 2. **Read-only**: The token defaults strictly to contents: read and metadata: read
 >
 > If you need to adjust **repository-wide default settings**, navigate to **Settings → Actions → General → Workflow permissions**. If you are instead looking to manage **Personal Access Tokens (PATs)** for local terminal access or external integrations, those are created under your user profile's **Developer settings**
+>
+> GITHUB_TOKEN read-only permissions
+>```bash
+>Current runner version: '2.338.0'
+>Runner name: 'Nantarvedi-LT'
+>Runner group name: 'Default'
+>Machine name: 'Nantarvedi-LT'
+>GITHUB_TOKEN Permissions
+>  Contents: read
+>  Metadata: read
+>  Packages: read
+>```
+>
+> GITHUB_TOKEN read-write permission
+>```bash
+>Current runner version: '2.338.0'
+>Runner name: 'Nantarvedi-LT'
+>Runner group name: 'Default'
+>Machine name: 'Nantarvedi-LT'
+>GITHUB_TOKEN Permissions
+>  Actions: write
+>  ArtifactMetadata: write
+>  Attestations: write
+>  Checks: write
+>  CodeQuality: write
+>  Contents: write
+>  CopilotRequests: write
+>  Deployments: write
+>  Discussions: write
+>  Drives: write
+>  Issues: write
+>  Metadata: read
+>  Models: read
+>  Packages: write
+>  Pages: write
+>  PullRequests: write
+>  RepositoryProjects: write
+>  SecurityEvents: write
+>  Statuses: write
+>  VulnerabilityAlerts: read
+>```
