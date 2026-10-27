@@ -15,13 +15,13 @@ jobs:
         run: echo "Welcome... Srinivas"
       - name: Print env vars
         env:
-          CONFIGURATION: Release
+          BUILD_MODE: Debug
         shell: bash
         run: |
           echo " App: $APP_NAME"
           echo "Mode: $BUILD_MODE"
           echo "Vers: $DOTNET_VERSION"
-          echo "Conf: $CONFIGURATION"
+          echo "Conf: $BUILD_MODE"
 #       - name: GoodBye
 #         run: echo "This is single bash commands"
 #       - name: Multiple bash commands without shell definition
