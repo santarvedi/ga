@@ -196,3 +196,14 @@
 >  Statuses: write
 >  VulnerabilityAlerts: read
 >```
+> ---
+>
+> #### Secret source: Actions
+>
+> A `Secret source: Actions` indicator in a GitHub Actions run means that the secret or credential being used originates from the **Actions** secrets store (configured under **Settings > Secrets and variables > Actions** at the repository, environment, or organization level).
+>
+> ##### What It Means
+>
+> - **Origin**: The value comes from standard encrypted GitHub Actions secrets rather than alternative sources (such as Codespaces secrets, Dependabot secrets, or external vault integrations)
+> - **Scope**: It indicates the secret is available to workflows running in that repository, environment, or organization, and is safely injected into the job runtime as an environment variable or via the ${{ secrets.SECRET_NAME }} context.
+> - **Log Protection**: GitHub automatically masks and redacts the value of secrets sourced from Actions so they do not leak into your workflow console logs
