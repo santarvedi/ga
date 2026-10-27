@@ -127,3 +127,21 @@
 >    steps:
 >      - uses: actions/checkout@v4
 >``` 
+>
+> #### Available Permission Scopes
+>
+>Each permission scope can be configured to read, write, or none:
+> 
+>| Scope | Description | Common Use Case |
+>| :--- | :--- | :--- |
+>|actions|Workflows and workflow runs|Canceling runs or triggering workflows|
+>|actions|||
+>|actions|||
+>|actions|||
+>|actions|||
+>|actions|||
+>|actions|||
+>|actions|||
+>|actions|||
+>|actions|||
+>|actions|||
