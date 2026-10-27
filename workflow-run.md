@@ -156,7 +156,7 @@
 >
 > If you need to adjust **repository-wide default settings**, navigate to **Settings → Actions → General → Workflow permissions**. If you are instead looking to manage **Personal Access Tokens (PATs)** for local terminal access or external integrations, those are created under your user profile's **Developer settings**
 >
-> GITHUB_TOKEN read-only permissions
+> `GITHUB_TOKEN` **read-only** permissions
 >```bash
 >Current runner version: '2.338.0'
 >Runner name: 'Nantarvedi-LT'
@@ -168,7 +168,7 @@
 >  Packages: read
 >```
 >
-> GITHUB_TOKEN read-write permission
+> `GITHUB_TOKEN` **read-write** permission
 >```bash
 >Current runner version: '2.338.0'
 >Runner name: 'Nantarvedi-LT'
