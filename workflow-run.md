@@ -132,16 +132,26 @@
 >
 >Each permission scope can be configured to read, write, or none:
 > 
->| Scope | Description | Common Use Case |
+>| **Scope** | **Description** | **Common Use Case** |
 >| :--- | :--- | :--- |
->|actions|Workflows and workflow runs|Canceling runs or triggering workflows|
->|actions|||
->|actions|||
->|actions|||
->|actions|||
->|actions|||
->|actions|||
->|actions|||
->|actions|||
->|actions|||
->|actions|||
+>|`actions`|Workflows and workflow runs|Canceling runs or triggering workflows|
+>|`checks`|Check runs and check suites|Displaying code analysis results|
+>|`contents`|Git commits, branches, releases, and repository files|Pushing code tags or creating draft releases|
+>|`deployments`|Deployment histories and states|Managing environment deployments|
+>|`id-token`|OpenID Connect (OIDC) tokens|Authenticating securely with cloud providers (AWS, Azure, GCP)|
+>|`issues`|Issues and comments|Creating bug reports or adding labels|
+>|`packages`|GitHub Packages container/npm registry|Publishing built Docker images or packages|
+>|`pages`|GitHub Pages configuration and deployments|Deploying static documentation sites|
+>|`pull-requests`|Pull requests, comments, and reviews|Automated PR commenting or closing|
+>|`repository-projects`|GitHub projects (classic) boards|Moving project cards or managing workflow tasks|
+>|`security-events`|GitHub Code Scanning alerts|Uploading SARIF files from security tools|
+>|`statuses`|Commit statuses|Reporting success/failure markers to commits|
+>
+>
+> #### Default Repository Settings
+> 
+> Repository and Organization administrators can set the fallback behavior when the YAML file does not declare permissions:
+> 1. **Read/Write**: The token inherits full write access across all scopes by default. 
+> 2. **Read-only**: The token defaults strictly to contents: read and metadata: read
+>
+> If you need to adjust **repository-wide default settings**, navigate to **Settings → Actions → General → Workflow permissions**. If you are instead looking to manage **Personal Access Tokens (PATs)** for local terminal access or external integrations, those are created under your user profile's **Developer settings**
