@@ -22,6 +22,8 @@ jobs:
           echo "Mode: $BUILD_MODE"
           echo "Vers: $DOTNET_VERSION"
           echo "Conf: $BUILD_MODE"
+          cd $GITHUB_WORKSPACE/.github/scripts
+          bash myTestScript.sh
 #       - name: GoodBye
 #         run: echo "This is single bash commands"
 #       - name: Multiple bash commands without shell definition
