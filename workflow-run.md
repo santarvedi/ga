@@ -86,3 +86,14 @@
 > - `Machine name:` the Runner machine's hostname
 >
 > A machine can have multiple runners
+> ```bash
+> [root@ga-runners actions-runner]# ll
+> total 12
+> drwxr-xr-x 8 1001 docker 4096 Oct 27 00:39 runner196-01
+> drwxr-xr-x 8 1001 docker 4096 Oct 27 00:39 runner196-02
+> drwxrwxr-x 6 root root   4096 Jul 30  2024 runner196-07
+> [root@ga-runners actions-runner]# hostname
+> ga-runners
+> [root@ga-runners actions-runner]#
+>
+> ```
