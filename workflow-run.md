@@ -104,3 +104,26 @@
 > The GITHUB_TOKEN is `an automatically generated, short-lived security token provided by GitHub Actions to authenticate workflow jobs within a repository`. To follow security best practices like the principle of least privilege, you should explicitly define what the token can read or modify.
 >
 > ##### Setting Token Permissions in YAML
+>
+> You can configure permissions globally for the entire workflow or granularly for individual jobs. **When you declare the `permissions` block, any scope not explicitly listed is automatically set to `none`** (with the exception of `metadata`, which always keeps `read` access)
+>```yml
+>
+>name: CI Example
+>
+>on: [push]
+>
+># Global permissions for all jobs in this workflow
+>permissions:
+>  contents: read
+>  issues: write
+>
+>jobs:
+>  build:
+>    runs-down: ubuntu-latest
+>    # Job-level permissions (overrides global settings)
+>    permissions:
+>      contents: write
+>      pull-requests: write
+>    steps:
+>      - uses: actions/checkout@v4
+>``` 
