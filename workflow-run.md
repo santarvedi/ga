@@ -76,3 +76,13 @@
 >     └── Actions
 >         └── Runners
 > ```
+> ---
+> ```bash
+> Runner name: 'Nantarvedi-LT'
+> Runner group name: 'Default'
+> Machine name: 'Nantarvedi-LT'
+>```
+> - `Runner name:` the name you give to this runner.
+> - `Machine name:` the Runner machine's hostname
+>
+> A machine can have multiple runners
