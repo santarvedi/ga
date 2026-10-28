@@ -11,7 +11,7 @@ jobs:
   github-default-env-variables:
     runs-on: [ self-hosted ]
     steps:
-      - name: GitHub Default Env Variables Print
+      - name: Print - GitHub Default Env Variables
         run: |
           echo " GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
           echo "GITHUB_REPOSITORY: $GITHUB_REPOSITORY"      
@@ -46,11 +46,19 @@ jobs:
           echo "      runner.arch: ${{ runner.arch}}"
           echo "      runner.temp: ${{ runner.temp}}"
 
-      - name:  Variables Usage
+      - name: Print - variables from repo/org settings.
         run: |
           echo "DBHOST: $DBHOST"
           echo "DBPORT: $DBPORT"
           echo "DBUSER: $DBUSER"
+
+      - name: Print - ADD - variables to GITHUB_ENV file
+        run: |
+          VERSION="1.2.5"
+          echo "APP_VERSION=$VERSION" >> "$GITHUB_ENV"
+      - name: Print - GET - variables from GITHUB_ENV file
+        run: |
+          echo "APP_VERSION: $APP_VERSION"
 
 
 
