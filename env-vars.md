@@ -62,21 +62,21 @@
 > 
 > Here are the ones you'll use most often:
 > 
->| **Variable** | **Purpose** |
->| :--- | :--- |
->|GITHUB_WORKSPACE|Repository working directory on the runner|
->|GITHUB_REPOSITORY|Repository name, such as owner/repo|
->|GITHUB_REF|Branch or tag reference|
->|GITHUB_REF_NAME|Short branch or tag name|
->|GITHUB_SHA|Commit SHA that triggered the workflow|
->|GITHUB_RUN_ID|Unique workflow run ID|
->|GITHUB_RUN_NUMBER|Run number within the repository|
->|GITHUB_ACTOR|User or actor who initiated the run|
->|GITHUB_EVENT_NAME|Trigger event, such as push|
->|GITHUB_ENV|File used to export variables to subsequent steps|
->|RUNNER_NAME|Name of the runner|
->|RUNNER_OS|Runner OS: Linux, Windows, or macOS|
->|RUNNER_ARCH|Runner architecture, such as X64 or ARM64|
->|RUNNER_TEMP|Temporary directory on the runner|
->|CI|Usually true in GitHub Actions|
+>| **Variable** | **Purpose** |**Example**|
+>| :--- | :--- | :--- |
+>|GITHUB_WORKSPACE|Repository working directory on the runner|`/home/nagaantarvedi/actions-runner/_work/ga/ga`|
+>|GITHUB_REPOSITORY|Repository name, such as owner/repo|`santarvedi/ga`|
+>|GITHUB_REF|Branch or tag reference|`refs/heads/main`|
+>|GITHUB_REF_NAME|Short branch or tag name|`main`|
+>|GITHUB_SHA|Commit SHA that triggered the workflow|`12f12da747d023dbbf4e80853d5d0dfd1ae267c0`|
+>|GITHUB_RUN_ID|Unique workflow run ID|`40661180406`|
+>|GITHUB_RUN_NUMBER|Run number within the repository|`5`|
+>|GITHUB_ACTOR|User or actor who initiated the run|`santarvedi`|
+>|GITHUB_EVENT_NAME|Trigger event, such as push|`workflow_dispatch`|
+>|GITHUB_ENV|File used to export variables to subsequent steps|`/home/nagaantarvedi/actions-runner/_work/_temp/_runner_file_commands/set_env_687205b9-d462-426e-a774-c3ce0273bc79`|
+>|RUNNER_NAME|Name of the runner|`Nantarvedi-LT`|
+>|RUNNER_OS|Runner OS: Linux, Windows, or macOS|`Linux`|
+>|RUNNER_ARCH|Runner architecture, such as X64 or ARM64|`X64`|
+>|RUNNER_TEMP|Temporary directory on the runner|`/home/nagaantarvedi/actions-runner/_work/_temp`|
+>|CI|Usually true in GitHub Actions|`true`|
 >
