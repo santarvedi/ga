@@ -56,6 +56,7 @@ jobs:
         run: |
           VERSION="1.2.5"
           echo "APP_VERSION=$VERSION" >> "$GITHUB_ENV"
+          echo "APP_VERSION: $APP_VERSION"
       - name: Print - GET - variables from GITHUB_ENV file
         run: |
           echo "APP_VERSION: $APP_VERSION"
