@@ -1,12 +1,17 @@
-name: env variables
+name: Print Env Variables
 on:
   workflow_dispatch
+
+env:
+  DBHOST: ${{ vars.MYSQL_HOST }}
+  DBPORT: ${{ vars.MYSQL_PORT }}
+  DBUSER: ${{ vars.MYSQL_USER }}
 
 jobs:
   github-default-env-variables:
     runs-on: [ self-hosted ]
     steps:
-      - name: workflow Print
+      - name: GitHub Default Env Variables Print
         run: |
           echo " GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
           echo "GITHUB_REPOSITORY: $GITHUB_REPOSITORY"      
@@ -40,6 +45,12 @@ jobs:
           echo "        runner.os: ${{ runner.os}}"
           echo "      runner.arch: ${{ runner.arch}}"
           echo "      runner.temp: ${{ runner.temp}}"
+
+      - name:  Variables Usage
+        run: |
+          echo "DBHOST: $DBHOST"
+          echo "DBPORT: $DBPORT"
+          echo "DBUSER: $DBUSER"
 
 
 
