@@ -196,14 +196,14 @@
 > What if you use `export` instead?
 > 
 >```yaml
->- name: Step 1
->  run: |
->    export DB_VERSION="1.2.5"
->    echo "$DB_VERSION"
+> - name: Step 1
+>   run: |
+>     export DB_VERSION="1.2.5"
+>     echo "$DB_VERSION"
 >
->- name: Step 2
->  run: |
->    echo "$DB_VERSION"
+> - name: Step 2
+>   run: |
+>     echo "$DB_VERSION"
 >```
 >
 > Step 2 will not normally receive the value from Step 1. Each `run` step starts a separate shell process.
