@@ -106,3 +106,107 @@
 >
 > ---
 >
+> **4. Context variables:** `${{ github.* }}, ${{ runner.* }}, ${{ vars.* }}`
+>
+> GitHub Actions also has contexts. These are especially useful in YAML fields that GitHub evaluates before executing a shell command.
+> 
+>| **Context** | **Examples** |
+>| :--- | :--- |
+>|`github`|${{ github.repository }}, ${{ github.ref_name }}, ${{ github.sha }}|
+>|`runner`|${{ runner.os }}, ${{ runner.arch }}, ${{ runner.name }}|
+>|`vars`|${{ vars.DOCKER_REGISTRY }}|
+>|`secrets`|${{ secrets.NUGET_API_KEY }}|
+>|`env`|${{ env.APP_NAME }}|
+>|`steps`|${{ steps.build.outputs.version }}|
+>|`needs`|${{ needs.build.outputs.version }}|
+>|`matrix`|${{ matrix.dotnet-version }}|
+>|`inputs`|${{ inputs.environment }}-|
+>
+> For example, suppose you want to run a deployment step only on `main`:
+>```yaml
+>- name: Deploy
+>  if: ${{ github.ref == 'refs/heads/main' }}
+>  run: echo "Deploying to main"
+>```
+>Why use `github.ref` instead of `$GITHUB_REF` here? The `if:` condition is evaluated by GitHub Actions before the step runs on the runner. The context is appropriate for that stage.
+>
+> You can also use contexts in a `run` step:
+>
+>```yaml
+>- name: Show branch
+>  run: echo "Branch is ${{ github.ref_name }}"
+>```
+>
+> However, for shell commands, using `$GITHUB_REF_NAME` is often simpler. Be careful when interpolating untrusted event data directly into shell scripts.
+>
+> ---
+>
+> **5. Repository and organization variables using `vars`**
+>
+> Suppose your repository has a configuration variable named `AWS_REGION` defined in ***Settings → Secrets and variables → Actions → Variables**.
+>
+> You can access it in YAML like this:
+>
+> ```yaml
+>env:
+>  AWS_REGION: ${{ vars.AWS_REGION }}
+>
+>jobs:
+>  build:
+>    runs-on: self-hosted
+>    steps:
+>      - name: Show region
+>        run: echo "Region is $AWS_REGION"
+>```
+>
+> Use `vars` for ordinary configuration such as region names, registry URLs, and environment names. Use `secrets` for credentials, tokens, passwords, and other sensitive values. Variables are not automatically masked in logs
+>
+> ---
+>
+> **6. Setting an environment variable dynamically on the runner**
+>
+> This is one of the most important concepts.
+>
+> Suppose Step 1 calculates a version, and Step 2 needs to use it. A normal shell assignment does not persist into another step. Use the special file `$GITHUB_ENV` instead
+>
+>```yaml
+>steps:
+>  - name: Calculate version
+>    run: |
+>      VERSION="1.2.5"
+>      echo "APP_VERSION=$VERSION" >> "$GITHUB_ENV"
+>
+>  - name: Use version
+>    run: |
+>      echo "Application version: $APP_VERSION"
+>      dotnet build -p:Version="$APP_VERSION"
+>```
+>
+> Output in the second step:
+>```text
+>Application version: 1.2.5
+>```
+>
+> Important rules:
+> - The variable becomes available to subsequent steps in the same job.
+> - It is not available in the step that writes it.
+> - It does not automatically carry over to another job.
+> - It does not permanently modify the runner machine's environment.
+>
+> What if you use `export` instead?
+> 
+>```yaml
+>- name: Step 1
+>  run: |
+>    export APP_VERSION="1.2.5"
+>    echo "$APP_VERSION"
+>
+>- name: Step 2
+>  run: echo "$APP_VERSION"
+>```
+>
+> Step 2 will not normally receive the value from Step 1. Each run step starts a separate shell process.
+>
+> ---
+>
+> 
