@@ -205,7 +205,7 @@
 >  run: echo "$APP_VERSION"
 >```
 >
-> Step 2 will not normally receive the value from Step 1. Each run step starts a separate shell process.
+> Step 2 will not normally receive the value from Step 1. Each `run` step starts a separate shell process.
 >
 > ---
 >
