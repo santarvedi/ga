@@ -80,3 +80,24 @@
 >|RUNNER_TEMP|Temporary directory on the runner|`/home/nagaantarvedi/actions-runner/_work/_temp`|
 >|CI|Usually true in GitHub Actions|`true`|
 >
+>
+>
+> 
+>| **Variable** | **Example** |
+>| :--- | :--- |
+>|GITHUB_WORKSPACE||
+>|GITHUB_REPOSITORY||
+>|GITHUB_REF||
+>|GITHUB_REF_NAME||
+>|GITHUB_SHA||
+>|GITHUB_RUN_ID||
+>|GITHUB_RUN_NUMBER||
+>|GITHUB_ACTOR||
+>|GITHUB_EVENT_NAME||
+>|GITHUB_ENV||
+>|RUNNER_NAME||
+>|RUNNER_OS||
+>|RUNNER_ARCH||
+>|RUNNER_TEMP||
+>|CI||
+>
