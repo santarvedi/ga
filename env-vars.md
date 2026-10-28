@@ -101,7 +101,8 @@
 >|$RUNNER_TEMP|`/home/nagaantarvedi/actions-runner/_work/_temp`|
 >|$CI|`true`|
 >
-> These are environment variables available inside the runner's job, not permanent variables on the machine
-> ---
 >
+> These are environment variables available inside the runner's job, not permanent variables on the machine
+>
+> ---
 >
