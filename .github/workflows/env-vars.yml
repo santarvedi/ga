@@ -63,12 +63,12 @@ jobs:
       
       - name: Print - ADD - variables export
         run: |
-          export APP_VERSION="1.2.5"
-          echo $APP_VERSION
+          export DB_VERSION="1.2.5"
+          echo $DB_VERSION
       - name: Print - GET - variables from exported env
         run: |
-          echo "APP_VERSION: $APP_VERSION"
-          
+          echo "DB_VERSION: $DB_VERSION"
+
 
 
 
