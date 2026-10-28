@@ -62,42 +62,42 @@
 > 
 > Here are the ones you'll use most often:
 > 
->| **Env Variable** |**Context Variable**| **Purpose** |**Example**|
+>| **Env Variable** |**Context Variable**| **Purpose** |
 >| :--- | :--- | :--- | :--- |
->|$GITHUB_WORKSPACE|${{ github.workspace }}|Repository working directory on the runner|`/home/nagaantarvedi/actions-runner/_work/ga/ga`|
->|$GITHUB_REPOSITORY|${{ github.repository }}|Repository name, such as owner/repo|`santarvedi/ga`|
->|$GITHUB_REF|${{ github.ref}}|Branch or tag reference|`refs/heads/main`|
->|$GITHUB_REF_NAME|${{ github.ref_name}}|Short branch or tag name|`main`|
->|$GITHUB_SHA|${{ github.sha}}|Commit SHA that triggered the workflow|`12f12da747d023dbbf4e80853d5d0dfd1ae267c0`|
->|$GITHUB_RUN_ID|${{ github.run_id}}|Unique workflow run ID|`40661180406`|
->|$GITHUB_RUN_NUMBER|${{ github.run_number}}|Run number within the repository|`5`|
->|$GITHUB_ACTOR|${{ github.actor}}|User or actor who initiated the run|`santarvedi`|
->|$GITHUB_EVENT_NAME|${{ github.event_name}}|Trigger event, such as push|`workflow_dispatch`|
->|$GITHUB_ENV|${{ github.env}}|File used to export variables to subsequent steps|`/home/nagaantarvedi/actions-runner/_work/_temp/_runner_file_commands/set_env_687205b9-d462-426e-a774-c3ce0273bc79`|
->|$RUNNER_NAME|${{ runner.name}}|Name of the runner|`Nantarvedi-LT`|
->|$RUNNER_OS|${{ runner.os}}|Runner OS: Linux, Windows, or macOS|`Linux`|
->|$RUNNER_ARCH|${{ runner.arch}}|Runner architecture, such as X64 or ARM64|`X64`|
->|$RUNNER_TEMP|${{ runner.temp}}|Temporary directory on the runner|`/home/nagaantarvedi/actions-runner/_work/_temp`|
->|CI||Usually true in GitHub Actions|`true`|
+>|$GITHUB_WORKSPACE|${{ github.workspace }}|Repository working directory on the runner||
+>|$GITHUB_REPOSITORY|${{ github.repository }}|Repository name, such as owner/repo|
+>|$GITHUB_REF|${{ github.ref}}|Branch or tag reference|
+>|$GITHUB_REF_NAME|${{ github.ref_name}}|Short branch or tag name|
+>|$GITHUB_SHA|${{ github.sha}}|Commit SHA that triggered the workflow|
+>|$GITHUB_RUN_ID|${{ github.run_id}}|Unique workflow run ID|
+>|$GITHUB_RUN_NUMBER|${{ github.run_number}}|Run number within the repository|
+>|$GITHUB_ACTOR|${{ github.actor}}|User or actor who initiated the run|
+>|$GITHUB_EVENT_NAME|${{ github.event_name}}|Trigger event, such as push|
+>|$GITHUB_ENV|${{ github.env}}|File used to export variables to subsequent steps|
+>|$RUNNER_NAME|${{ runner.name}}|Name of the runner|
+>|$RUNNER_OS|${{ runner.os}}|Runner OS: Linux, Windows, or macOS|
+>|$RUNNER_ARCH|${{ runner.arch}}|Runner architecture, such as X64 or ARM64|
+>|$RUNNER_TEMP|${{ runner.temp}}|Temporary directory on the runner|
+>|$CI||Usually true in GitHub Actions|
 >
 >
 >
 > 
 >| **Variable** | **Example** |
 >| :--- | :--- |
->|GITHUB_WORKSPACE||
->|GITHUB_REPOSITORY||
->|GITHUB_REF||
->|GITHUB_REF_NAME||
->|GITHUB_SHA||
->|GITHUB_RUN_ID||
->|GITHUB_RUN_NUMBER||
->|GITHUB_ACTOR||
->|GITHUB_EVENT_NAME||
->|GITHUB_ENV||
->|RUNNER_NAME||
->|RUNNER_OS||
->|RUNNER_ARCH||
->|RUNNER_TEMP||
->|CI||
+>|$GITHUB_WORKSPACE|`/home/nagaantarvedi/actions-runner/_work/ga/ga`|
+>|$GITHUB_REPOSITORY|`santarvedi/ga`|
+>|$GITHUB_REF|`refs/heads/main`|
+>|$GITHUB_REF_NAME|`main`|
+>|$GITHUB_SHA|`12f12da747d023dbbf4e80853d5d0dfd1ae267c0`|
+>|$GITHUB_RUN_ID|`40661180406`|
+>|$GITHUB_RUN_NUMBER|`5`|
+>|$GITHUB_ACTOR|`santarvedi`|
+>|$GITHUB_EVENT_NAME|`workflow_dispatch`|
+>|$GITHUB_ENV|`/home/nagaantarvedi/actions-runner/_work/_temp/_runner_file_commands/set_env_687205b9-d462-426e-a774-c3ce0273bc79`|
+>|$RUNNER_NAME|`Nantarvedi-LT`|
+>|$RUNNER_OS|`Linux`|
+>|$RUNNER_ARCH|`X64`|
+>|$RUNNER_TEMP|`/home/nagaantarvedi/actions-runner/_work/_temp`|
+>|$CI|`true`|
 >
