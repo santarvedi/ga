@@ -40,7 +40,7 @@ jobs:
           echo "        RUNNER_OS: ${{ runner.os}}"
           echo "      RUNNER_ARCH: ${{ runner.architecture}}"
           echo "      RUNNER_TEMP: ${{ runner.Temporary}}"
-          echo "               CI: ${{ CI}}"
+          # echo "               CI: ${{ CI}}"
 
 
 
