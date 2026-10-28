@@ -62,9 +62,9 @@
 > 
 > Here are the ones you'll use most often:
 > 
->| **Env Variable** |**Context Variable**| **Purpose** |
->| :--- | :--- | :--- | :--- |
->|$GITHUB_WORKSPACE|${{ github.workspace }}|Repository working directory on the runner||
+>| **Env Variable** |**Context Variable**|**Purpose**|
+>| :--- | :--- | :--- |
+>|$GITHUB_WORKSPACE|${{ github.workspace }}|Repository working directory on the runner|
 >|$GITHUB_REPOSITORY|${{ github.repository }}|Repository name, such as owner/repo|
 >|$GITHUB_REF|${{ github.ref}}|Branch or tag reference|
 >|$GITHUB_REF_NAME|${{ github.ref_name}}|Short branch or tag name|
