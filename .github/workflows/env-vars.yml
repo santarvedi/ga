@@ -8,26 +8,41 @@ jobs:
     steps:
       - name: workflow Print
         run: |
-          echo " github-workspace: ${{ github.workspace }}"
-          echo "github-repository: ${{ github.repository }}"
-          echo "       github-ref: ${{ github.ref}}"
-          echo "  github-ref-name: ${{ github.ref_name }}"
-          echo "       github-sha: ${{ github.sha }}"
-          echo "    github-run-id: ${{ github.run_id}}"
-          echo "github-run-number: ${{ github.run_number}}"
+          echo " GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+          echo "GITHUB_REPOSITORY: $GITHUB_REPOSITORY"      
+          echo "       GITHUB_REF: $GITHUB_REF"
+          echo "  GITHUB_REF_NAME: $GITHUB_REF_NAME"
+          echo "       GITHUB_SHA: $GITHUB_SHA"
+          echo "    GITHUB_RUN_ID: $GITHUB_RUN_ID"
+          echo "GITHUB_RUN_NUMBER: $GITHUB_RUN_NUMBER"
+          echo "     GITHUB_ACTOR: $GITHUB_ACTOR"
+          echo "GITHUB_EVENT_NAME: $GITHUB_EVENT_NAME"
+          echo "       GITHUB_ENV: $GITHUB_ENV"
+          echo "      RUNNER_NAME: $RUNNER_NAME"
+          echo "        RUNNER_OS: $RUNNER_OS"
+          echo "      RUNNER_ARCH: $RUNNER_ARCH"
+          echo "      RUNNER_TEMP: $RUNNER_TEMP"
+          echo "               CI: $CI"
 
-# GITHUB_WORKSPACE	Repository working directory on the runner
-# GITHUB_REPOSITORY	Repository name, such as owner/repo
-# GITHUB_REF	Branch or tag reference
-# GITHUB_REF_NAME	Short branch or tag name
-# GITHUB_SHA	Commit SHA that triggered the workflow
-# GITHUB_RUN_ID	Unique workflow run ID
-# GITHUB_RUN_NUMBER	Run number within the repository
-# GITHUB_ACTOR	User or actor who initiated the run
-# GITHUB_EVENT_NAME	Trigger event, such as push
-# GITHUB_ENV	File used to export variables to subsequent steps
-# RUNNER_NAME	Name of the runner
-# RUNNER_OS	Runner OS: Linux, Windows, or macOS
-# RUNNER_ARCH	Runner architecture, such as X64 or ARM64
-# RUNNER_TEMP	Temporary directory on the runner
-# CI	Usually true in GitHub Actions
+
+
+
+
+
+
+
+# >|GITHUB_WORKSPACE|Repository working directory on the runner|
+# >|GITHUB_REPOSITORY|Repository name, such as owner/repo|
+# >|GITHUB_REF|Branch or tag reference|
+# >|GITHUB_REF_NAME|Short branch or tag name|
+# >|GITHUB_SHA|Commit SHA that triggered the workflow|
+# >|GITHUB_RUN_ID|Unique workflow run ID|
+# >|GITHUB_RUN_NUMBER|Run number within the repository|
+# >|GITHUB_ACTOR|User or actor who initiated the run|
+# >|GITHUB_EVENT_NAME|Trigger event, such as push|
+# >|GITHUB_ENV|File used to export variables to subsequent steps|
+# >|RUNNER_NAME|Name of the runner|
+# >|RUNNER_OS|Runner OS: Linux, Windows, or macOS|
+# >|RUNNER_ARCH|Runner architecture, such as X64 or ARM64|
+# >|RUNNER_TEMP|Temporary directory on the runner|
+# >|CI|Usually true in GitHub Actions|
