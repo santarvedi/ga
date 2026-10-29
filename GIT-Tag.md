@@ -90,7 +90,7 @@
 >
 > ---
 >
->  **git reference/"ref"**
+>  ### git reference/"ref"
 >
 >In Git, a **reference (or "ref") is a user-friendly alias or pointer that maps directly to a specific 40-character commit SHA-1 hash**. Instead of forcing you to remember cryptic hashes like `1a410efb...`, Git uses text files containing these hashes to let you navigate your repository using readable names
 >
