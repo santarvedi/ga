@@ -54,6 +54,7 @@ jobs:
           echo "DBPORT: $DBPORT"
           echo "DBUSER: $DBUSER"
 
+      # GITHUB_ENV 
       - name: Print - ADD - variables to GITHUB_ENV file
         run: |
           VERSION="1.2.5"
@@ -70,6 +71,8 @@ jobs:
       - name: Print - GET - variables from exported env
         run: |
           echo "DB_VERSION: $DB_VERSION"
+
+      # GITHUB_OUTPUT
       # Save key=value data to GITHUB_OUTPUT 
       - name: Set GITHUB_OUTPUT
         id: setuser

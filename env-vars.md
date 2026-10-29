@@ -263,4 +263,26 @@
 >      - name: Read variable from job1
 >        run: echo "Received value is ${{ needs.job1.outputs.shared_var }}"
 >``` 
-
+>
+> ---
+>
+> **$GITHUB_OUTPUT Vs $GITHUB_ENV**
+>
+> **The core difference is scope**: Use `$GITHUB_ENV` to share variables between steps **within the same job**, and use `$GITHUB_OUTPUT` when you need to pass data **across different jobs** or out of a reusable action.
+>
+> While both files allow you to persist data dynamically during a workflow run, they serve completely different parts of the GitHub Actions architecture.
+>
+> **Key Structural Differences**
+>
+> 
+> 1. **Scope & Visibility**
+>
+> - `$GITHUB_ENV`: Modifies the operating system's environment variables. Once you write to it, the variable becomes immediately available in all **subsequent steps** of that specific job. It cannot be read by other jobs
+> 
+> - `$GITHUB_OUTPUT`: Saves data to a runner file that attaches specifically to that step. These parameters are hidden from the OS environment and can only be accessed using GitHub's expression syntax (`${{ steps... }}`). Because they are tied to the step's metadata, they can be elevated to job outputs and sent to completely separate jobs
+>
+> 2. **Access Syntax**
+>
+> - `$GITHUB_ENV`: Best accessed directly via the runner's native shell syntax (e.g., `$MY_VAR` in Bash or `$env:MY_VAR` in PowerShell)
+> - `$GITHUB_OUTPUT`: Must be accessed using GitHub Actions context interpolation: `${{ steps.<step_id>.outputs.<key_name> }}`
+>
