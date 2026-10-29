@@ -286,3 +286,18 @@
 > - `$GITHUB_ENV`: Best accessed directly via the runner's native shell syntax (e.g., `$MY_VAR` in Bash or `$env:MY_VAR` in PowerShell)
 > - `$GITHUB_OUTPUT`: Must be accessed using GitHub Actions context interpolation: `${{ steps.<step_id>.outputs.<key_name> }}`
 >
+> ---
+>
+> **7. Quick reference: Which syntax should you use?**
+>
+>| **Shell** | **Operating System** |
+>| :--- | :--- |
+>|**Need a value throughout a workflow?**|Use top-level `env:`|
+>|**Need branch, commit, or repository details?**|Use `$GITHUB_SHA`, `$GITHUB_REF_NAME`, or `${{ github.repository }}`|
+>|**Need reusable repository configuration?**|Use `${{ vars.VARIABLE_NAME }}`|
+>|**Need credentials?**|Use `${{ secrets.SECRET_NAME }}`.|
+>|**Need to pass a calculated variable to the next step?**|Write it to `$GITHUB_ENV`|
+>|**Need to pass a calculated variable to the next step?**|Write it to `GITHUB_OUTPUT`|
+>
+> ---
+>
