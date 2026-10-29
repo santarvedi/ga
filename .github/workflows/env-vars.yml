@@ -69,6 +69,15 @@ jobs:
         run: |
           echo "DB_VERSION: $DB_VERSION"
 
+      - name: Set GITHUB_OUTPUT
+        id: setuser
+        run: |
+          echo "GITHUB_OUTPUT: $GITHUB_OUTPUT"
+          echo "USER=santarvedi" >> $GITHUB_OUTPUT
+      - name: Get GITHUB_OUTPUT
+        run: |
+          echo "USER: ${{ steps.setuser.outputs.USER }}"  
+
 
 
 

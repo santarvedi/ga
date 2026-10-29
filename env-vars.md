@@ -210,4 +210,57 @@
 >
 > ---
 >
+> **$GITHUB_OUTPUT**
+>
+> `$GITHUB_OUTPUT` is the **standard environment file used in GitHub Actions to set step output parameters**. It replaces the older, deprecated `::set-output` syntax.
+>
+> When you write a key-value pair to this file, it exposes a variable that subsequent steps or jobs can reference
+>
+> **1. Basic Syntax (Same Job)**
 > 
+> To set an output in a step, append the data in a `KEY=VALUE` format to the file path stored in the `$GITHUB_OUTPUT` environment variable.
+>```yaml
+>jobs:
+>  build-and-share:
+>    runs-on: ubuntu-latest
+>    steps:
+>      # Step 1: Generate the output (Must have an 'id')
+>      - name: Generate random number
+>        id: generator
+>        run: echo "random_number=42" >> $GITHUB_OUTPUT
+>
+>      # Step 2: Consume the output in the same job
+>      - name: Use the number
+>        run: echo "The number was ${{ steps.generator.outputs.random_number }}"
+>```
+>
+> **2. Syntax by Shell / OS**
+> 
+> Depending on the operating system and runner shell you are using, the exact command syntax changes slightly to handle file redirection:
+>
+>| **Shell** | **Operating System** |**Syntax**|
+>| :--- | :--- | :--- |
+>|**Bash**|`Linux` / `macOS` / `Windows`|`echo "key=value" >> $GITHUB_OUTPUT`|
+>
+>
+> **3. Passing Outputs Between Jobs**
+>
+> Jobs run on completely isolated runners. To pass data from one job to another, you must explicitly declare it at the job level using `jobs.<job_id>.outputs`
+> ```yaml
+>jobs:
+>  job1:
+>    runs-on: ubuntu-latest
+>    outputs:
+>      shared_var: ${{ steps.step1.outputs.my_key }} # Maps step output to job output
+>    steps:
+>      - id: step1
+>        run: echo "my_key=hello-world" >> $GITHUB_OUTPUT
+>
+>  job2:
+>    runs-on: ubuntu-latest
+>    needs: job1 # Essential to pull context from job1
+>    steps:
+>      - name: Read variable from job1
+>        run: echo "Received value is ${{ needs.job1.outputs.shared_var }}"
+>``` 
+
