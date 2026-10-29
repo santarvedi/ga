@@ -297,7 +297,7 @@
 >|**Need reusable repository configuration?**|Use `${{ vars.VARIABLE_NAME }}`|
 >|**Need credentials?**|Use `${{ secrets.SECRET_NAME }}`.|
 >|**Need to pass a calculated variable to the next step?**|Write it to `$GITHUB_ENV`|
->|**Need to pass a calculated variable to the next step?**|Write it to `GITHUB_OUTPUT`|
+>|**Need to pass a calculated variable to the next Job?**|Write it to `GITHUB_OUTPUT`|
 >
 > ---
 >
