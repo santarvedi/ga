@@ -97,10 +97,12 @@ jobs:
   job3:
     runs-on: [ self-hosted ]
     steps:
-      - name: Print env
+      - name: Print env - workflow
+        run: env
+      - name: Print env - runner
         run: |
           env
-
+     
 
 
 
