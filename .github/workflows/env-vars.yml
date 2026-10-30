@@ -94,7 +94,12 @@ jobs:
         run: |
           echo "USER: ${{ needs.github-default-env-variables.outputs.user }}"
 
-
+  job3:
+    runs-on: [ self-hosted ]
+    steps:
+      - name: Print env
+        run: |
+        env
 
 
 
